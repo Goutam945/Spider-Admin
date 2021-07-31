@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    style="@style/dailogbackground"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:text="Upate UPI"/>
+
+        <ImageView
+            android:id="@+id/iv_cancel_dialog"
+            android:layout_width="50dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            app:tint="@color/white" />
+
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/d_black"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Name*"
+                    style="@style/Edittext_title" />
+
+
+                <EditText
+                    android:id="@+id/upatename"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Name"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text=" UPI Number*"
+                    style="@style/Edittext_title"
+                    />
+
+
+                <EditText
+                    android:id="@+id/updatenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint=" UPI Number"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext"
+                    />
+
+                <Button
+                    android:id="@+id/btn_updateupi"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginLeft="70dp"
+                    android:backgroundTint="@color/apptheamcolor"
+                    android:layout_gravity="bottom"
+                    android:textSize="17dp"
+                    android:textColor="@color/White"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_edit_text1"
+                    android:text="update" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518067301171",
+    "project_id": "spider-admin",
+    "storage_bucket": "spider-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518067301171:android:539cfc1e0613afc984ac46",
+        "android_client_info": {
+          "package_name": "com.impetrosys.spideradmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518067301171-s17ncpn9nbg25bhtdcb9phbkhsg8dpoc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1-Mwr_c7O-kpAxPS8JRBxyjGHygWfVHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518067301171-s17ncpn9nbg25bhtdcb9phbkhsg8dpoc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

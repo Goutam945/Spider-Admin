@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_margin="5dp"
+    android:layout_marginBottom="5dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/card_shape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:padding="6dip"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="6dp"
+                        android:src="@drawable/spiderlogo5"
+                        app:civ_border_color="@color/yellow"
+                        app:civ_border_width="2dp" />
+
+                    <TextView
+                        android:id="@+id/subadminname"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/icon"
+                        android:layout_toRightOf="@id/icon"
+                        android:gravity="center_vertical"
+                        android:text="goutam"
+                        android:layout_marginLeft="10dp"
+                       style="@style/texttitle" />
+                    <TextView
+                        android:id="@+id/sub_mobile"
+                        android:layout_below="@+id/subadminname"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/icon"
+                        android:layout_toRightOf="@id/icon"
+                        android:gravity="center_vertical"
+                        android:text="goutam"
+                        android:layout_marginLeft="10dp"
+                       style="@style/textsubtile" />
+
+                    <TextView
+                        android:id="@+id/sub_role"
+                        android:layout_below="@+id/sub_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/icon"
+                        android:layout_toRightOf="@id/icon"
+                        android:gravity="center_vertical"
+                        android:text="goutam"
+                        android:layout_marginLeft="10dp"
+                        style="@style/textsubtile" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/sub_edit"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_width="30dp"
+                android:layout_height="25dp"/>
+            <ImageView
+                android:id="@+id/sub_delete"
+                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_width="30dp"
+                android:layout_height="25dp"/>
+        </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

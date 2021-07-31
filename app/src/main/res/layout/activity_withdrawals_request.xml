@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_margin="5dp"
+    tools:context=".Withdrawals_request">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_edit_text"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="goutam"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"
+           />
+        <TextView
+            android:id="@+id/tv_userid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="85454"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"/>
+        <TextView
+            android:id="@+id/tv_coins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="amount"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:id="@+id/tv_pmethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+
+        <TextView
+            android:id="@+id/tv_upiname"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_upinuber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_bankname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_ifc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_accountnum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <Button
+                android:id="@+id/btn_approve"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:background="@drawable/buttonblue_shape"
+                android:fontFamily="@font/gtwalsheimpro_regular"
+                android:text="Approve"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btn_reject"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:fontFamily="@font/gtwalsheimpro_regular"
+                android:background="@drawable/button_shape"
+                android:text="Disapprove"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+       <!-- <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/yellow"
+            android:layout_marginTop="20dp" />-->
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

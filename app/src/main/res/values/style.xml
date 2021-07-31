@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="apptheam" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="texttitle">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+
+    </style>
+
+    <style name="textsubtile">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+
+    </style>
+
+    <style name="requestuser">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+
+    </style>
+
+    <style name="dashbord">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+    </style>
+
+    <style name="Edittext">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+    </style>
+
+    <style name="Edittext_title">
+        <item name="android:textColor">@color/apptheamcolor</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:fontFamily">@font/gtwalsheimpro_regular</item>
+    </style>
+
+    <style name="dailogbackground">
+        <item name="android:background">@color/black</item>
+
+    </style>
+
+
+
+</resources>

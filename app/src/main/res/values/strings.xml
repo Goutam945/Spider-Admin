@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Spider Admin</string>
+    <string name="Internet_connection">Internet_connection</string>
+
+
+    <!--Fonts -->
+    <string name="gtwalsheimpro_bold">gtwalsheimpro_bold.ttf</string>
+    <string name="gtwalsheimpro_light">gtwalsheimpro_light.ttf</string>
+    <string name="gtwalsheimpro_regular">gtwalsheimpro_regular.ttf</string>
+
+    <string name="channel_id">channelid</string>
+
+    <string name="Cricket">Cricket</string>
+    <string name="Football">Football</string>
+    <string name="Tennis">Tennis</string>
+    <string name="HorseRacing">Horse Racing</string>
+    <string name="Cards">Cards</string>
+    <string name="Livcasino">Livcasino</string>
+    <string name="Politics">Politics</string>
+
+    <string name="Financial">Financial</string>
+    <string name="Withdraw">Withdraw</string>
+    <string name="Deposits">Deposits</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

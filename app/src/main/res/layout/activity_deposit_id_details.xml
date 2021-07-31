@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Deposit_Id_details">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_text"
+            android:padding="6dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp">
+
+
+
+            <TextView
+                android:id="@+id/d_username"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Goutam Patil"
+                android:layout_marginLeft="5dp"
+               style="@style/requestuser"/>
+
+            <TextView
+                android:id="@+id/d_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/d_username"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:fontFamily="@font/gtwalsheimpro_regular"
+                android:text="User ID"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+            <TextView
+                android:id="@+id/d_paymentmethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_id"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="paymentmethod"
+                style="@style/requestuser"
+                />
+            <TextView
+                android:id="@+id/d_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_paymentmethod"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="coin"
+                style="@style/requestuser"
+                 />
+
+            <TextView
+                android:id="@+id/d_websitename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_coin"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                style="@style/requestuser"
+                android:text="website" />
+            <TextView
+                android:id="@+id/d_websiteurl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_websitename"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="website"
+                style="@style/requestuser"
+               />
+
+
+
+            <TextView
+                android:id="@+id/d_requestusername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_websiteurl"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="website"
+                style="@style/requestuser"
+               />
+
+
+
+            <TextView
+                android:id="@+id/d_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_requestusername"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="date"
+                style="@style/requestuser"
+               />
+            <ImageView
+                android:id="@+id/icon"
+                android:visibility="gone"
+                android:layout_below="@id/d_date"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@color/black"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/spiderlogo5" />
+            <LinearLayout
+                android:layout_below="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp">
+
+                <Button
+                    android:id="@+id/btn_accept"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/buttonblue_shape"
+                    android:textColor="@color/white"
+                    android:text="Accept"
+                    />
+                <Button
+                    android:id="@+id/btn_reject"
+                    android:layout_width="120dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_shape"
+                    android:textColor="@color/white"
+                    android:text="rejected"
+                    />
+            </LinearLayout>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/d_date"
+                />
+        </RelativeLayout>
+
+</ScrollView>
