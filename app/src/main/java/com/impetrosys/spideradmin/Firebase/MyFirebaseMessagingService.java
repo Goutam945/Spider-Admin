@@ -14,12 +14,11 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.impetrosys.spideradmin.Act_paymentdeposit;
 import com.impetrosys.spideradmin.MainActivity;
-import com.impetrosys.spideradmin.Modelclass.UserRequestlist;
-import com.impetrosys.spideradmin.Paymentdeposits_list;
 import com.impetrosys.spideradmin.R;
-import com.impetrosys.spideradmin.User_requestlist;
-import com.impetrosys.spideradmin.Withdrawals_request;
+import com.impetrosys.spideradmin.Act_User_requestlist;
+import com.impetrosys.spideradmin.Act_Withdrawals_request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -90,17 +89,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendNotification( String title, String subtitle, String image, String type) {
         Intent intent=null;
         if (type.equalsIgnoreCase("clientid")){
-             intent = new Intent(this, User_requestlist.class);
+             intent = new Intent(this, Act_User_requestlist.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            startActivity(intent);
         }else
         if (type.equalsIgnoreCase("deposit")){
-             intent = new Intent(this, Paymentdeposits_list.class);
+             intent = new Intent(this, Act_paymentdeposit.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            startActivity(intent);
         }else
         if (type.equalsIgnoreCase("withdrawl")){
-            intent = new Intent(this, Withdrawals_request.class);
+            intent = new Intent(this, Act_Withdrawals_request.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            startActivity(intent);
         }else {

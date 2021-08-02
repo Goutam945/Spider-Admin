@@ -4,62 +4,138 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Notification {
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("referenceno")
+    @Expose
+    private String referenceno;
+    @SerializedName("loginusername")
+    @Expose
+    private String loginusername;
+    @SerializedName("userid")
+    @Expose
+    private String userid;
+    @SerializedName("mainid")
+    @Expose
+    private String mainid;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("message")
+    @Expose
+    private String message;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("coins")
+    @Expose
+    private String coins;
+    @SerializedName("username")
+    @Expose
+    private String username;
+    @SerializedName("notification_date")
+    @Expose
+    private String notificationDate;
 
-        @SerializedName("id")
-        @Expose
-        private String id;
-        @SerializedName("name")
-        @Expose
-        private String name;
-        @SerializedName("contact")
-        @Expose
-        private String contact;
-        @SerializedName("role")
-        @Expose
-        private String role;
-        @SerializedName("created_date")
-        @Expose
-        private String createdDate;
+    public String getId() {
+        return id;
+    }
 
-        public String getId() {
-            return id;
-        }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+    public String getReferenceno() {
+        return referenceno;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public void setReferenceno(String referenceno) {
+        this.referenceno = referenceno;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public String getLoginusername() {
+        return loginusername;
+    }
 
-        public String getContact() {
-            return contact;
-        }
+    public void setLoginusername(String loginusername) {
+        this.loginusername = loginusername;
+    }
 
-        public void setContact(String contact) {
-            this.contact = contact;
-        }
+    public String getUserid() {
+        return userid;
+    }
 
-        public String getRole() {
-            return role;
-        }
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
-        public void setRole(String role) {
-            this.role = role;
-        }
+    public String getMainid() {
+        return mainid;
+    }
 
-        public String getCreatedDate() {
-            return createdDate;
-        }
+    public void setMainid(String mainid) {
+        this.mainid = mainid;
+    }
 
-        public void setCreatedDate(String createdDate) {
-            this.createdDate = createdDate;
-        }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCoins() {
+        return coins;
+    }
+
+    public void setCoins(String coins) {
+        this.coins = coins;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNotificationDate() {
+        return notificationDate;
+    }
+
+    public void setNotificationDate(String notificationDate) {
+        this.notificationDate = notificationDate;
+    }
 
     }
 

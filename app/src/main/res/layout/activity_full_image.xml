@@ -7,7 +7,7 @@
     android:background="@color/black"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Full_image">
+    tools:context=".Act_Full_image">
     <!--<ImageView
         android:id="@+id/back_arrow"
         android:layout_width="50dp"

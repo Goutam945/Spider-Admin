@@ -3,7 +3,6 @@ package com.impetrosys.spideradmin.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.provider.ContactsContract;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,15 +15,11 @@ import android.widget.TextView;
 import android.widget.Filter;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.Modelclass.Websitelist;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
-import com.impetrosys.spideradmin.Website_list;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 import com.squareup.picasso.Picasso;
 

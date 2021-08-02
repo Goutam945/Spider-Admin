@@ -928,6 +928,34 @@ public class BaseRequest<T> extends BaseRequestParser {
         Call<JsonElement> call = apiInterface_.userlist(body);
         call.enqueue(responseCallback);
     }
+    public void callAPIgetCloseidlist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","closeidlist");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.closeidlist(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIgetNotificationlist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","notificationlist");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.notificationlist(body);
+        call.enqueue(responseCallback);
+    }
     public void callAPIAcoountdetaillist(final int APINumber, String remainingURL,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;

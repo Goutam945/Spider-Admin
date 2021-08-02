@@ -7,15 +7,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.google.android.material.tabs.TabLayout;
@@ -96,7 +93,7 @@ public class Act_paymentdeposit extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Act_paymentdeposit.this,Dashbord.class);
+                Intent i=new Intent(Act_paymentdeposit.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);

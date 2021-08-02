@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,22 +16,18 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.impetrosys.spideradmin.Adapter.Ad_subaminlist;
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
-import com.impetrosys.spideradmin.Adapter.Ad_withdrawls;
-import com.impetrosys.spideradmin.Modelclass.Subadminlist;
-import com.impetrosys.spideradmin.Modelclass.UserRequestlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
-import com.impetrosys.spideradmin.Modelclass.Websitelist;
-import com.impetrosys.spideradmin.Modelclass.Withdrawalsrequest;
+import com.impetrosys.spideradmin.Adapter.Ad_ClientidRequest_changepasslist;
+import com.impetrosys.spideradmin.Modelclass.ClientidRequestchangepasslsit;
 import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -42,7 +39,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Withdrawals_request extends AppCompatActivity {
+public class Act_Clientids_requestchangepass extends AppCompatActivity {
+
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -51,18 +49,22 @@ public class Withdrawals_request extends AppCompatActivity {
     FrameLayout container;
     private BaseRequest baseRequest;
     private int progressStatus = 0;
-    Ad_withdrawls ad_withdrawls;
-    ArrayList<Withdrawalsrequest> withdrawalsrequest = new ArrayList<>();
-    ArrayList<Withdrawalsrequest>withdrawalsrequest1 = new ArrayList<>();
-    ArrayList<Withdrawalsrequest.Withdrawdetail> withdrawdetails = new ArrayList<>();
+    androidx.appcompat.widget.SearchView inputSearch;
+    Ad_ClientidRequest_changepasslist ad_clientidRequestlist;
+    ArrayList<ClientidRequestchangepasslsit> clientidrequestlsits = new ArrayList<>();
+    ArrayList<ClientidRequestchangepasslsit>clientidrequestlsits2 = new ArrayList<>();
+    EditText passwordchange;
+    String PasswordChange;
+    Button btn_change;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home_basic);
+        sessionParam = new SessionParam(getApplicationContext());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Withdrawl requests");
+        getSupportActionBar().setTitle("Client id's");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -73,20 +75,14 @@ public class Withdrawals_request extends AppCompatActivity {
 
         recycle = rowView.findViewById(R.id.recycle_all);
         recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-
-//        ad_withdrawls = new Ad_withdrawls(getApplicationContext());
-//        recycle.setAdapter(ad_withdrawls);
-//        recycle.setHasFixedSize(true);
         try {
             Loder();
-            ApiGetwithdrawlist();
+            ApiGetCLientidlist();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
-    private void ApiGetwithdrawlist () throws JSONException {
+    private void ApiGetCLientidlist () throws JSONException {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -96,39 +92,19 @@ public class Withdrawals_request extends AppCompatActivity {
 
                     if (!jsonObject.getString("message").equals("Failed")) {
 
-                        JSONArray jsonArray = jsonObject.optJSONArray("withdrawlist");
-                        withdrawalsrequest = baseRequest.getDataList(jsonArray, Withdrawalsrequest.class);
-                        withdrawalsrequest1.clear();
-                        for (int i = 0; i < withdrawalsrequest.size(); i++) {
-                            if (withdrawalsrequest != null) {
+                        JSONArray jsonArray = jsonObject.optJSONArray("changepasswordrequestlist");
+                        clientidrequestlsits = baseRequest.getDataList(jsonArray, ClientidRequestchangepasslsit.class);
+                        for (int i = 0; i < clientidrequestlsits.size(); i++) {
+                            if (clientidrequestlsits != null) {
 
-                                if( withdrawalsrequest.get(i).getStatus().equalsIgnoreCase("0")){
-                                    withdrawalsrequest1.add(withdrawalsrequest.get(i));
-
-                                }
-
-
-                                ad_withdrawls = new Ad_withdrawls(withdrawalsrequest1,withdrawdetails, new Ad_withdrawls.aprove() {
+                                ad_clientidRequestlist = new Ad_ClientidRequest_changepasslist(clientidrequestlsits, getApplicationContext(), sessionParam, activity, new Ad_ClientidRequest_changepasslist.Changepass() {
                                     @Override
-                                    public void aproveid(String id) {
-                                        try {
-                                            apiapprovrequest_withdwal(id);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
+                                    public void pass(String id) {
+                                        changepass(id);
 
-                                    @Override
-                                    public void rejetid(String id) {
-                                        Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
-                                        try {
-                                            apiRejectrequest_withdrawal(id);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
                                     }
-                                    }, getApplicationContext(), sessionParam, activity);
-                                recycle.setAdapter(ad_withdrawls);
+                                });
+                                recycle.setAdapter(ad_clientidRequestlist);
 
                             } else {
                                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
@@ -155,11 +131,54 @@ public class Withdrawals_request extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetwithdrawlist(1, remainingUrl2);
+        baseRequest.callAPIgetClient_changepasslist(1, remainingUrl2);
 
     }
 
-    private void apiapprovrequest_withdwal (String id) throws JSONException {
+    public void changepass(String id)
+    {
+        Dialog mDialog = new Dialog(Act_Clientids_requestchangepass.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.changepassword_requestclient);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+        passwordchange= mDialog.findViewById(R.id.passs);
+        btn_change=mDialog.findViewById(R.id.btn_changepass);
+
+//
+
+        btn_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PasswordChange = passwordchange.getText().toString();
+
+                if (passwordchange.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    try {
+                        apichange_passwordclientid(id);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+    private void apichange_passwordclientid(String id) throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -167,10 +186,10 @@ public class Withdrawals_request extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    ad_withdrawls.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), Withdrawals_request.class);
+                    ad_clientidRequestlist.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_Clientids_requestchangepass.class);
                     startActivity(i);
-                    Toast.makeText(getApplicationContext(), "Sucessfully Approve", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Sucessfully Change", Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -180,7 +199,7 @@ public class Withdrawals_request extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Withdrawals_request.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Clientids_requestchangepass.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -189,58 +208,25 @@ public class Withdrawals_request extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapproveWithdrawl_request(1, "https://impetrosys.com/spiderapp/",id);
+        baseRequest.callAPIClientid_Changepassword(1, "https://impetrosys.com/spiderapp/",id,PasswordChange,sessionParam.userId);
 
     }
-    private void apiRejectrequest_withdrawal(String id) throws JSONException {
-        baseRequest = new BaseRequest(context);
-        baseRequest.setBaseRequestListner(new RequestReciever() {
-            @Override
-            public void onSuccess(int requestCode, String Json, Object object) {
-                try {
-                    JSONObject jsonObject = new JSONObject(Json);
-                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    ad_withdrawls.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), Withdrawals_request.class);
-                    startActivity(i);
-                    Toast.makeText(getApplicationContext(), "Sucessfully Reject", Toast.LENGTH_SHORT).show();
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Withdrawals_request.this, message, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNetworkFailure(int requestCode, String message) {
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        baseRequest.callAPIReject_withdrawrequest(1, "https://impetrosys.com/spiderapp/",id);
-
-    }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                Intent intent = new Intent(Withdrawals_request.this, Dashbord.class);
+//                Intent intent = new Intent(Clientids_requestchangepass.this, Dashbord.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
-                Intent i=new Intent(Withdrawals_request.this,Dashbord.class);
+                Intent i=new Intent(Act_Clientids_requestchangepass.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);
                 finish();
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -274,16 +260,5 @@ public class Withdrawals_request extends AppCompatActivity {
             }
         }).start();
 //lowder end
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-    public boolean onKeyDown(int keycode, KeyEvent event) {
-        if (keycode == KeyEvent.KEYCODE_BACK) {
-            moveTaskToBack(true);
-        }
-        return super.onKeyDown(keycode, event);
     }
 }

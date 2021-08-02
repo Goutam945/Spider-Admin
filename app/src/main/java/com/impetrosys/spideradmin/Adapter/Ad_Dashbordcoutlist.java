@@ -6,23 +6,19 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.impetrosys.spideradmin.Dashbord;
 import com.impetrosys.spideradmin.Modelclass.Dashbordcountlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.R;
-import com.impetrosys.spideradmin.User_requestlist;
+import com.impetrosys.spideradmin.Act_User_requestlist;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Ad_Dashbordcoutlist extends RecyclerView.Adapter<Ad_Dashbordcoutlist.MyViewHolder> {
@@ -71,7 +67,7 @@ public class Ad_Dashbordcoutlist extends RecyclerView.Adapter<Ad_Dashbordcoutlis
        holder.idclik.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent i=new Intent(context, User_requestlist.class);
+               Intent i=new Intent(context, Act_User_requestlist.class);
                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                context.startActivity(i);
            }

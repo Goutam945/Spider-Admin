@@ -2,7 +2,6 @@ package com.impetrosys.spideradmin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,16 +17,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
+import com.impetrosys.spideradmin.Adapter.Ad_Paymentdepositslist;
+import com.impetrosys.spideradmin.Modelclass.Paymentdepositslist;
 import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -39,7 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class User_list extends AppCompatActivity {
+public class Act_Paymentdeposits_list extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -48,10 +44,9 @@ public class User_list extends AppCompatActivity {
     FrameLayout container;
     private BaseRequest baseRequest;
     private int progressStatus = 0;
-    androidx.appcompat.widget.SearchView inputSearch;
-    Ad_userlist ad_userlist;
-    ArrayList<Userlist> userlist = new ArrayList<>();
-    ArrayList<Userlist>userlist2 = new ArrayList<>();
+    Ad_Paymentdepositslist ad_paymentdepositslist;
+    ArrayList<Paymentdepositslist> paymentdepositslist = new ArrayList<>();
+    ArrayList<Paymentdepositslist>paymentdepositslist2 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +54,7 @@ public class User_list extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("User list");
+        getSupportActionBar().setTitle("Payment deposits list");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -70,20 +65,18 @@ public class User_list extends AppCompatActivity {
 
         recycle = rowView.findViewById(R.id.recycle_all);
         recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        //recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
 
-
-//        ad_userlist = new Ad_userlist(getApplicationContext());
-//        recycle.setAdapter(ad_userlist);
-//        recycle.setHasFixedSize(true);
-        Loder();
         try {
-            ApiGetUserlist();
+            Loder();
+            ApiGetDepositslist();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-    private void ApiGetUserlist () throws JSONException {
+
+
+
+    private void ApiGetDepositslist () throws JSONException {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -93,21 +86,17 @@ public class User_list extends AppCompatActivity {
 
                     if (!jsonObject.getString("message").equals("Failed")) {
 
-                        JSONArray jsonArray = jsonObject.optJSONArray("userlist");
-                        userlist = baseRequest.getDataList(jsonArray, Userlist.class);
-                        for (int i = 0; i < userlist.size(); i++) {
-                            if (userlist != null) {
+                        JSONArray jsonArray = jsonObject.optJSONArray("depositlist");
+                        paymentdepositslist = baseRequest.getDataList(jsonArray, Paymentdepositslist.class);
+                        for (int i = 0; i < paymentdepositslist.size(); i++) {
+                            if (paymentdepositslist != null) {
+                                //condition manage status
+                                if( paymentdepositslist.get(i).getStatus().equalsIgnoreCase("0")){
+                                    paymentdepositslist2.add(paymentdepositslist.get(i));}//end contiom
 
 
-                                Userlist model = new Userlist();
-                                model.setName(userlist.get(i).getName());
-                                model.setContact(userlist.get(i).getContact());
-                                model.setId(userlist.get(i).getId());
-
-                                userlist2.add(model);
-
-                                ad_userlist = new Ad_userlist(userlist,getApplicationContext(), sessionParam, activity);
-                                recycle.setAdapter(ad_userlist);
+                                ad_paymentdepositslist = new Ad_Paymentdepositslist(paymentdepositslist2,getApplicationContext(), sessionParam, activity);
+                                recycle.setAdapter(ad_paymentdepositslist);
 
                             } else {
                                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
@@ -134,61 +123,8 @@ public class User_list extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetUserlist(1, remainingUrl2);
+        baseRequest.callAPIgetDepositslist(1, remainingUrl2);
 
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search, menu);
-
-        MenuItem myActionMenuItem = menu.findItem(R.id.mi_search);
-        inputSearch = (SearchView)myActionMenuItem.getActionView();
-        changeSearchViewTextColor(inputSearch);
-
-        inputSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-
-                ad_userlist.getFilter().filter(s);
-                return true;
-            }
-        });
-        return true;
-    }
-
-    private void changeSearchViewTextColor(View view) {
-        if (view != null) {
-            if (view instanceof TextView) {
-                ((TextView) view).setTextColor(Color.WHITE);
-                return;
-            } else if (view instanceof ViewGroup) {
-                ViewGroup viewGroup = (ViewGroup) view;
-                for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                    changeSearchViewTextColor(viewGroup.getChildAt(i));
-
-
-                }}}}
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-//                Intent intent = new Intent(User_list.this, Dashbord.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
-                Intent i=new Intent(User_list.this,Dashbord.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
-                startActivity(i);
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
     public void Loder() {
         ProgressDialog pd = new ProgressDialog(this , R.style.MyAlertDialogStyle);
@@ -220,6 +156,23 @@ public class User_list extends AppCompatActivity {
             }
         }).start();
 //lowder end
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+//                Intent intent = new Intent(Paymentdeposits_list.this, Dashbord.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+//                finish();
+                Intent i=new Intent(Act_Paymentdeposits_list.this, Act_Dashbord.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
+                startActivity(i);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
     @Override
     public void onBackPressed() {

@@ -19,7 +19,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,12 +36,8 @@ import android.widget.Toast;
 
 import com.impetrosys.spideradmin.Adapter.Ad_UserAccesspermition;
 import com.impetrosys.spideradmin.Adapter.Ad_subaminlist;
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
-import com.impetrosys.spideradmin.Adapter.Ad_websitelist;
 import com.impetrosys.spideradmin.Modelclass.Subadminlist;
 import com.impetrosys.spideradmin.Modelclass.UserAccesspemission;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
-import com.impetrosys.spideradmin.Modelclass.Websitelist;
 import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -54,7 +49,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Subadmin_list extends AppCompatActivity {
+public class Act_Subadmin_list extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -263,7 +258,7 @@ public class Subadmin_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     ad_subaminlist.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), Subadmin_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Subadmin_list.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(), "Sucessfully Delete", Toast.LENGTH_SHORT).show();
 
@@ -275,7 +270,7 @@ public class Subadmin_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -292,7 +287,7 @@ public class Subadmin_list extends AppCompatActivity {
 
     public void addSubadmin(Subadminlist edit)
     {
-        Dialog mDialog = new Dialog(Subadmin_list.this);
+        Dialog mDialog = new Dialog(Act_Subadmin_list.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.add_subadmin);
         mDialog.setCanceledOnTouchOutside(false);
@@ -378,7 +373,7 @@ public class Subadmin_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Add", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Subadmin_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Subadmin_list.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -388,7 +383,7 @@ public class Subadmin_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -409,7 +404,7 @@ public class Subadmin_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Update", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Subadmin_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Subadmin_list.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -419,7 +414,7 @@ public class Subadmin_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Subadmin_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -557,7 +552,7 @@ public class Subadmin_list extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Subadmin_list.this,Dashbord.class);
+                Intent i=new Intent(Act_Subadmin_list.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);

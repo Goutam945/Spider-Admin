@@ -22,13 +22,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.impetrosys.spideradmin.Adapter.Ad_Paymentdepositslist;
-import com.impetrosys.spideradmin.Adapter.Ad_subaminlist;
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
-import com.impetrosys.spideradmin.Modelclass.Paymentdepositslist;
-import com.impetrosys.spideradmin.Modelclass.Subadminlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
-import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
+import com.impetrosys.spideradmin.Adapter.Ad_pushNotification;
+import com.impetrosys.spideradmin.Modelclass.Notification;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 import com.impetrosys.spideradmin.retrofit.RequestReciever;
@@ -39,18 +34,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Paymentdeposits_list extends AppCompatActivity {
+public class Act_Puch_Notification extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
-    MarshMallowPermission marshMallowPermission;
     RecyclerView recycle;
     FrameLayout container;
     private BaseRequest baseRequest;
     private int progressStatus = 0;
-    Ad_Paymentdepositslist ad_paymentdepositslist;
-    ArrayList<Paymentdepositslist> paymentdepositslist = new ArrayList<>();
-    ArrayList<Paymentdepositslist>paymentdepositslist2 = new ArrayList<>();
+    Ad_pushNotification ad_pushnotification;
+    ArrayList<Notification> pushnotification = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +51,7 @@ public class Paymentdeposits_list extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Payment deposits list");
+        getSupportActionBar().setTitle("Notification");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -70,17 +63,19 @@ public class Paymentdeposits_list extends AppCompatActivity {
         recycle = rowView.findViewById(R.id.recycle_all);
         recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+
+//        ad_pushnotification = new Ad_pushNotification(getApplicationContext());
+//        recycle.setAdapter(ad_pushnotification);
+//        recycle.setHasFixedSize(true);
         try {
             Loder();
-            ApiGetDepositslist();
+            ApiGetNotification();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
-
-
-
-    private void ApiGetDepositslist () throws JSONException {
+    private void ApiGetNotification () throws JSONException {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -90,17 +85,13 @@ public class Paymentdeposits_list extends AppCompatActivity {
 
                     if (!jsonObject.getString("message").equals("Failed")) {
 
-                        JSONArray jsonArray = jsonObject.optJSONArray("depositlist");
-                        paymentdepositslist = baseRequest.getDataList(jsonArray, Paymentdepositslist.class);
-                        for (int i = 0; i < paymentdepositslist.size(); i++) {
-                            if (paymentdepositslist != null) {
-                                //condition manage status
-                                if( paymentdepositslist.get(i).getStatus().equalsIgnoreCase("0")){
-                                    paymentdepositslist2.add(paymentdepositslist.get(i));}//end contiom
+                        JSONArray jsonArray = jsonObject.optJSONArray("notificationlist");
+                        pushnotification = baseRequest.getDataList(jsonArray, Notification.class);
+                        for (int i = 0; i < pushnotification.size(); i++) {
+                            if (pushnotification != null) {
 
-
-                                ad_paymentdepositslist = new Ad_Paymentdepositslist(paymentdepositslist2,getApplicationContext(), sessionParam, activity);
-                                recycle.setAdapter(ad_paymentdepositslist);
+                                ad_pushnotification = new Ad_pushNotification(pushnotification,getApplicationContext(), sessionParam, activity);
+                                recycle.setAdapter(ad_pushnotification);
 
                             } else {
                                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
@@ -127,7 +118,7 @@ public class Paymentdeposits_list extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetDepositslist(1, remainingUrl2);
+        baseRequest.callAPIgetNotificationlist(1, remainingUrl2);
 
     }
     public void Loder() {
@@ -162,23 +153,6 @@ public class Paymentdeposits_list extends AppCompatActivity {
 //lowder end
     }
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-//                Intent intent = new Intent(Paymentdeposits_list.this, Dashbord.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
-                Intent i=new Intent(Paymentdeposits_list.this,Dashbord.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
-                startActivity(i);
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
@@ -188,5 +162,18 @@ public class Paymentdeposits_list extends AppCompatActivity {
             moveTaskToBack(true);
         }
         return super.onKeyDown(keycode, event);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent i=new Intent(Act_Puch_Notification.this, Act_Dashbord.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
+                startActivity(i);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

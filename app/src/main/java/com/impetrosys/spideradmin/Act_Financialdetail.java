@@ -20,7 +20,6 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -32,13 +31,9 @@ import android.widget.Toast;
 
 import com.impetrosys.spideradmin.Adapter.Ad_Detailsaccount;
 import com.impetrosys.spideradmin.Adapter.Ad_financialdetail;
-import com.impetrosys.spideradmin.Adapter.Ad_subaminlist;
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
 import com.impetrosys.spideradmin.Modelclass.AccountDetails;
 import com.impetrosys.spideradmin.Modelclass.Acountdeatil1;
 import com.impetrosys.spideradmin.Modelclass.Financialdetails;
-import com.impetrosys.spideradmin.Modelclass.Subadminlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -50,7 +45,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Financialdetail extends AppCompatActivity {
+public class Act_Financialdetail extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -302,7 +297,7 @@ public class Financialdetail extends AppCompatActivity {
 
     public void addupiDetails(String id)
     {
-        Dialog mDialog = new Dialog(Financialdetail.this);
+        Dialog mDialog = new Dialog(Act_Financialdetail.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.add_upi);
         mDialog.setCanceledOnTouchOutside(false);
@@ -341,7 +336,7 @@ public class Financialdetail extends AppCompatActivity {
     }
     public void addbankDetails()
     {
-        Dialog mDialog = new Dialog(Financialdetail.this);
+        Dialog mDialog = new Dialog(Act_Financialdetail.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.add_bankdetails);
         mDialog.setCanceledOnTouchOutside(false);
@@ -392,7 +387,7 @@ public class Financialdetail extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Add", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Financialdetail.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -402,7 +397,7 @@ public class Financialdetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -424,7 +419,7 @@ public class Financialdetail extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Update", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Financialdetail.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -434,7 +429,7 @@ public class Financialdetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -455,7 +450,7 @@ public class Financialdetail extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Update BankDetails", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Financialdetail.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -465,7 +460,7 @@ public class Financialdetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -486,7 +481,7 @@ public class Financialdetail extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Add BankDetails", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Financialdetail.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -496,7 +491,7 @@ public class Financialdetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -516,7 +511,7 @@ public class Financialdetail extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    Intent i = new Intent(getApplicationContext(), Dashbord.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Dashbord.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(), "Sucessfully Delete", Toast.LENGTH_SHORT).show();
 
@@ -528,7 +523,7 @@ public class Financialdetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -598,7 +593,7 @@ public class Financialdetail extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Financialdetail.this,Dashbord.class);
+                Intent i=new Intent(Act_Financialdetail.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);

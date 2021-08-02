@@ -12,10 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.impetrosys.spideradmin.Deposit_Id_details;
-import com.impetrosys.spideradmin.Deposits_details;
+import com.impetrosys.spideradmin.Act_Deposit_Id_details;
 import com.impetrosys.spideradmin.Modelclass.PaymentDepositid;
-import com.impetrosys.spideradmin.Modelclass.Paymentdepositslist;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -66,7 +64,7 @@ public class Ad_PaymentdepositID extends RecyclerView.Adapter<Ad_PaymentdepositI
         holder.lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Deposit_Id_details.class);
+                Intent intent = new Intent(context, Act_Deposit_Id_details.class);
                 intent.putExtra("username",list.get(position).getUsername());
                 intent.putExtra("userid",list.get(position).getUserid());
                 intent.putExtra("id",list.get(position).getId());

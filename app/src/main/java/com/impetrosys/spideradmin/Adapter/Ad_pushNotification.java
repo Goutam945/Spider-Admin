@@ -2,27 +2,30 @@ package com.impetrosys.spideradmin.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.impetrosys.spideradmin.Modelclass.Userlist;
+import com.impetrosys.spideradmin.Act_paymentdeposit;
+import com.impetrosys.spideradmin.Modelclass.Notification;
 import com.impetrosys.spideradmin.R;
+import com.impetrosys.spideradmin.Act_User_requestlist;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
+import com.impetrosys.spideradmin.Act_Withdrawals_request;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Ad_pushNotification extends RecyclerView.Adapter<Ad_pushNotification.MyViewHolder> {
-    ArrayList<Userlist> list;
-    ArrayList<Userlist>Alllist;
+    ArrayList<Notification> list;
+    ArrayList<Notification>Alllist;
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -33,7 +36,7 @@ public class Ad_pushNotification extends RecyclerView.Adapter<Ad_pushNotificatio
         this.context = context;
     }
 
-    public Ad_pushNotification(ArrayList<Userlist> list, Context context, SessionParam sessionParam, Activity activity) {
+    public Ad_pushNotification(ArrayList<Notification> list, Context context, SessionParam sessionParam, Activity activity) {
         this.list = list;
         this.context = context;
         this.activity = activity;
@@ -57,29 +60,56 @@ public class Ad_pushNotification extends RecyclerView.Adapter<Ad_pushNotificatio
 
 
 
-//        holder.name.setText(list.get(position).getName());
-//        holder.mobile.setText("+91 "+list.get(position).getContact());
-//        holder.id.setText("Client id's  "+list.get(position).getId());
+        holder.titile.setText(list.get(position).getTitle());
+        holder.message.setText(list.get(position).getMessage());
+        holder.date.setText(list.get(position).getNotificationDate());
 
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String type=list.get(position).getType();
+                if (type.equalsIgnoreCase("requestid")){
+                    Intent intent = new Intent(context, Act_User_requestlist.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+                if (type.equalsIgnoreCase("withdraw")){
+                    Intent intent = new Intent(context, Act_Withdrawals_request.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+                if (type.equalsIgnoreCase("deposit")){
+                    Intent intent = new Intent(context, Act_paymentdeposit.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
 
-        //return list.size();
-        return 10;
+        return list.size();
+        //return 10;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,mobile,id;
+        TextView titile,message,date;
+        LinearLayout layout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-//            name = itemView.findViewById(R.id.name);
-//            mobile = itemView.findViewById(R.id.mobile);
-//            id = itemView.findViewById(R.id.clintid);
+            titile = itemView.findViewById(R.id.titile);
+            message = itemView.findViewById(R.id.massage);
+            date = itemView.findViewById(R.id.date);
+            layout = itemView.findViewById(R.id.layclick);
 
         }
     }

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,10 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.impetrosys.spideradmin.Full_image;
+import com.impetrosys.spideradmin.Act_Full_image;
 import com.impetrosys.spideradmin.Modelclass.UserRequestlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
-import com.impetrosys.spideradmin.Modelclass.Websitelist;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -100,7 +97,7 @@ public class Ad_user_requestlist extends RecyclerView.Adapter<Ad_user_requestlis
         holder.paymentscreenshot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Full_image.class);
+                Intent intent = new Intent(context, Act_Full_image.class);
                 intent.putExtra("paymentscreenshot",list.get(position).getPaymentscreenshot());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

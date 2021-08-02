@@ -87,6 +87,10 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> userlist(@Body RequestBody userlist);
     @POST("service.php")
+    Call<JsonElement> closeidlist(@Body RequestBody closeidlist);
+    @POST("service.php")
+    Call<JsonElement> notificationlist(@Body RequestBody notificationlist);
+    @POST("service.php")
     Call<JsonElement> accountdetaillist(@Body RequestBody accountdetaillist);
     @POST("service.php")
     Call<JsonElement> countlist(@Body RequestBody countlist);

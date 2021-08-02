@@ -1,6 +1,5 @@
 package com.impetrosys.spideradmin;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -24,7 +23,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +40,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class Banner_create extends AppCompatActivity {
+public class Act_Banner_create extends AppCompatActivity {
     Context context;
     Activity activity;
     private BaseRequest baseRequest;
@@ -95,7 +93,7 @@ public class Banner_create extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Banner_create.this,Dashbord.class);
+                Intent i=new Intent(Act_Banner_create.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);
@@ -116,7 +114,7 @@ public class Banner_create extends AppCompatActivity {
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
 
                     Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Dashbord.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Dashbord.class);
                     startActivity(i);
                     etname.setText("");
                     eturl.setText("");
@@ -129,7 +127,7 @@ public class Banner_create extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Banner_create.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Banner_create.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -161,7 +159,7 @@ public class Banner_create extends AppCompatActivity {
     }
     private void selectImage() {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(Banner_create.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Act_Banner_create.this);
         builder.setTitle("Add Photo!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override

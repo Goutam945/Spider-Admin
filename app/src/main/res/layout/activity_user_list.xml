@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     android:layout_margin="5dp"
-    tools:context=".User_list">
+    tools:context=".Act_User_list">
         <LinearLayout
             android:orientation="horizontal"
             android:background="@drawable/card_shape"

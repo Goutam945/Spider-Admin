@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
         <LinearLayout
+            android:id="@+id/layclick"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@drawable/card_shape"
@@ -30,14 +31,14 @@
                         android:id="@+id/icon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="6dp"
                         android:layout_marginRight="6dp"
                         android:src="@drawable/spiderlogo5"
                         app:civ_border_width="2dp" />
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/titile"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -49,20 +50,34 @@
                         style="@style/texttitle"/>
 
                     <TextView
-                        android:id="@+id/mobile"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/massage"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/name"
+                        android:layout_below="@id/titile"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="4dp"
                         android:layout_toEndOf="@+id/icon"
                         android:layout_toRightOf="@id/icon"
                         android:ellipsize="end"
-                        android:maxLines="1"
                         android:fontFamily="@font/gtwalsheimpro_regular"
                         android:text="user request"
                         android:textColor="@color/white"
                         android:textSize="12dp" />
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/massage"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toEndOf="@+id/icon"
+                        android:layout_toRightOf="@id/icon"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/gtwalsheimpro_regular"
+                        android:text="user request"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
 
                 </RelativeLayout>
 

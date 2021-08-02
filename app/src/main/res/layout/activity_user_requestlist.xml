@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="7dp"
     android:layout_margin="5dp"
-    tools:context=".User_requestlist"
+    tools:context=".Act_User_requestlist"
     android:id="@+id/cont_lay">
 
 
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".Deposits_details"
+        tools:context=".Act_Deposits_details"
         tools:ignore="MissingConstraints">
 
         <LinearLayout

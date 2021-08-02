@@ -28,10 +28,10 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Deposit_Id_details extends AppCompatActivity {
-    String Username,Userid,Coins,Websitename,Websiteurl,Requestusername,Createddate,Id,Paywallet,Paymentmethod,Paymentscreenshot;
+public class Act_Deposits_details extends AppCompatActivity {
+String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
     FrameLayout container;
-    TextView username,userid,coins,websitename,websiteurl,requestusername,paymentmethod,createddate;
+    TextView name,uid,pmethod,coin,dete;
     ImageView imageView;
     ProgressBar progress;
     Button approve,reject;
@@ -42,7 +42,7 @@ public class Deposit_Id_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_deposit_id_details);
+        //setContentView(R.layout.activity_deposits_details);
         setContentView(R.layout.act_home_basic);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,71 +52,67 @@ public class Deposit_Id_details extends AppCompatActivity {
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
         container = findViewById(R.id.container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View rowView = inflater.inflate(R.layout.activity_deposit_id_details, null);
+        final View rowView = inflater.inflate(R.layout.activity_deposits_details, null);
         container.addView(rowView, container.getChildCount());
 
-        username = rowView.findViewById(R.id.d_username);
-        userid = rowView.findViewById(R.id.d_id);
-        coins = rowView.findViewById(R.id.d_coin);
-        websitename = rowView.findViewById(R.id.d_websitename);
-        websiteurl = rowView.findViewById(R.id.d_websiteurl);
-        requestusername = rowView.findViewById(R.id.d_requestusername);
-        paymentmethod = rowView.findViewById(R.id.d_paymentmethod);
-        createddate = rowView.findViewById(R.id.d_date);
+        name = rowView.findViewById(R.id.d_username);
+        uid = rowView.findViewById(R.id.d_id);
+        pmethod = rowView.findViewById(R.id.d_paymentmethod);
+        coin = rowView.findViewById(R.id.d_coin);
+        dete = rowView.findViewById(R.id.d_date);
         imageView = rowView.findViewById(R.id.icon);
         progress = rowView.findViewById(R.id.progressBar);
-
         approve = rowView.findViewById(R.id.btn_accept);
         reject = rowView.findViewById(R.id.btn_reject);
 
+
         Intent intent=getIntent();
-        Username=intent.getStringExtra("username");
-        Userid=intent.getStringExtra("userid");
-        Coins=intent.getStringExtra("coins");
-        Websitename=intent.getStringExtra("websitename");
-        Websiteurl=intent.getStringExtra("websiteurl");
-        Requestusername=intent.getStringExtra("requestusername");
-        Createddate=intent.getStringExtra("created_date");
-        Id=intent.getStringExtra("id");
-        Paywallet=intent.getStringExtra("pay_wallet");
-        Paymentmethod=intent.getStringExtra("paymentmethod");
-        Paymentscreenshot=intent.getStringExtra("paymentscreenshot");
+        username=intent.getStringExtra("username");
+        userid=intent.getStringExtra("userid");
+        paymentmethod=intent.getStringExtra("paymentmethod");
+        coins=intent.getStringExtra("coins");
+        paymentscreenshot=intent.getStringExtra("paymentpic");
+        createddate=intent.getStringExtra("created_date");
+        ID=intent.getStringExtra("id");
 
-        username.setText("Username : "+Username);
-        userid.setText("Userid : "+Userid);
-        coins.setText("Coins : "+Coins);
-        websitename.setText("Websitename : "+Websitename);
-        websiteurl.setText("Websiteurl : "+Websiteurl);
-        requestusername.setText("Requestusername : "+Requestusername);
-        paymentmethod.setText("Paymentmethod : "+Paymentmethod);
-        createddate.setText("Date : "+Createddate);
+        name.setText("User : "+username);
+        uid.setText("User Id : "+userid);
+        pmethod.setText("Paymentmethod : "+paymentmethod);
+        coin.setText("Coins : "+coins);
+        dete.setText("Date : "+createddate);
+//        Picasso.get()
+//                .load(paymentscreenshot)
+//                .placeholder(R.mipmap.ic_launcher)
+//                .into(imageView);
 
+        Picasso.get()
+                .load(paymentscreenshot)
+                .into(imageView, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        progress.setVisibility(View.GONE);
+                    }
+                    @Override
+                    public void onError(Exception e) {
 
+                    }
+                });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Act_Deposits_details.this, Act_Full_image.class);
+                i.putExtra("paymentpic",paymentscreenshot);
+                startActivity(i);
+               finish();
 
-        if (Paywallet.equalsIgnoreCase("0")){
-            imageView.setVisibility(View.VISIBLE);
-            progress.setVisibility(View.VISIBLE);
-            Picasso.get()
-                    .load(Paymentscreenshot)
-                    .into(imageView, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            progress.setVisibility(View.GONE);
-                        }
-                        @Override
-                        public void onError(Exception e) {
-
-                        }
-                    });
-        }else {
-            imageView.setVisibility(View.GONE);
-        }
+            }
+        });
 
         approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    apiapprovrequest_depositid();
+                    apiapprovrequest();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -126,16 +122,17 @@ public class Deposit_Id_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    apiRejectrequest_depositid();
+                    apiRejectrequest();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         });
 
+
     }
-    private void apiapprovrequest_depositid() throws JSONException {
+
+    private void apiapprovrequest() throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -155,7 +152,7 @@ public class Deposit_Id_details extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Deposit_Id_details.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Deposits_details.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -164,10 +161,10 @@ public class Deposit_Id_details extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapproveDepositsID_request(1, "https://impetrosys.com/spiderapp/",Id);
+        baseRequest.callAPIapproveDeposits_request(1, "https://impetrosys.com/spiderapp/",ID);
 
     }
-    private void apiRejectrequest_depositid() throws JSONException {
+    private void apiRejectrequest() throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -187,7 +184,7 @@ public class Deposit_Id_details extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Deposit_Id_details.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Deposits_details.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -196,18 +193,18 @@ public class Deposit_Id_details extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIDeposits_reject(1, "https://impetrosys.com/spiderapp/",Id);
+        baseRequest.callAPIDeposits_reject(1, "https://impetrosys.com/spiderapp/",ID);
 
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-//                Intent intent = new Intent(Deposit_Id_details.this, Act_paymentdeposit.class);
+//                Intent intent = new Intent(Deposits_details.this, Act_paymentdeposit.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Deposit_Id_details.this,Dashbord.class);
+                Intent i=new Intent(Act_Deposits_details.this,Act_paymentdeposit.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);
@@ -216,4 +213,23 @@ public class Deposit_Id_details extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+   /* @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finish();
+//    }
+    public boolean onKeyDown(int keycode, KeyEvent event) {
+        if (keycode == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+        }
+        return super.onKeyDown(keycode, event);
+    }*/
 }

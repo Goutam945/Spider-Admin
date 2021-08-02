@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class Full_image extends AppCompatActivity {
+public class Act_Full_image extends AppCompatActivity {
 ImageView imageView,backbtn,imageView1;
 String imgurl,imagurl1;
     private ScaleGestureDetector mScaleGestureDetector;

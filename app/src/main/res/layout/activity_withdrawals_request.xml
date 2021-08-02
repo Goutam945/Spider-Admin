@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_margin="5dp"
-    tools:context=".Withdrawals_request">
+    tools:context=".Act_Withdrawals_request">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

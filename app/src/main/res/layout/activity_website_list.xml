@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:background="@color/black"
-    tools:context=".Website_list">
+    tools:context=".Act_Website_list">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,7 +1,6 @@
 package com.impetrosys.spideradmin;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -18,7 +17,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,7 +24,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
@@ -48,15 +45,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
 import com.impetrosys.spideradmin.Adapter.Ad_websitelist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.Modelclass.Websitelist;
-import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 import com.impetrosys.spideradmin.retrofit.RequestReciever;
-import com.impetrosys.spideradmin.retrofit.Utility;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -64,14 +57,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class Website_list extends AppCompatActivity {
+public class Act_Website_list extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -226,7 +214,7 @@ public class Website_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                    ad_websitelist.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), Website_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Website_list.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(), "Sucessfully Delete", Toast.LENGTH_SHORT).show();
 
@@ -238,7 +226,7 @@ public class Website_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Website_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Website_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -254,7 +242,7 @@ public class Website_list extends AppCompatActivity {
     public void addwebsites(Websitelist websitelist)
     {
 
-        Dialog mDialog = new Dialog(Website_list.this);
+        Dialog mDialog = new Dialog(Act_Website_list.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.add_website);
         mDialog.setCanceledOnTouchOutside(false);
@@ -540,7 +528,7 @@ public class Website_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Add", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Website_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Website_list.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -550,7 +538,7 @@ public class Website_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Website_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Website_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -571,7 +559,7 @@ public class Website_list extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully Edit", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Website_list.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Website_list.class);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -581,7 +569,7 @@ public class Website_list extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Website_list.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Website_list.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -731,7 +719,7 @@ public class Website_list extends AppCompatActivity {
 
    private void selectImage() {
        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-       AlertDialog.Builder builder = new AlertDialog.Builder(Website_list.this);
+       AlertDialog.Builder builder = new AlertDialog.Builder(Act_Website_list.this);
        builder.setTitle("Add Photo!");
        builder.setItems(options, new DialogInterface.OnClickListener() {
            @Override
@@ -849,7 +837,7 @@ public class Website_list extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(Website_list.this,Dashbord.class);
+                Intent i=new Intent(Act_Website_list.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);

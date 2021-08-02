@@ -87,21 +87,21 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
                 }
                 if (name.equalsIgnoreCase("GOOGLE PAY")) {
-                    holder.Upiname.setText("Naeme : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
                     holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
                     holder.Upiname.setVisibility(View.VISIBLE);
                     holder.Upinumber.setVisibility(View.VISIBLE);
 
                 }
                 if (name.equalsIgnoreCase("PHONE PAY")) {
-                    holder.Upiname.setText("Naeme : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
                     holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
                     holder.Upiname.setVisibility(View.VISIBLE);
                     holder.Upinumber.setVisibility(View.VISIBLE);
 
                 }
                 if (name.equalsIgnoreCase("PAYTM WALLET")) {
-                    holder.Upiname.setText("Naeme : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
                     holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
                     holder.Upiname.setVisibility(View.VISIBLE);
                     holder.Upinumber.setVisibility(View.VISIBLE);

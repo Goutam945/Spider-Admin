@@ -36,11 +36,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Dashbord extends AppCompatActivity {
+public class Act_Dashbord extends AppCompatActivity {
     SessionParam sessionParam;
     private BaseRequest baseRequest;
     Activity activity;
-    CardView card1,card2,card3,card4,card5,card6,card7,card8;
+    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9;
     TextView userid,username;
     ImageView logout,notification;
     Context context;
@@ -64,6 +64,7 @@ public class Dashbord extends AppCompatActivity {
         card6=(CardView) findViewById(R.id.card6);
         card7=(CardView) findViewById(R.id.card7);
         card8=(CardView) findViewById(R.id.card8);
+        card9=(CardView) findViewById(R.id.card9);
         userid=(TextView)findViewById(R.id.user_id);
         username=(TextView)findViewById(R.id.user_name);
         logout=(ImageView)findViewById(R.id.logoutt);
@@ -81,7 +82,7 @@ public class Dashbord extends AppCompatActivity {
 //                                         Intent i=new Intent(Dashbord.this, User_list.class);
 //                                         startActivity(i);
 //                                         finish();
-                                         Intent i=new Intent(Dashbord.this,User_list.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_User_list.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -93,7 +94,7 @@ public class Dashbord extends AppCompatActivity {
         card2.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Website_list.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Website_list.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -105,7 +106,7 @@ public class Dashbord extends AppCompatActivity {
         card3.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Subadmin_list.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Subadmin_list.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -118,7 +119,7 @@ public class Dashbord extends AppCompatActivity {
                                      @Override
                                      public void onClick(View v) {
                                          //Intent i=new Intent(Dashbord.this, Paymentdeposits_list.class);
-                                         Intent i=new Intent(Dashbord.this, Act_paymentdeposit.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_paymentdeposit.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -130,7 +131,7 @@ public class Dashbord extends AppCompatActivity {
         card5.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Withdrawals_request.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Withdrawals_request.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -142,7 +143,7 @@ public class Dashbord extends AppCompatActivity {
         card6.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Financialdetail.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Financialdetail.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -154,7 +155,7 @@ public class Dashbord extends AppCompatActivity {
         card7.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Clientids_requestchangepass.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Clientids_requestchangepass.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -166,7 +167,7 @@ public class Dashbord extends AppCompatActivity {
         card8.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Dashbord.this, Banner_create.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Banner_create.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -175,6 +176,19 @@ public class Dashbord extends AppCompatActivity {
                                  }
 
         );
+        card9.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Intent i=new Intent(Act_Dashbord.this, Act_CloseId_list.class);
+                                         startActivity(i);
+                                         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                         startActivity(i);
+                                         finish();
+                                     }
+                                 }
+
+        );
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +200,7 @@ public class Dashbord extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(Dashbord.this, Puch_Notification.class);
+                Intent i=new Intent(Act_Dashbord.this, Act_Puch_Notification.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                 startActivity(i);
@@ -272,7 +286,7 @@ public class Dashbord extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Login_screen.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Login_screen.class);
                     startActivity(i);
 
                 } catch (JSONException e) {
@@ -283,7 +297,7 @@ public class Dashbord extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Dashbord.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_Dashbord.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override

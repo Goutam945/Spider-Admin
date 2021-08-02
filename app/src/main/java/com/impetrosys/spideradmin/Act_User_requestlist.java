@@ -28,10 +28,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.impetrosys.spideradmin.Adapter.Ad_user_requestlist;
-import com.impetrosys.spideradmin.Adapter.Ad_userlist;
-import com.impetrosys.spideradmin.Modelclass.Subadminlist;
 import com.impetrosys.spideradmin.Modelclass.UserRequestlist;
-import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.UtilClasses.MarshMallowPermission;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
@@ -43,7 +40,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class User_requestlist extends AppCompatActivity {
+public class Act_User_requestlist extends AppCompatActivity {
     Context context;
     Activity activity;
     SessionParam sessionParam;
@@ -154,7 +151,7 @@ public class User_requestlist extends AppCompatActivity {
 
     public void Approvrequest(String id)
     {
-        Dialog mDialog = new Dialog(User_requestlist.this);
+        Dialog mDialog = new Dialog(Act_User_requestlist.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.userrequsetaprrove_dailog);
         mDialog.setCanceledOnTouchOutside(false);
@@ -195,7 +192,7 @@ public class User_requestlist extends AppCompatActivity {
 
     public void Rejectrequest(String id)
     {
-        Dialog mDialog = new Dialog(User_requestlist.this);
+        Dialog mDialog = new Dialog(Act_User_requestlist.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
         mDialog.setContentView(R.layout.userrequesrreject_dailog);
         mDialog.setCanceledOnTouchOutside(false);
@@ -248,7 +245,7 @@ public class User_requestlist extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     ad_userrequest.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), User_requestlist.class);
+                    Intent i = new Intent(getApplicationContext(), Act_User_requestlist.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(), "Sucessfully Approve", Toast.LENGTH_SHORT).show();
 
@@ -260,7 +257,7 @@ public class User_requestlist extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(User_requestlist.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_User_requestlist.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -281,7 +278,7 @@ public class User_requestlist extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     ad_userrequest.notifyDataSetChanged();
-                    Intent i = new Intent(getApplicationContext(), User_requestlist.class);
+                    Intent i = new Intent(getApplicationContext(), Act_User_requestlist.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(), "Sucessfully Reject", Toast.LENGTH_SHORT).show();
 
@@ -293,7 +290,7 @@ public class User_requestlist extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(User_requestlist.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_User_requestlist.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -331,7 +328,7 @@ public class User_requestlist extends AppCompatActivity {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(intent);
 //                finish();
-                Intent i=new Intent(User_requestlist.this,Dashbord.class);
+                Intent i=new Intent(Act_User_requestlist.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);

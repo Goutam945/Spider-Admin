@@ -1,20 +1,12 @@
 package com.impetrosys.spideradmin;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
 
                 if (sessionParam.login.equals("yes")){
-                    Intent i=new Intent(MainActivity.this, Dashbord.class);
+                    Intent i=new Intent(MainActivity.this, Act_Dashbord.class);
                     startActivity(i);
                     finish();
 
                 }else {
-                    Intent i=new Intent(MainActivity.this, Login_screen.class);
+                    Intent i=new Intent(MainActivity.this, Act_Login_screen.class);
                     startActivity(i);
                     finish();
                 }
