@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.impetrosys.spideradmin.Act_Clientids_requestchangepass;
 import com.impetrosys.spideradmin.Act_CloseId_list;
 import com.impetrosys.spideradmin.Act_paymentdeposit;
 import com.impetrosys.spideradmin.MainActivity;
@@ -92,22 +93,25 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (type.equalsIgnoreCase("clientid")){
              intent = new Intent(this, Act_User_requestlist.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
+
         }else
         if (type.equalsIgnoreCase("deposit")){
              intent = new Intent(this, Act_paymentdeposit.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
         }else
-        if (type.equalsIgnoreCase("withdrawl")){
+        if (type.equalsIgnoreCase("withdraw")){
             intent = new Intent(this, Act_Withdrawals_request.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
         }else
         if (type.equalsIgnoreCase("closeid")){
             intent = new Intent(this, Act_CloseId_list.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
+
+        }else
+        if (type.equalsIgnoreCase("changepassword")){
+            intent = new Intent(this, Act_Clientids_requestchangepass.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         }
         else {
 
@@ -124,7 +128,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.drawable.icon)
                         .setContentTitle(title)
                         .setContentText(subtitle)
                         .setAutoCancel(true)
