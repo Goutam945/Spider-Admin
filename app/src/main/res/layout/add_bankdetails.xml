@@ -123,31 +123,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     style="@style/Edittext" />
-               <!-- <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:text="Account Holder Name*"
-                    android:fontFamily="@font/gtwalsheimpro_regular"
-                    android:textColor="@color/apptheamcolor"
-                    android:textSize="15dp" />
 
-
-                <EditText
-                    android:id="@+id/holdername"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="@drawable/bg_edit_text"
-                    android:drawablePadding="5dp"
-                    android:hint="Account Holder Name"
-                    android:fontFamily="@font/gtwalsheimpro_regular"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:textColor="#FFF"
-                    android:textColorHint="#999" />-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,6 +141,48 @@
                     android:background="@drawable/edit_textnew"
                     android:drawablePadding="5dp"
                     android:hint="Branch Address"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Account Holder Name*"
+                    style="@style/Edittext_title" />
+
+
+                <EditText
+                    android:id="@+id/holdername"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Account Holder Name"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Account type*"
+                    style="@style/Edittext_title" />
+
+
+                <EditText
+                    android:id="@+id/accounttype"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Account type"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"

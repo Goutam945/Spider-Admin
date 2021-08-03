@@ -55,7 +55,7 @@ public class Act_CloseId_list extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Close id's");
+        getSupportActionBar().setTitle("Close Id's");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -85,11 +85,37 @@ public class Act_CloseId_list extends AppCompatActivity {
                     if (!jsonObject.getString("message").equals("Failed")) {
 
                         JSONArray jsonArray = jsonObject.optJSONArray("closeidlist");
+                        closeIdlists2.clear();
                         closeIdlists = baseRequest.getDataList(jsonArray, CloseIdlist.class);
                         for (int i = 0; i < closeIdlists.size(); i++) {
                             if (closeIdlists != null) {
 
-                                ad_closeidlist = new Ad_Closeidlist(closeIdlists,getApplicationContext(), sessionParam, activity);
+                                if( closeIdlists.get(i).getStatus().equalsIgnoreCase("0")){
+                                    closeIdlists2.add(closeIdlists.get(i));
+
+                                }
+
+                                ad_closeidlist = new Ad_Closeidlist(closeIdlists2, getApplicationContext(), sessionParam, activity, new Ad_Closeidlist.aprove() {
+                                    @Override
+                                    public void getid(String id) {
+                                        try {
+                                            apiapprovrequest_Closeid(id);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void rejetid(String id) {
+                                        try {
+                                            apiRejectrequest_Closeid(id);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                });
                                 recycle.setAdapter(ad_closeidlist);
 
                             } else {
@@ -120,6 +146,74 @@ public class Act_CloseId_list extends AppCompatActivity {
         baseRequest.callAPIgetCloseidlist(1, remainingUrl2);
 
     }
+
+    private void apiapprovrequest_Closeid (String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    ad_closeidlist.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_CloseId_list.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Approve", Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_CloseId_list.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        baseRequest.callAPIapprovecloseID_request(1, "https://impetrosys.com/spiderapp/",id);
+
+    }
+    private void apiRejectrequest_Closeid(String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    ad_closeidlist.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_CloseId_list.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Reject", Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_CloseId_list.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        baseRequest.callAPIReject_closeID(1, "https://impetrosys.com/spiderapp/",id);
+
+    }
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

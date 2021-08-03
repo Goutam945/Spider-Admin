@@ -91,7 +91,7 @@ public class Act_Website_list extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Website list");
+        getSupportActionBar().setTitle("Website List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 //        ActionBar actionBar = getSupportActionBar();

@@ -80,7 +80,7 @@ public class Act_Subadmin_list extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Subadmin list");
+        getSupportActionBar().setTitle("Subadmin List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,18 +31,20 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
     Activity activity;
     SessionParam sessionParam;
     private BaseRequest baseRequest;
+    Ad_Closeidlist.aprove aprove;
 
 
     public Ad_Closeidlist(Context context) {
         this.context = context;
     }
 
-    public Ad_Closeidlist(ArrayList<CloseIdlist> list, Context context, SessionParam sessionParam, Activity activity) {
+    public Ad_Closeidlist(ArrayList<CloseIdlist> list, Context context, SessionParam sessionParam, Activity activity,Ad_Closeidlist.aprove aprove) {
         this.list = list;
         this.context = context;
         this.activity = activity;
         this.sessionParam =sessionParam;
         this.Alllist=new ArrayList<>(list);
+        this.aprove=aprove;
 
     }
 
@@ -58,19 +61,48 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        String status=list.get(position).getStatus();
+
+        if (status.equalsIgnoreCase("0")){
+            holder.username.setText(list.get(position).getUsername());
+            holder.website.setText(list.get(position).getWebsite());
+            holder.date.setText(list.get(position).getCloseiddate());
+
+            holder.reid.setText(list.get(position).getRid());
+            holder.loginuser.setText(list.get(position).getLoginusername());
+            holder.totalbalanceless.setText(list.get(position).getTotalbalanceless());
+            holder.noactivebets.setText(list.get(position).getNoactivebets());
+            holder.withdraw.setText(list.get(position).getWithdraw());
+            holder.reason.setText(list.get(position).getReason());
+            holder.otherissue.setText(list.get(position).getOtherissue());
+
+        }
 
 
-        holder.username.setText(list.get(position).getUsername());
-        holder.website.setText(list.get(position).getWebsite());
-        holder.date.setText(list.get(position).getCloseiddate());
 
-        holder.reid.setText(list.get(position).getRid());
-        holder.loginuser.setText(list.get(position).getLoginusername());
-        holder.totalbalanceless.setText(list.get(position).getTotalbalanceless());
-        holder.noactivebets.setText(list.get(position).getNoactivebets());
-        holder.withdraw.setText(list.get(position).getWithdraw());
-        holder.reason.setText(list.get(position).getReason());
-        holder.otherissue.setText(list.get(position).getOtherissue());
+        String rsn=list.get(position).getReason();
+        if(rsn.equalsIgnoreCase("")){
+            holder.otherissue.setVisibility(View.VISIBLE);
+            holder.lissue.setVisibility(View.VISIBLE);
+        }
+        String other=list.get(position).getOtherissue();
+        if(other.equalsIgnoreCase("")){
+            holder.reason.setVisibility(View.VISIBLE);
+            holder.lreson.setVisibility(View.VISIBLE);
+        }
+        holder.acceptrequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aprove.getid(list.get(position).getId());
+            }
+        });
+        holder.reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aprove.rejetid(list.get(position).getId());
+            }
+        });
+
 
 
         holder.dropdwn.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +127,11 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout layout;
+        LinearLayout layout,lreson,lissue;
         ImageView dropdwn;
         TextView website,username,reid,date,totalbalanceless,noactivebets,
                 withdraw,reason,otherissue,loginuser;
+        Button acceptrequest,reject;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -115,6 +148,14 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
 
             dropdwn = itemView.findViewById(R.id.drodow);
             layout=itemView.findViewById(R.id.lay);
+
+            lreson=itemView.findViewById(R.id.l_reson);
+            lissue=itemView.findViewById(R.id.l_othissue);
+
+            acceptrequest = itemView.findViewById(R.id.btn_approve);
+            reject = itemView.findViewById(R.id.btn_reject);
+
+
 
 
 
@@ -155,4 +196,9 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
 
         }
     };*/
+   public interface aprove{
+       public void getid(String id);
+       public void rejetid(String id);
+
+   }
 }

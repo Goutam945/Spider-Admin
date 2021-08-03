@@ -9,9 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp">
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -39,7 +37,7 @@
                         android:gravity="center"
                         android:paddingTop="10dp"
                         android:textColor="@color/white"
-                        android:text="New user"
+                        android:text="New Users"
                         tools:ignore="MissingConstraints" />
 
 
@@ -89,7 +87,7 @@
                         android:gravity="center"
                         android:paddingTop="10dp"
                         android:textColor="@color/white"
-                        android:text="Withdrawal"
+                        android:text="Withdrawals"
                         tools:ignore="MissingConstraints" />
 
 
@@ -190,7 +188,7 @@
                         android:gravity="center"
                         android:paddingTop="10dp"
                         android:textColor="@color/white"
-                        android:text="Client id"
+                        android:text="Client id's"
                         tools:ignore="MissingConstraints" />
 
 

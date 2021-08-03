@@ -32,7 +32,7 @@ public class Act_paymentdeposit extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Payment deposits list");
+        getSupportActionBar().setTitle("Payment Deposits List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 

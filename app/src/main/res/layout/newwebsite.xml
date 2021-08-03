@@ -89,61 +89,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="7"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/mv_crickate"
             android:src="@drawable/cricket"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/mv_football"
             android:src="@drawable/ball"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <ImageView
             android:id="@+id/mv_tenis"
             android:src="@drawable/badminton"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/mv_hourse"
             android:src="@drawable/horse"
             android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/mv_casino"
             android:src="@drawable/casinochips"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/mv_cads"
             android:src="@drawable/playingcards"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
         <ImageView
             android:id="@+id/mv_politics"
             android:src="@drawable/goverment"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
     </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintTop_toBottomOf="@+id/lay1"

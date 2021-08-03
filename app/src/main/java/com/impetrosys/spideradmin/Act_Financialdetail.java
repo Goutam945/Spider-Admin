@@ -65,9 +65,9 @@ public class Act_Financialdetail extends AppCompatActivity {
     ArrayList<Acountdeatil1> accountdetails1 = new ArrayList<>();
 
     EditText et_uname,et_number;
-    EditText et_accountno,et_bankname,et_ifc,et_holdername,et_bankaddress;
+    EditText et_accountno,et_bankname,et_ifc,et_holdername,et_actype,et_bankaddress;
     String Upiname,Upinumber;
-    String Baccount,Bbankname,Bifc,Bholdername,Bbankaddress;
+    String Baccount,Bbankname,Bifc,Bholdername,Bactype,Bbankaddress;
     Button save_upi,save_bankdetails;
 
     String updatenumber,updatename,Updateid,UpdatePaymentId;
@@ -79,7 +79,7 @@ public class Act_Financialdetail extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Financial detail");
+        getSupportActionBar().setTitle("Financial Detail");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
         sessionParam = new SessionParam(getApplicationContext());
@@ -345,7 +345,8 @@ public class Act_Financialdetail extends AppCompatActivity {
         et_accountno= mDialog.findViewById(R.id.acountno);
         et_bankname= mDialog.findViewById(R.id.bank);
         et_ifc= mDialog.findViewById(R.id.ifc);
-      //  et_holdername= mDialog.findViewById(R.id.holdername);
+       et_holdername= mDialog.findViewById(R.id.holdername);
+        et_actype= mDialog.findViewById(R.id.accounttype);
         et_bankaddress= mDialog.findViewById(R.id.branchaddress);
         save_bankdetails= mDialog.findViewById(R.id.btn_savebankdetal);
 
@@ -356,6 +357,8 @@ public class Act_Financialdetail extends AppCompatActivity {
                 Bbankname = et_bankname.getText().toString();
                 Bifc = et_ifc.getText().toString();
                 Bbankaddress = et_bankaddress.getText().toString();
+                Bholdername=et_holdername.getText().toString();
+                Bactype=et_actype.getText().toString();
                if(validate1()){
                    try {
                        apiAdd_Bankdetails();
@@ -500,7 +503,7 @@ public class Act_Financialdetail extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPI_BankDetailadd(1, "https://impetrosys.com/spiderapp/",Baccount,Bbankname,Bifc,Bbankaddress,sessionParam.userId);
+        baseRequest.callAPI_BankDetailadd(1, "https://impetrosys.com/spiderapp/",Baccount,Bbankname,Bifc,Bbankaddress,sessionParam.userId,Bholdername,Bactype);
 
     }
     private void apideleteAccount(String id) throws JSONException {
@@ -582,6 +585,18 @@ public class Act_Financialdetail extends AppCompatActivity {
             valid = false;
         } else {
             et_bankaddress.setError(null);
+        }
+        if (Bholdername.equals("")|| Bholdername.equals(null)) {
+            et_holdername.setError("enter a valid account holdername");
+            valid = false;
+        } else {
+            et_holdername.setError(null);
+        }
+        if (Bactype.equals("")|| Bactype.equals(null)) {
+            et_actype.setError("enter a valid account type");
+            valid = false;
+        } else {
+            et_actype.setError(null);
         }
         return valid;
     }

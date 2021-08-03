@@ -37,6 +37,9 @@ public class CloseIdlist {
     @SerializedName("reason")
     @Expose
     private String reason;
+    @SerializedName("status")
+    @Expose
+    private String status;
     @SerializedName("otherissue")
     @Expose
     private String otherissue;
@@ -127,6 +130,14 @@ public class CloseIdlist {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getOtherissue() {

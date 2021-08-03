@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.impetrosys.spideradmin.Act_CloseId_list;
 import com.impetrosys.spideradmin.Act_paymentdeposit;
 import com.impetrosys.spideradmin.MainActivity;
 import com.impetrosys.spideradmin.R;
@@ -102,7 +103,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             intent = new Intent(this, Act_Withdrawals_request.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            startActivity(intent);
-        }else {
+        }else
+        if (type.equalsIgnoreCase("closeid")){
+            intent = new Intent(this, Act_CloseId_list.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+        }
+        else {
 
             intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
