@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable/bg.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/accountdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_close_id_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_deposit_id_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_deposits_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_paymentdeposits_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_puch_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.1" />
@@ -13,12 +15,20 @@
         <entry key="app/src/main/res/layout/add_bankdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_website.xml" value="0.1" />
         <entry key="app/src/main/res/layout/app_bar_home_basic.xml" value="0.10144927536231885" />
+        <entry key="app/src/main/res/layout/changepassword_requestclient.xml" value="0.10733695652173914" />
+        <entry key="app/src/main/res/layout/closeid_rejectdescription.xml" value="0.11820652173913043" />
         <entry key="app/src/main/res/layout/dashbordcountlist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/deposit_rejectw.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/new_dashbord.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/newwebsite.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/tesingdesign.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/nochangepass.xml" value="0.14175724637681159" />
+        <entry key="app/src/main/res/layout/recyleview_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/tesingdesign.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/userrequesrreject_dailog.xml" value="0.10461956521739131" />
         <entry key="app/src/main/res/layout/userrequsetaprrove_dailog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/witdrawl_imgupload.xml" value="0.10960144927536232" />
+        <entry key="app/src/main/res/layout/withdrawl_reject.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/menu/menuitem.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.209375" />
       </map>
     </option>

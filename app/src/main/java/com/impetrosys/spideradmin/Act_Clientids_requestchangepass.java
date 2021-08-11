@@ -53,9 +53,10 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
     Ad_ClientidRequest_changepasslist ad_clientidRequestlist;
     ArrayList<ClientidRequestchangepasslsit> clientidrequestlsits = new ArrayList<>();
     ArrayList<ClientidRequestchangepasslsit>clientidrequestlsits2 = new ArrayList<>();
-    EditText passwordchange;
-    String PasswordChange;
-    Button btn_change;
+    EditText passwordchange,discription;
+    String PasswordChange,Description;
+    Button btn_change,btn_reject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +102,12 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
                                     @Override
                                     public void pass(String id) {
                                         changepass(id);
+
+                                    }
+
+                                    @Override
+                                    public void nopass(String id) {
+                                        NOchangepass(id);
 
                                     }
                                 });
@@ -167,6 +174,49 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
             }
         });
 
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+    public void NOchangepass(String id)
+    {
+        Dialog mDialog = new Dialog(Act_Clientids_requestchangepass.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.nochangepass);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+        btn_reject= mDialog.findViewById(R.id.btn_reject);
+        discription= mDialog.findViewById(R.id.editudescription);
+        btn_reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Description = discription.getText().toString();
+
+                if (discription.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please Enter discription", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    try {
+                        apichange_passwordclientidReject(id);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
+
         iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +259,40 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
             }
         });
         baseRequest.callAPIClientid_Changepassword(1, "https://impetrosys.com/spiderapp/",id,PasswordChange,sessionParam.userId);
+
+    }
+
+    private void apichange_passwordclientidReject(String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    ad_clientidRequestlist.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_Clientids_requestchangepass.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Reject", Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_Clientids_requestchangepass.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        baseRequest.callAPIClientid_NOchangepassword(1, "https://impetrosys.com/spiderapp/",id,Description,sessionParam.userId);
 
     }
 

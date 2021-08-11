@@ -52,7 +52,6 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="5dp"
                         android:text="userid"
-                        android:layout_gravity="center"
                         android:paddingBottom="5dp"
                         style="@style/requestuser"
                         />
@@ -104,7 +103,6 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="5dp"
                         android:text="Testing"
-                        android:layout_gravity="center"
                         android:paddingBottom="5dp"
                         style="@style/requestuser"
                         />
@@ -152,7 +150,6 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="5dp"
                         android:text="Testing"
-                        android:layout_gravity="center"
                         android:paddingBottom="5dp"
                         style="@style/requestuser" />
 
@@ -199,7 +196,6 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="5dp"
                         android:text="Testing"
-                        android:layout_gravity="center"
                         android:paddingBottom="5dp"
                         style="@style/requestuser"/>
 
@@ -247,7 +243,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -294,7 +289,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -340,7 +334,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -386,7 +379,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -431,7 +423,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -476,7 +467,6 @@
                         android:layout_height="wrap_content"
                         android:text="bank details"
                         android:paddingTop="5dp"
-                        android:gravity="center"
                         android:paddingRight="5dp"
                         style="@style/requestuser" />
 
@@ -484,7 +474,39 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btn_approve"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/buttonblue_shape"
+                    android:fontFamily="@font/gtwalsheimpro_regular"
+                    android:text="Approve"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="0dp" />
+
+                <Button
+                    android:id="@+id/btn_reject"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:fontFamily="@font/gtwalsheimpro_regular"
+                    android:background="@drawable/button_shape"
+                    android:text="Disapprove"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

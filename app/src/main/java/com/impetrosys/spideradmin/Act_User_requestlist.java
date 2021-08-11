@@ -66,7 +66,7 @@ public class Act_User_requestlist extends AppCompatActivity {
         getSupportActionBar().setTitle("Client Id's List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
-
+         sessionParam=new SessionParam(getApplicationContext());
         container = findViewById(R.id.container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.recyleview_list, null);
@@ -140,7 +140,7 @@ public class Act_User_requestlist extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetUser_requestlist(1, remainingUrl2);
+        baseRequest.callAPIgetUser_requestlist(1, remainingUrl2,sessionParam.userId);
 
     }
 
@@ -266,7 +266,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapproveUser_request(1, "https://impetrosys.com/spiderapp/",id,Username,Userpass);
+        baseRequest.callAPIapproveUser_request(1, "https://impetrosys.com/spiderapp/",id,Username,Userpass,sessionParam.userId);
 
     }
     private void apiRejectrequest(String id) throws JSONException {
@@ -299,7 +299,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIReject_request(1, "https://impetrosys.com/spiderapp/",id,UDescription);
+        baseRequest.callAPIReject_request(1, "https://impetrosys.com/spiderapp/",id,UDescription,sessionParam.userId);
 
     }
     private boolean validate() {

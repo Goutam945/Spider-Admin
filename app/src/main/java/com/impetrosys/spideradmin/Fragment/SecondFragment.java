@@ -55,7 +55,7 @@ public class SecondFragment extends Fragment {
         LayoutInflater inflater1 = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater1.inflate(R.layout.recyleview_list, null);
         container.addView(rowView, container.getChildCount());
-
+        sessionParam = new SessionParam(getActivity());
         recycle = rowView.findViewById(R.id.recycle_all);
         recycle.setLayoutManager(new LinearLayoutManager(getContext()));
         try {
@@ -114,7 +114,7 @@ public class SecondFragment extends Fragment {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetDeposits_IDlist(1, remainingUrl2);
+        baseRequest.callAPIgetDeposits_IDlist(1, remainingUrl2,sessionParam.userId);
 
     }
     public void Loder() {

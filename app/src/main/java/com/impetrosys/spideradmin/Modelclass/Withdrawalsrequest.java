@@ -33,6 +33,9 @@ public class Withdrawalsrequest {
     @SerializedName("created_date")
     @Expose
     private String createdDate;
+    @SerializedName("withdrawstatus")
+    @Expose
+    private String withdrawstatus;
 
     public String getId() {
         return id;
@@ -97,6 +100,14 @@ public class Withdrawalsrequest {
     public void setStatus(String status) {
         this.status = status;
     }
+    public String getWithdrawstatus() {
+        return withdrawstatus;
+    }
+
+    public void setWithdrawstatus(String withdrawstatus) {
+        this.withdrawstatus = withdrawstatus;
+    }
+
 
     public String getCreatedDate() {
         return createdDate;

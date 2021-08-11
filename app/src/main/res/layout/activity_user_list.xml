@@ -1,5 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:background="@drawable/card_shape">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_web"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/spiderlogo5"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:text="Spider"
+            style="@style/texttitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="spider.com"
+            style="@style/textsubtile"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/clintid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            style="@style/textsubtile"
+            android:text="date"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@id/mobile" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            app:layout_constraintBottom_toBottomOf="@id/clintid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name">
+
+            <ImageView
+                android:id="@+id/drodow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_arrow_right_24" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/lay"
+        app:layout_constraintTop_toBottomOf="@+id/c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+         <TextView
+             android:id="@+id/paymentmethod"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="paymentmethod"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+         <TextView
+             android:id="@+id/displayname"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="displayname"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+
+
+         <TextView
+             android:id="@+id/number"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="number"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+        <View
+            android:id="@+id/v_view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@color/d_black"/>
+
+
+
+        <TextView
+            android:id="@+id/paymentmethod1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="paymentmethod"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/displayname1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="displayname"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+
+
+        <TextView
+            android:id="@+id/number1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="number"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <View
+            android:id="@+id/v_view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@color/d_black"/>
+
+        <TextView
+            android:id="@+id/paymentmethod2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="paymentmethod"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/displayname2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="displayname"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+
+
+        <TextView
+            android:id="@+id/number2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="number"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <View
+            android:id="@+id/v_view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@color/d_black"/>
+
+        <TextView
+            android:id="@+id/paymentmethod3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="paymentmethod"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/displayname3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="displayname"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+
+
+        <TextView
+            android:id="@+id/number3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="number"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <View
+            android:id="@+id/v_view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            android:background="@color/d_black"/>
+
+
+
+        <TextView
+            android:id="@+id/paymentmethod4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:text="paymentmethod"
+            style="@style/requestuser"
+            />
+
+         <TextView
+             android:id="@+id/bankname"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="bankname"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+         <TextView
+             android:id="@+id/ifsc"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="ifsc"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+         <TextView
+             android:id="@+id/branch"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="branch"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+         <TextView
+             android:id="@+id/accountno"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"
+             android:text="accountno"
+             android:visibility="gone"
+             style="@style/requestuser"
+             />
+        <TextView
+            android:id="@+id/accountholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="accountholder"
+            android:visibility="gone"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/accounttype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="accounttype"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp"
+            style="@style/requestuser"
+            />
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -81,17 +395,17 @@
 
 
             </LinearLayout>
-            <!--<ImageView
+            <ImageView
                 android:id="@+id/edit"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:src="@drawable/ic_baseline_arrow_right_24"
                 android:layout_gravity="center"
                 android:layout_marginRight="25dp"
-                android:layout_width="30dp"
-                android:layout_height="25dp"/>-->
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
         </LinearLayout>
 
 
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -126,6 +126,8 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> Clientrequestchangepass(@Body RequestBody Clientrequestchangepass);
     @POST("service.php")
+    Call<JsonElement> Clientrequestnochangepass(@Body RequestBody Clientrequestnochangepass);
+    @POST("service.php")
     Call<JsonElement> depositrequestapprove(@Body RequestBody depositrequestapprove);
     @POST("service.php")
     Call<JsonElement> depositIDrequestapprove(@Body RequestBody depositIDrequestapprove);

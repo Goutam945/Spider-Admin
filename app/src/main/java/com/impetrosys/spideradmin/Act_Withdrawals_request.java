@@ -71,10 +71,12 @@ public class Act_Withdrawals_request extends AppCompatActivity {
     ArrayList<Withdrawalsrequest> withdrawalsrequest = new ArrayList<>();
     ArrayList<Withdrawalsrequest>withdrawalsrequest1 = new ArrayList<>();
     ArrayList<Withdrawalsrequest.Withdrawdetail> withdrawdetails = new ArrayList<>();
-    Button btn_approve;
-    TextView textimge;
-    ImageView img;
-    private String upload_img="";
+    Button btn_approve,btn_reject;
+    TextView textimge,reject_textimge;
+    ImageView img,rejct_img;
+    EditText reject_description;
+    String Rejct_dis;
+    private String upload_img="",rejrct_upload_img="";
     ActivityResultLauncher<Intent>activityResultLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         getSupportActionBar().setTitle("Withdrawl Requests");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
-
+        sessionParam = new SessionParam(getApplicationContext());
         container = findViewById(R.id.container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.recyleview_list, null);
@@ -166,22 +168,15 @@ public class Act_Withdrawals_request extends AppCompatActivity {
                                 ad_withdrawls = new Ad_withdrawls(withdrawalsrequest1,withdrawdetails, new Ad_withdrawls.aprove() {
                                     @Override
                                     public void aproveid(String id) {
-                                        try {
-                                            apiapprovrequest_withdwal(id);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                       // Approvrequest(id);
+                                        // apiapprovrequest_withdwal(id);
+                                         Approvrequest(id);
                                     }
 
                                     @Override
                                     public void rejetid(String id) {
                                         Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
-                                        try {
-                                            apiRejectrequest_withdrawal(id);
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
+                                        // apiRejectrequest_withdrawal(id);
+                                        Reject_request(id);
                                     }
                                     }, getApplicationContext(), sessionParam, activity);
                                 recycle.setAdapter(ad_withdrawls);
@@ -211,9 +206,10 @@ public class Act_Withdrawals_request extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetwithdrawlist(1, remainingUrl2);
+        baseRequest.callAPIgetwithdrawlist(1, remainingUrl2,sessionParam.userId);
 
     }
+
 
     private void apiapprovrequest_withdwal (String id) throws JSONException {
         baseRequest = new BaseRequest(context);
@@ -245,7 +241,7 @@ public class Act_Withdrawals_request extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapproveWithdrawl_request(1, "https://impetrosys.com/spiderapp/",id);
+        baseRequest.callAPIapproveWithdrawl_request(1, "https://impetrosys.com/spiderapp/",id,upload_img);
 
     }
     private void apiRejectrequest_withdrawal(String id) throws JSONException {
@@ -278,7 +274,7 @@ public class Act_Withdrawals_request extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIReject_withdrawrequest(1, "https://impetrosys.com/spiderapp/",id);
+        baseRequest.callAPIReject_withdrawrequest(1, "https://impetrosys.com/spiderapp/",id,rejrct_upload_img,Rejct_dis);
 
     }
     public void Approvrequest(String id)
@@ -320,7 +316,11 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         btn_approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    apiapprovrequest_withdwal(id);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -335,6 +335,75 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         mDialog.show();
 
     }
+    public void Reject_request(String id)
+    {
+        Dialog mDialog = new Dialog(Act_Withdrawals_request.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.withdrawl_reject);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+        reject_description=mDialog.findViewById(R.id.editudescription);
+        reject_textimge=mDialog.findViewById(R.id.tv_img);
+        rejct_img=mDialog.findViewById(R.id.iv_image);
+        btn_reject= mDialog.findViewById(R.id.btn_reject);
+
+        ArrayList<String> arrPerm = new ArrayList<>();
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.CAMERA);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if(!arrPerm.isEmpty()) {
+            String[] permissions = new String[arrPerm.size()];
+            permissions = arrPerm.toArray(permissions);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        }
+
+        reject_textimge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImagerejct();
+            }
+
+        });
+
+        btn_reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (reject_description.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    Rejct_dis=reject_description.getText().toString();
+                try {
+                    apiRejectrequest_withdrawal(id);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                }
+            }
+        });
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+
+
+
     private void selectImage() {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
         AlertDialog.Builder builder = new AlertDialog.Builder(Act_Withdrawals_request.this);
@@ -364,7 +433,35 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         });
         builder.show();
     }
+    private void selectImagerejct() {
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(Act_Withdrawals_request.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Take Photo"))
+                {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivityForResult(intent, 3);
+                    // activityResultLauncher.launch(intent);
 
+
+                }
+                else if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 4);
+                    //activityResultLauncher.launch(intent);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -391,6 +488,27 @@ public class Act_Withdrawals_request extends AppCompatActivity {
                 img.setImageBitmap(thumbnail);
                 BitMapToString(thumbnail);
             }
+            if (requestCode == 3) {
+
+                Bitmap srcBmp = (Bitmap) data.getExtras().get("data");
+                rejct_img.setImageBitmap(srcBmp);
+                BitMapToString1(srcBmp);
+                Log.w("path.....", srcBmp+"");
+
+            } else if (requestCode == 4) {
+                Uri selectedImage = data.getData();
+                String[] filePath = { MediaStore.Images.Media.DATA };
+                Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                c.moveToFirst();
+                int columnIndex = c.getColumnIndex(filePath[0]);
+                String picturePath = c.getString(columnIndex);
+                c.close();
+                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                thumbnail=getResizedBitmap(thumbnail, 400);
+                Log.w("path.....", picturePath+"");
+                rejct_img.setImageBitmap(thumbnail);
+                BitMapToString1(thumbnail);
+            }
         }
     }
     public String BitMapToString(Bitmap userImage1) {
@@ -400,6 +518,14 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         upload_img = Base64.encodeToString(b, Base64.DEFAULT);
         img.setVisibility(View.VISIBLE);
         return upload_img;
+    }
+    public String BitMapToString1(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        byte[] b = baos.toByteArray();
+        rejrct_upload_img = Base64.encodeToString(b, Base64.DEFAULT);
+        rejct_img.setVisibility(View.VISIBLE);
+        return rejrct_upload_img;
     }
 
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {

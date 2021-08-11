@@ -134,13 +134,6 @@ public class Act_Financialdetail extends AppCompatActivity {
                         for (int i = 0; i < financialdetails.size(); i++) {
                             if (financialdetails != null) {
 
-
-                                Financialdetails model = new Financialdetails();
-                                model.setName(financialdetails.get(i).getName());
-                                model.setId(financialdetails.get(i).getId());
-
-                                financialdetails2.add(model);
-
                                 ad_financialdetail = new Ad_financialdetail(financialdetails,accountdetails, getApplicationContext(), sessionParam, activity, new Ad_financialdetail.add() {
                                     @Override
                                     public void getid(String id) {
@@ -190,7 +183,7 @@ public class Act_Financialdetail extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetFinancial(1, remainingUrl2);
+        baseRequest.callAPIgetFinancial(1, remainingUrl2,sessionParam.userId);
 
     }
     private void ApiGetaccountDetaillist () throws JSONException {
@@ -217,6 +210,7 @@ public class Act_Financialdetail extends AppCompatActivity {
                                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
                             }
                         }*/
+
                     }else {
                         Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
 

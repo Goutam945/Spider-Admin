@@ -57,7 +57,7 @@ public class Act_Paymentdeposits_list extends AppCompatActivity {
         getSupportActionBar().setTitle("Payment Deposits List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
-
+        sessionParam = new SessionParam(getApplicationContext());
         container = findViewById(R.id.container);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.recyleview_list, null);
@@ -123,7 +123,7 @@ public class Act_Paymentdeposits_list extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetDepositslist(1, remainingUrl2);
+        baseRequest.callAPIgetDepositslist(1, remainingUrl2,sessionParam.userId);
 
     }
     public void Loder() {

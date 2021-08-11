@@ -65,47 +65,64 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
             holder.username.setText("User : " + list.get(position).getUsername());
             holder.userid.setText("UserID : " + list.get(position).getUserid());
             holder.amount.setText("Coins : " + list.get(position).getCoins());
-            holder.Pmethode.setText("Payment : " + list.get(position).getPaymentmethod());
+            holder.withdrawstatus.setText("Withdraws : " + list.get(position).getWithdrawstatus());
+
+            if(list.get(position).getPaymentmethod()!=null){
+                holder.Pmethode.setText("Payment : " + list.get(position).getPaymentmethod());
+            }else {
+                holder.Pmethode.setVisibility(View.GONE);
+            }
+
             for (int k = 0; k < list.get(position).getWithdrawdetail().size(); k++) {
                 String name = list.get(position).getPaymentmethod();
+                if(name!=null) {
 
-                if (name.equalsIgnoreCase("BANK TRANSFER")) {
-                    holder.Bankname.setText("Bankname : " + list.get(position).getWithdrawdetail().get(k).getBankname());
-                    holder.Branch.setText("Branch : " + list.get(position).getWithdrawdetail().get(k).getBranch());
-                    holder.Ifc.setText("IFC code : " + list.get(position).getWithdrawdetail().get(k).getIfsc());
-                    holder.Accountnumber.setText("Accountnumber : " + list.get(position).getWithdrawdetail().get(k).getAccountno());
-                    holder.Bankname.setVisibility(View.VISIBLE);
-                    holder.Branch.setVisibility(View.VISIBLE);
-                    holder.Ifc.setVisibility(View.VISIBLE);
-                    holder.Accountnumber.setVisibility(View.VISIBLE);
-                }
-                if (name.equalsIgnoreCase("PAYTM UPI")) {
-                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
-                    holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
-                    holder.Upiname.setVisibility(View.VISIBLE);
-                    holder.Upinumber.setVisibility(View.VISIBLE);
+                    if (name == null || name.equalsIgnoreCase("BANK TRANSFER")) {
+                        holder.Bankname.setText("Bankname : " + list.get(position).getWithdrawdetail().get(k).getBankname());
+                        holder.Branch.setText("Branch : " + list.get(position).getWithdrawdetail().get(k).getBranch());
+                        holder.Ifc.setText("IFC code : " + list.get(position).getWithdrawdetail().get(k).getIfsc());
+                        holder.Accountnumber.setText("Accountnumber : " + list.get(position).getWithdrawdetail().get(k).getAccountno());
+                        holder.Bankname.setVisibility(View.VISIBLE);
+                        holder.Branch.setVisibility(View.VISIBLE);
+                        holder.Ifc.setVisibility(View.VISIBLE);
+                        holder.Accountnumber.setVisibility(View.VISIBLE);
+                    }
+                    if (name == null || name.equalsIgnoreCase("PAYTM UPI")) {
+                        holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                        holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
+                        holder.Upiname.setVisibility(View.VISIBLE);
+                        holder.Upinumber.setVisibility(View.VISIBLE);
 
-                }
-                if (name.equalsIgnoreCase("GOOGLE PAY")) {
-                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
-                    holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
-                    holder.Upiname.setVisibility(View.VISIBLE);
-                    holder.Upinumber.setVisibility(View.VISIBLE);
+                    }
+                    if (name == null || name.equalsIgnoreCase("GOOGLE PAY")) {
+                        holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                        holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
+                        holder.Upiname.setVisibility(View.VISIBLE);
+                        holder.Upinumber.setVisibility(View.VISIBLE);
 
-                }
-                if (name.equalsIgnoreCase("PHONE PAY")) {
-                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
-                    holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
-                    holder.Upiname.setVisibility(View.VISIBLE);
-                    holder.Upinumber.setVisibility(View.VISIBLE);
+                    }
+                    if (name == null || name.equalsIgnoreCase("PHONE PAY")) {
+                        holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                        holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
+                        holder.Upiname.setVisibility(View.VISIBLE);
+                        holder.Upinumber.setVisibility(View.VISIBLE);
 
-                }
-                if (name.equalsIgnoreCase("PAYTM WALLET")) {
-                    holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
-                    holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
-                    holder.Upiname.setVisibility(View.VISIBLE);
-                    holder.Upinumber.setVisibility(View.VISIBLE);
+                    }
+                    if (name == null || name.equalsIgnoreCase("PAYTM WALLET")) {
+                        holder.Upiname.setText("Name : " + list.get(position).getWithdrawdetail().get(k).getDisplayname());
+                        holder.Upinumber.setText("UPI Number : " + list.get(position).getWithdrawdetail().get(k).getNumber());
+                        holder.Upiname.setVisibility(View.VISIBLE);
+                        holder.Upinumber.setVisibility(View.VISIBLE);
 
+                    }
+                }else {
+                    holder.Bankname.setVisibility(View.GONE);
+                    holder.Branch.setVisibility(View.GONE);
+                    holder.Ifc.setVisibility(View.GONE);
+                    holder.Accountnumber.setVisibility(View.GONE);
+
+                    holder.Upiname.setVisibility(View.GONE);
+                    holder.Upinumber.setVisibility(View.GONE);
                 }
             }
         }
@@ -127,7 +144,6 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
     @Override
     public int getItemCount() {
-
         return list.size();
 
     }
@@ -135,7 +151,7 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView username,userid,amount,Pmethode,Upiname,Upinumber,Bankname,
-        Ifc,Branch,Accountnumber;
+        Ifc,Branch,Accountnumber,withdrawstatus;
         Button Approve,Reject;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -151,6 +167,8 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
             Branch = itemView.findViewById(R.id.tv_branch);
             Accountnumber = itemView.findViewById(R.id.tv_accountnum);
             Bankname = itemView.findViewById(R.id.tv_bankname);
+
+            withdrawstatus = itemView.findViewById(R.id.tv_withdrawstatus);
 
             Approve = itemView.findViewById(R.id.btn_approve);
             Reject = itemView.findViewById(R.id.btn_reject);

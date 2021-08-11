@@ -70,8 +70,8 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
                 PopupMenu popup = new PopupMenu(context, holder.edit);
                 //inflating menu from xml resource
                 popup.inflate(R.menu.menuitem);
-                popup.getMenu().getItem(1).setVisible(false);
                 popup.getMenu().getItem(0).setTitle("Change Password");
+                popup.getMenu().getItem(1).setTitle("Reject");
                 //adding click listener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -81,6 +81,7 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
                                 changepass.pass(list.get(position).getRequestid());
                                 return true;
                             case R.id.delite:
+                                changepass.nopass(list.get(position).getRequestid());
                                 return false;
 
                             default:
@@ -156,6 +157,9 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
     };*/
    public interface Changepass{
        public void pass(
+               String id
+       );
+       public void nopass(
                String id
        );
    }

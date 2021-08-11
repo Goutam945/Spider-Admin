@@ -51,6 +51,7 @@ public class Act_User_list extends AppCompatActivity {
     androidx.appcompat.widget.SearchView inputSearch;
     Ad_userlist ad_userlist;
     ArrayList<Userlist> userlist = new ArrayList<>();
+    ArrayList<Userlist.PaymentDetail> paymentDetails = new ArrayList<>();
     ArrayList<Userlist>userlist2 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class Act_User_list extends AppCompatActivity {
 
                                 userlist2.add(model);
 
-                                ad_userlist = new Ad_userlist(userlist,getApplicationContext(), sessionParam, activity);
+                                ad_userlist = new Ad_userlist(userlist,paymentDetails,getApplicationContext(), sessionParam, activity);
                                 recycle.setAdapter(ad_userlist);
 
                             } else {

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_edit_text"
+        android:background="@drawable/card_shape"
         tools:ignore="MissingConstraints">
         <TextView
             android:layout_marginTop="10dp"
@@ -36,6 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="amount"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:id="@+id/tv_withdrawstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="withdrawstatus"
             android:paddingTop="5dp"
             android:paddingLeft="25dp"
             style="@style/requestuser" />
