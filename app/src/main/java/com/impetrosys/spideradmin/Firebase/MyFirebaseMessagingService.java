@@ -3,11 +3,16 @@ package com.impetrosys.spideradmin.Firebase;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
@@ -25,12 +30,15 @@ import com.impetrosys.spideradmin.Act_Withdrawals_request;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
     String Subtitle,Type,Image,Title;
     Context context;
-    //Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);;
+    Uri defaultSoundUri;
+    int uniqeid;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -92,6 +100,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // TODO: Implement this method to send token to your app server.
     }
     private void sendNotification( String title, String subtitle, String image, String type) {
+        Date date=new Date();
+        uniqeid=(int)date.getTime();
         Intent intent=null;
         if (type.equalsIgnoreCase("clientid")){
              intent = new Intent(this, Act_User_requestlist.class);
@@ -124,19 +134,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 //
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, uniqeid /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         String channelId = getString(R.string.channel_id);
-       Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-       // Uri defaultSoundUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.sound);
+
+      //  Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+       ;
+
+        if(type.equalsIgnoreCase("withdraw")){
+            defaultSoundUri = Uri.parse("android.resource://"+getPackageName()+"/raw/notification2");
+
+        }
+        else if(type.equalsIgnoreCase("deposit")){
+            defaultSoundUri = Uri.parse("android.resource://"+getPackageName()+"/raw/beep_3");
+        }
+        else {
+            defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
         NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(this, channelId)
+                new NotificationCompat.Builder(this, channelId+""+uniqeid)
                         .setSmallIcon(R.drawable.icon)
-                        .setContentTitle(title)
-                        .setContentText(subtitle)
+                        .setContentTitle(Title)
+                        .setContentText(Subtitle)
                         .setAutoCancel(true)
-                        .setSound(defaultSoundUri)
+                        .setSound(defaultSoundUri, AudioManager.STREAM_NOTIFICATION)
                         .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
@@ -144,12 +166,30 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(channelId,
+            NotificationManager mNotificationManager = getSystemService(NotificationManager.class);
+
+            NotificationChannel existingChannel = notificationManager.getNotificationChannel(channelId);
+
+//it will delete existing channel if it exists
+            if (existingChannel != null) {
+                mNotificationManager.deleteNotificationChannel(channelId);
+            }
+
+            NotificationChannel channel = new NotificationChannel(channelId+""+uniqeid,
                     "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(channel);
+                    NotificationManager.IMPORTANCE_HIGH);
+            AudioAttributes att = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            channel.setSound(defaultSoundUri, att);
+
+            if (notificationManager != null) {
+
+                notificationManager.createNotificationChannel(channel);
+            }
         }
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        notificationManager.notify(uniqeid , notificationBuilder.build());
     }
 }

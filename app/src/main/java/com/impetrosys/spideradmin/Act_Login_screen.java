@@ -80,8 +80,8 @@ public class Act_Login_screen extends AppCompatActivity {
 
                         // Log and toast
 //                        String msg = getString(R.string.msg_token_fmt, token);
-                      Log.d("TOKEN", devicetoken);
-                       // Toast.makeText(Login_screen.this, devicetoken, Toast.LENGTH_SHORT).show();
+                      Log.d("Divicetoken", devicetoken);
+                       // Toast.makeText(Act_Login_screen.this, devicetoken, Toast.LENGTH_SHORT).show();
 
                     }
                 });
