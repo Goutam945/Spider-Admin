@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/apptheam">
         <activity
+            android:name=".Act_Raiseconcern"
+            android:exported="true" />
+        <activity
             android:name=".Act_CloseId_list"
             android:exported="true" />
         <activity android:name=".Act_Clientids_requestchangepass" />
@@ -55,6 +58,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/icon" />

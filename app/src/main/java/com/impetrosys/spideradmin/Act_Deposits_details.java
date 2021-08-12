@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -17,8 +18,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -39,12 +42,18 @@ import com.impetrosys.spideradmin.retrofit.BaseRequest;
 import com.impetrosys.spideradmin.retrofit.RequestReciever;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Act_Deposits_details extends AppCompatActivity {
 String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
@@ -57,12 +66,12 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
     SessionParam sessionParam;
     private BaseRequest baseRequest;
     private int progressStatus = 0;
-    Button btn_approve,btn_reject;
-    TextView textimge,reject_textimge;
+    Button btn_reject;
+    TextView reject_textimge;
     ImageView rejct_img;
     EditText reject_description;
     String Rejct_dis;
-    private String upload_img="",rejrct_upload_img="";
+    private String upload_img="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +165,58 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
 
 
     }
+    public void SaveImage() {
+        Picasso.get().load(paymentscreenshot).into(new Target() {
+
+
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                try {
+                    File mydie = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/HIR_IMG");
+                    if (!mydie.exists()) {
+                        mydie.mkdirs();
+                    }
+                    FileOutputStream fileOutputStream = new FileOutputStream(new File(mydie, new Date().toString() + ".jpg"));
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fileOutputStream);
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                    Toast.makeText(getApplicationContext(), "Save", Toast.LENGTH_LONG).show();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e2) {
+                    e2.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
+    }
+
+    //runtime storage permission
+    public boolean checkPermission() {
+        int READ_EXTERNAL_PERMISSION = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if((READ_EXTERNAL_PERMISSION != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            return false;
+        }
+        return true;
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==0 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //do somethings
+        }
+    }
+
 
     private void apiapprovrequest() throws JSONException {
         baseRequest = new BaseRequest(context);

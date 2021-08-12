@@ -127,7 +127,7 @@
                 android:layout_height="45dp"
                 android:background="@drawable/buttonblue_shape"
                 android:fontFamily="@font/gtwalsheimpro_regular"
-                android:text="Approve"
+                android:text="pending"
                 android:textColor="@color/white" />
 
             <View
@@ -140,7 +140,7 @@
                 android:layout_height="45dp"
                 android:fontFamily="@font/gtwalsheimpro_regular"
                 android:background="@drawable/button_shape"
-                android:text="Disapprove"
+                android:text="Rejected"
                 android:textColor="@color/white" />
 
         </LinearLayout>

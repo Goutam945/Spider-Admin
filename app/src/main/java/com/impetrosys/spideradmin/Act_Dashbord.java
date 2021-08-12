@@ -40,7 +40,7 @@ public class Act_Dashbord extends AppCompatActivity {
     SessionParam sessionParam;
     private BaseRequest baseRequest;
     Activity activity;
-    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9;
+    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10;
     TextView userid,username;
     ImageView logout,notification;
     Context context;
@@ -65,6 +65,7 @@ public class Act_Dashbord extends AppCompatActivity {
         card7=(CardView) findViewById(R.id.card7);
         card8=(CardView) findViewById(R.id.card8);
         card9=(CardView) findViewById(R.id.card9);
+        card10=(CardView) findViewById(R.id.card10);
         userid=(TextView)findViewById(R.id.user_id);
         username=(TextView)findViewById(R.id.user_name);
         logout=(ImageView)findViewById(R.id.logoutt);
@@ -180,6 +181,18 @@ public class Act_Dashbord extends AppCompatActivity {
                                      @Override
                                      public void onClick(View v) {
                                          Intent i=new Intent(Act_Dashbord.this, Act_CloseId_list.class);
+                                         startActivity(i);
+                                         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                         startActivity(i);
+                                         finish();
+                                     }
+                                 }
+
+        );
+        card10.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Raiseconcern.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
