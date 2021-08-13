@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.impetrosys.spideradmin.Act_Deposit_Id_details;
@@ -95,12 +96,12 @@ public class Ad_PaymentdepositID extends RecyclerView.Adapter<Ad_PaymentdepositI
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView username,coin;
-        LinearLayout lay;
+        ConstraintLayout lay;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             username = itemView.findViewById(R.id.tv_username);
-            lay = itemView.findViewById(R.id.btn_layoutd);
+            lay = itemView.findViewById(R.id.c1);
             coin = itemView.findViewById(R.id.tv_coin);
 
 

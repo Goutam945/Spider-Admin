@@ -167,8 +167,6 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
     }
     public void SaveImage() {
         Picasso.get().load(paymentscreenshot).into(new Target() {
-
-
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 try {

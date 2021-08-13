@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,8 +35,10 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,6 +81,7 @@ public class Act_Withdrawals_request extends AppCompatActivity {
     String Rejct_dis;
     private String upload_img="",rejrct_upload_img="";
     ActivityResultLauncher<Intent>activityResultLauncher;
+    androidx.appcompat.widget.SearchView inputSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -316,10 +320,14 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         btn_approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (upload_img!=null&&!upload_img.isEmpty()){
+
                 try {
                     apiapprovrequest_withdwal(id);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }}else {
+                    Toast.makeText(Act_Withdrawals_request.this,"Please upload image",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -542,6 +550,44 @@ public class Act_Withdrawals_request extends AppCompatActivity {
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+
+        MenuItem myActionMenuItem = menu.findItem(R.id.mi_search);
+        inputSearch = (SearchView)myActionMenuItem.getActionView();
+        changeSearchViewTextColor(inputSearch);
+
+        inputSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                ad_withdrawls.getFilter().filter(s);
+                return true;
+            }
+        });
+        return true;
+    }
+
+    private void changeSearchViewTextColor(View view) {
+        if (view != null) {
+            if (view instanceof TextView) {
+                ((TextView) view).setTextColor(Color.WHITE);
+                return;
+            } else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup = (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    changeSearchViewTextColor(viewGroup.getChildAt(i));
+
+
+                }}}}
 
 
     @Override

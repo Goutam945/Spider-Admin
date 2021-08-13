@@ -162,7 +162,7 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
         }
     }
 
-   /* public Filter getFilter() {
+    public Filter getFilter() {
         return filter;
     }
     Filter filter=new Filter() {
@@ -170,13 +170,13 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            List<Userlist> filterList = new ArrayList<>();
+            List<CloseIdlist> filterList = new ArrayList<>();
             if (charSequence.toString() == null) {
                 filterList.addAll(list);
             } else {
                 String serachStr = charSequence.toString().toUpperCase();
-                for (Userlist servicesS : Alllist) {
-                    if (servicesS.getName().toUpperCase().contains(serachStr)) {
+                for (CloseIdlist servicesS : Alllist) {
+                    if (servicesS.getUsername().toUpperCase().contains(serachStr)) {
                         filterList.add(servicesS);
                     }
                 }
@@ -190,12 +190,12 @@ public class Ad_Closeidlist extends RecyclerView.Adapter<Ad_Closeidlist.MyViewHo
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
             list.clear();
-            list.addAll((List<Userlist>)results.values);
+            list.addAll((List<CloseIdlist>)results.values);
 
             notifyDataSetChanged();
 
         }
-    };*/
+    };
    public interface aprove{
        public void getid(String id);
        public void rejetid(String id);

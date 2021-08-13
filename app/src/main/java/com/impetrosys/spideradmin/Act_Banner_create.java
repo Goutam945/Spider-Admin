@@ -77,11 +77,16 @@ public class Act_Banner_create extends AppCompatActivity {
                 name = etname.getText().toString();
                 url = eturl.getText().toString();
                 if(validate()){
-                    try {
-                        Loder();
-                        api_Banner();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
+                    if (Document_img!=null&&!Document_img.isEmpty()){
+                        try {
+                            Loder();
+                            api_Banner();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Toast.makeText(Act_Banner_create.this,"Please upload banner",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

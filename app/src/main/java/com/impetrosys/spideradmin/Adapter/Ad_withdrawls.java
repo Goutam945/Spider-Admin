@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHolder> {
@@ -185,38 +187,38 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
 
 
-//    public Filter getFilter() {
-//        return filter;
-//    }
-//    Filter filter=new Filter() {
-//        //run on background thread
-//        @Override
-//        protected FilterResults performFiltering(CharSequence charSequence) {
-//
-//            List<Helpline> filterList = new ArrayList<>();
-//            if (charSequence.toString() == null) {
-//                filterList.addAll(list);
-//            } else {
-//                String serachStr = charSequence.toString().toUpperCase();
-//                for (Helpline servicesS : Alllist) {
-//                    if (servicesS.getHelplineName().toUpperCase().contains(serachStr)) {
-//                        filterList.add(servicesS);
-//                    }
-//                }
-//            }
-//            FilterResults filterResults = new FilterResults();
-//            filterResults.values = filterList;
-//            return filterResults;
-//        }
-//
-//        @Override
-//        protected void publishResults(CharSequence constraint, FilterResults results) {
-//
-//            list.clear();
-//            list.addAll((List<Helpline>)results.values);
-//
-//            notifyDataSetChanged();
-//
-//        }
-//    };
+    public Filter getFilter() {
+        return filter;
+    }
+    Filter filter=new Filter() {
+        //run on background thread
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            List<Withdrawalsrequest> filterList = new ArrayList<>();
+            if (charSequence.toString() == null) {
+                filterList.addAll(list);
+            } else {
+                String serachStr = charSequence.toString().toUpperCase();
+                for (Withdrawalsrequest servicesS : Alllist) {
+                    if (servicesS.getUsername().toUpperCase().contains(serachStr)) {
+                        filterList.add(servicesS);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            list.clear();
+            list.addAll((List<Withdrawalsrequest>)results.values);
+
+            notifyDataSetChanged();
+
+        }
+    };
 }

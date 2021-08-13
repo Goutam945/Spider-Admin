@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -15,11 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.impetrosys.spideradmin.Modelclass.ClientidRequestchangepasslsit;
+import com.impetrosys.spideradmin.Modelclass.Userlist;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_ClientidRequest_changepasslist.MyViewHolder> {
@@ -121,7 +124,7 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
         }
     }
 
-   /* public Filter getFilter() {
+  /*  public Filter getFilter() {
         return filter;
     }
     Filter filter=new Filter() {
@@ -129,13 +132,13 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            List<Userlist> filterList = new ArrayList<>();
+            List<ClientidRequestchangepasslsit> filterList = new ArrayList<>();
             if (charSequence.toString() == null) {
                 filterList.addAll(list);
             } else {
                 String serachStr = charSequence.toString().toUpperCase();
-                for (Userlist servicesS : Alllist) {
-                    if (servicesS.getName().toUpperCase().contains(serachStr)) {
+                for (ClientidRequestchangepasslsit servicesS : Alllist) {
+                    if (servicesS.getUsername().toUpperCase().contains(serachStr)) {
                         filterList.add(servicesS);
                     }
                 }
@@ -149,7 +152,7 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
             list.clear();
-            list.addAll((List<Userlist>)results.values);
+            list.addAll((List<ClientidRequestchangepasslsit>)results.values);
 
             notifyDataSetChanged();
 

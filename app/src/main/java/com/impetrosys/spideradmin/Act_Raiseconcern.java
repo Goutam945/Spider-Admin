@@ -31,19 +31,12 @@ import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 public class Act_Raiseconcern extends AppCompatActivity {
-    Context context;
-    Activity activity;
-    SessionParam sessionParam;
-    RecyclerView recycle;
     FrameLayout container;
-    private BaseRequest baseRequest;
     private int progressStatus = 0;
     WebView webView;
-    private ProgressDialog progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_act_raiseconcern);
         setContentView(R.layout.act_home_basic);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

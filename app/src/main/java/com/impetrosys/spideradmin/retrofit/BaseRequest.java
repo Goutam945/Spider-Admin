@@ -686,7 +686,8 @@ public class BaseRequest<T> extends BaseRequestParser {
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("id",id);
-        jsonObject1.put("photo",photo);
+        jsonObject1.put("remarkphoto",photo);
+        jsonObject1.put("description","approve");
         jsonObject1.put("status","1");
         jsonObject.put("func_name","approverwithdrawalrequest");
         jsonObject.put("data",jsonObject1);
