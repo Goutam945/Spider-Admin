@@ -21,6 +21,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.impetrosys.spideradmin.Act_Clientids_requestchangepass;
 import com.impetrosys.spideradmin.Act_CloseId_list;
+import com.impetrosys.spideradmin.Act_Raiseconcern;
 import com.impetrosys.spideradmin.Act_paymentdeposit;
 import com.impetrosys.spideradmin.MainActivity;
 import com.impetrosys.spideradmin.R;
@@ -123,6 +124,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }else
         if (type.equalsIgnoreCase("changepassword")){
             intent = new Intent(this, Act_Clientids_requestchangepass.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        }
+        else
+        if (type.equalsIgnoreCase("raiseconcern")){
+            intent = new Intent(this, Act_Raiseconcern.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         }

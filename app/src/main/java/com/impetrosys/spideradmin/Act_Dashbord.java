@@ -107,11 +107,22 @@ public class Act_Dashbord extends AppCompatActivity {
         card3.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Act_Dashbord.this, Act_Subadmin_list.class);
+                                        /* Intent i=new Intent(Act_Dashbord.this, Act_Subadmin_list.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
-                                         finish();
+                                         finish();*/
+
+                                         if(sessionParam.role.equalsIgnoreCase("Admin")){
+                                             Intent i=new Intent(Act_Dashbord.this, Act_Subadmin_list.class);
+                                             startActivity(i);
+                                             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                             startActivity(i);
+                                             finish();
+                                         }else {
+                                             Toast.makeText(Act_Dashbord.this,"Only Admin Use",Toast.LENGTH_SHORT).show();
+                                         }
+
                                      }
                                  }
 

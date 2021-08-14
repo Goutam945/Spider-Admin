@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.impetrosys.spideradmin.Act_CloseId_list;
+import com.impetrosys.spideradmin.Act_Raiseconcern;
 import com.impetrosys.spideradmin.Act_paymentdeposit;
 import com.impetrosys.spideradmin.Modelclass.Notification;
 import com.impetrosys.spideradmin.R;
@@ -93,6 +94,13 @@ public class Ad_pushNotification extends RecyclerView.Adapter<Ad_pushNotificatio
                     context.startActivity(intent);
 
                 }
+                if (type.equalsIgnoreCase("raiseconcern")){
+                    Intent intent = new Intent(context, Act_Raiseconcern.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
+                }
+
 
 
             }
