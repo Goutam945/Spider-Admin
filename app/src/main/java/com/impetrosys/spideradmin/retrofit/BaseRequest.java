@@ -457,6 +457,26 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
+
+    public void callAPICreate_refralcode(final int APINumber, String remainingURL, String reward,String userid) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("reward",reward);
+        jsonObject1.put("uid",userid);
+        jsonObject.put("func_name","createreferalcode");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.Refralcodecreate(body);
+        call.enqueue(responseCallback);
+
+    }
+
     public void callAPIforgotpass(final int APINumber, String remainingURL, String mobile, String password) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;

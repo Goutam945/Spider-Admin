@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +23,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +53,10 @@ public class Act_User_list extends AppCompatActivity {
     RecyclerView recycle;
     FrameLayout container;
     private BaseRequest baseRequest;
+    TextView code,reward,username,uid,referdate,nocodemessage;
+    LinearLayout layout;
+    String Code,Reward,Username,Uid,Referdate;
+    Button btn_create,btn_addreawrd;
     private int progressStatus = 0;
     androidx.appcompat.widget.SearchView inputSearch;
     Ad_userlist ad_userlist;
@@ -107,7 +117,13 @@ public class Act_User_list extends AppCompatActivity {
 
                                 userlist2.add(model);
 
-                                ad_userlist = new Ad_userlist(userlist,paymentDetails,getApplicationContext(), sessionParam, activity);
+                                ad_userlist = new Ad_userlist(userlist, paymentDetails, getApplicationContext(), sessionParam, activity, new Ad_userlist.CreateRefral() {
+                                    @Override
+                                    public void detail(Userlist detail) {
+                                        DetailsReferal(detail);
+                                    }
+                                }
+                                );
                                 recycle.setAdapter(ad_userlist);
 
                             } else {
@@ -137,6 +153,162 @@ public class Act_User_list extends AppCompatActivity {
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
         baseRequest.callAPIgetUserlist(1, remainingUrl2);
 
+    }
+
+
+    public void reward_create(String id)
+    {
+        Dialog mDialog = new Dialog(Act_User_list.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.referalcode_create);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+       // code= mDialog.findViewById(R.id.code);
+        reward= mDialog.findViewById(R.id.reward);
+        btn_create=mDialog.findViewById(R.id.btn_refral);
+
+//
+
+        btn_create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  Code = code.getText().toString();
+                Reward = reward.getText().toString();
+                if(validate()){
+                    try {
+                        api_Refralcode(id);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+
+    public void DetailsReferal(Userlist detail)
+    {
+        Dialog mDialog = new Dialog(Act_User_list.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.refrals_details_dailog);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+        code= mDialog.findViewById(R.id.tv_code);
+        reward= mDialog.findViewById(R.id.tv_reward);
+        username= mDialog.findViewById(R.id.tv_username);
+        uid= mDialog.findViewById(R.id.tv_uid);
+        referdate= mDialog.findViewById(R.id.tv_referdate);
+        layout= mDialog.findViewById(R.id.laout);
+        nocodemessage= mDialog.findViewById(R.id.nocode);
+        btn_addreawrd= mDialog.findViewById(R.id.btn_addreward);
+
+
+        for (int k = 0; k < detail.getReferaldetail().size(); k++) {
+            String type=detail.getIsrefer().toString();
+            if (type.equalsIgnoreCase("1")) {
+                code.setText("Code : "+detail.getReferaldetail().get(k).getCode());
+                reward.setText("Reward : "+detail.getReferaldetail().get(k).getReward());
+                username.setText("Username : "+detail.getReferaldetail().get(k).getUsername());
+                uid.setText("UserID : "+detail.getReferaldetail().get(k).getUid());
+                referdate.setText("Date : "+detail.getReferaldetail().get(k).getReferdate());
+                layout.setVisibility(View.VISIBLE);
+                nocodemessage.setVisibility(View.GONE);
+            }else{
+                layout.setVisibility(View.GONE);
+            }
+        }
+        btn_addreawrd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int k = 0; k < detail.getReferaldetail().size(); k++) {
+                reward_create(detail.getReferaldetail().get(k).getUid());
+                }
+            }
+        });
+
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+
+
+    private void api_Refralcode(String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+
+                    Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), Act_User_list.class);
+                    startActivity(i);
+                    reward.setText("");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_User_list.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        baseRequest.callAPICreate_refralcode(1, "https://impetrosys.com/spiderapp/", Reward,id);
+
+    }
+
+    private boolean validate() {
+        boolean valid = true;
+
+       /* if (Code.equals("") || Code.equals(null)) {
+            code.setError("enter a valid Code");
+            valid = false;
+        } else {
+            code.setError(null);
+        }*/
+
+        if (Reward.equals("") || Reward.equals(null)) {
+            reward.setError("enter a valid Reward");
+            valid = false;
+        } else {
+            reward.setError(null);
+        }
+        return valid;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -78,6 +78,8 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> banner(@Body RequestBody banner);
     @POST("service.php")
+    Call<JsonElement> Refralcodecreate(@Body RequestBody Refralcodecreate);
+    @POST("service.php")
     Call<JsonElement> forgetpass(@Body RequestBody forgetpass);
 
     @POST("service.php")

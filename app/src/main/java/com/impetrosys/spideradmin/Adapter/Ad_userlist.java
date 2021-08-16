@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.impetrosys.spideradmin.Modelclass.Userlist;
+import com.impetrosys.spideradmin.Modelclass.Websitelist;
 import com.impetrosys.spideradmin.Modelclass.Withdrawalsrequest;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
@@ -36,18 +40,20 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
     Activity activity;
     SessionParam sessionParam;
     private BaseRequest baseRequest;
+    Ad_userlist.CreateRefral createRefral;
 
 
     public Ad_userlist(Context context) {
         this.context = context;
     }
 
-    public Ad_userlist(ArrayList<Userlist> list, ArrayList<Userlist.PaymentDetail> paymentdetails, Context context, SessionParam sessionParam, Activity activity) {
+    public Ad_userlist(ArrayList<Userlist> list, ArrayList<Userlist.PaymentDetail> paymentdetails, Context context, SessionParam sessionParam, Activity activity, Ad_userlist.CreateRefral createRefral) {
         this.list = list;
         this.context = context;
         this.activity = activity;
         this.sessionParam =sessionParam;
         this.Alllist=new ArrayList<>(list);
+        this.createRefral=createRefral;
 
     }
 
@@ -130,6 +136,14 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
             }
         }
 
+       /* for (int k = 0; k < list.get(position).getReferaldetail().size(); k++) {
+            String name = list.get(position).getIsrefer().toString();
+            if (name.equalsIgnoreCase("1")) {
+
+
+            }
+        }*/
+
 
         holder.dropdwn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +155,35 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
                 }
             }
         });
+        holder.moreoption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context = new ContextThemeWrapper(context, R.style.popupMenuStyle);//bgcolorpopmenu
+                PopupMenu popup = new PopupMenu(context, holder.moreoption);
+                popup.inflate(R.menu.menuitem);
+                popup.getMenu().getItem(0).setTitle("Details Referal");
+                popup.getMenu().getItem(1).setVisible(false);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.edit:
+                                createRefral.detail(list.get(position));
+                                return true;
+                            case R.id.delite:
+                                return false;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                //displaying the popup
+                popup.show();
+
+            }
+
+        });
+
 
 
 
@@ -156,7 +199,7 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,mobile,id;
-        ImageView dropdwn;
+        ImageView dropdwn,moreoption;
         LinearLayout layout;
         View v1,v2,v3,v4;
         TextView upiname,upinumber,upiname1,upinumber1,upiname2,upinumber2,upiname3,upinumber3
@@ -199,6 +242,10 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
             paymentmethod3=itemView.findViewById(R.id.paymentmethod3);
            paymentmethod4=itemView.findViewById(R.id.paymentmethod4);
 
+            moreoption=itemView.findViewById(R.id.moredetail);
+
+
+
 
 
         }
@@ -238,4 +285,11 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
 
         }
     };
+
+    public interface CreateRefral{
+//        public void getid(
+//                String id
+//        );
+        public  void detail(Userlist detail);
+    }
 }

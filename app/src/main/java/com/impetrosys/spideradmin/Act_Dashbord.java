@@ -40,7 +40,7 @@ public class Act_Dashbord extends AppCompatActivity {
     SessionParam sessionParam;
     private BaseRequest baseRequest;
     Activity activity;
-    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10;
+    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11;
     TextView userid,username;
     ImageView logout,notification;
     Context context;

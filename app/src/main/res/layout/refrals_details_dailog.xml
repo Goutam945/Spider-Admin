@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    style="@style/dailogbackground"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:text="Referal Code Details"/>
+
+
+        <ImageView
+            android:id="@+id/iv_cancel_dialog"
+            android:layout_width="50dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            app:tint="@color/white" />
+
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/d_black"></View>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nocode"
+            android:text=" NO Referal Code !"
+            android:gravity="center"
+            style="@style/requestuser"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+            <LinearLayout
+                android:id="@+id/laout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:background="@drawable/card_shape"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="goutam"
+                    android:paddingLeft="25dp"
+                    style="@style/requestuser"
+                    />
+                <TextView
+                    android:id="@+id/tv_reward"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="85454"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="25dp"
+                    style="@style/requestuser"/>
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="amount"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="25dp"
+                    style="@style/requestuser" />
+                <TextView
+                    android:id="@+id/tv_uid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="withdrawstatus"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="25dp"
+                    style="@style/requestuser" />
+                <TextView
+                    android:id="@+id/tv_referdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="bank details"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="25dp"
+                    style="@style/requestuser" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
+
+                    <Button
+                        android:id="@+id/btn_addreward"
+                        android:layout_width="140dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/buttonblue_shape"
+                        android:fontFamily="@font/gtwalsheimpro_regular"
+                        android:text="add reward"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_margin="5dp"
+    tools:context=".Act_Withdrawals_request">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/card_shape"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="goutam"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/tv_reward"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="85454"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"/>
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="amount"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:id="@+id/tv_uid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="withdrawstatus"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+        <TextView
+            android:id="@+id/tv_referdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bank details"
+            android:paddingTop="5dp"
+            android:paddingLeft="25dp"
+            style="@style/requestuser" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
+
+            <Button
+                android:id="@+id/btn_approve"
+                android:layout_width="140dp"
+                android:layout_height="45dp"
+                android:background="@drawable/buttonblue_shape"
+                android:fontFamily="@font/gtwalsheimpro_regular"
+                android:text="add reward"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>-->

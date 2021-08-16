@@ -21,6 +21,12 @@ public class Userlist {
     @SerializedName("payment_detail")
     @Expose
     private List<PaymentDetail> paymentDetail = null;
+    @SerializedName("isrefer")
+    @Expose
+    private Integer isrefer;
+    @SerializedName("referaldetail")
+    @Expose
+    private List<Referaldetail> referaldetail = null;
     @SerializedName("created_date")
     @Expose
     private String createdDate;
@@ -65,6 +71,22 @@ public class Userlist {
         this.paymentDetail = paymentDetail;
     }
 
+    public Integer getIsrefer() {
+        return isrefer;
+    }
+
+    public void setIsrefer(Integer isrefer) {
+        this.isrefer = isrefer;
+    }
+
+    public List<Referaldetail> getReferaldetail() {
+        return referaldetail;
+    }
+
+    public void setReferaldetail(List<Referaldetail> referaldetail) {
+        this.referaldetail = referaldetail;
+    }
+
     public String getCreatedDate() {
         return createdDate;
     }
@@ -72,6 +94,67 @@ public class Userlist {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
+
+    public class Referaldetail {
+
+        @SerializedName("code")
+        @Expose
+        private String code;
+        @SerializedName("reward")
+        @Expose
+        private String reward;
+        @SerializedName("username")
+        @Expose
+        private String username;
+        @SerializedName("referdate")
+        @Expose
+        private String referdate;
+        @SerializedName("uid")
+        @Expose
+        private String uid;
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getReward() {
+            return reward;
+        }
+
+        public void setReward(String reward) {
+            this.reward = reward;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getReferdate() {
+            return referdate;
+        }
+
+        public void setReferdate(String referdate) {
+            this.referdate = referdate;
+        }
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
+
+    }
+
     public class PaymentDetail {
 
         @SerializedName("paymentmethod")
