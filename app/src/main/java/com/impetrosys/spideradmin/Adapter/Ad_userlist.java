@@ -158,7 +158,7 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
         holder.moreoption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context = new ContextThemeWrapper(context, R.style.popupMenuStyle);//bgcolorpopmenu
+               /* context = new ContextThemeWrapper(context, R.style.popupMenuStyle);//bgcolorpopmenu
                 PopupMenu popup = new PopupMenu(context, holder.moreoption);
                 popup.inflate(R.menu.menuitem);
                 popup.getMenu().getItem(0).setTitle("Details Referal");
@@ -178,7 +178,9 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
                     }
                 });
                 //displaying the popup
-                popup.show();
+                popup.show();*/
+
+                createRefral.detail(list.get(position));
 
             }
 

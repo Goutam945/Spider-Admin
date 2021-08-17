@@ -77,7 +77,7 @@
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_baseline_more_vert_24"
+                android:src="@drawable/ic_baseline_article_24"
                 app:tint="@color/white" />
         </LinearLayout>
 

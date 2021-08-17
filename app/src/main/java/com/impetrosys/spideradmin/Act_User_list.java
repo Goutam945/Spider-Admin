@@ -215,7 +215,7 @@ public class Act_User_list extends AppCompatActivity {
         referdate= mDialog.findViewById(R.id.tv_referdate);
         layout= mDialog.findViewById(R.id.laout);
         nocodemessage= mDialog.findViewById(R.id.nocode);
-        btn_addreawrd= mDialog.findViewById(R.id.btn_addreward);
+      //  btn_addreawrd= mDialog.findViewById(R.id.btn_addreward);
 
 
         for (int k = 0; k < detail.getReferaldetail().size(); k++) {
@@ -232,14 +232,14 @@ public class Act_User_list extends AppCompatActivity {
                 layout.setVisibility(View.GONE);
             }
         }
-        btn_addreawrd.setOnClickListener(new View.OnClickListener() {
+        /*btn_addreawrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for (int k = 0; k < detail.getReferaldetail().size(); k++) {
                 reward_create(detail.getReferaldetail().get(k).getUid());
                 }
             }
-        });
+        });*/
 
 
         iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {

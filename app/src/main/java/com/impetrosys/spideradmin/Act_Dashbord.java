@@ -83,7 +83,7 @@ public class Act_Dashbord extends AppCompatActivity {
 //                                         Intent i=new Intent(Dashbord.this, User_list.class);
 //                                         startActivity(i);
 //                                         finish();
-                                         Intent i=new Intent(Act_Dashbord.this, Act_User_list.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Userlist_Referallist.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);

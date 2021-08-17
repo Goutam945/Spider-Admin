@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/apptheam">
         <activity
+            android:name=".Act_Userlist_Referallist"
+            android:exported="true" />
+        <activity
             android:name=".Act_Raiseconcern"
             android:exported="true" />
         <activity

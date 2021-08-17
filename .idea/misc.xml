@@ -7,7 +7,10 @@
         <entry key="app/src/main/res/layout/accountdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/act_home_basic.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_act_create_referal.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_act_paymentdeposit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_act_raiseconcern.xml" value="0.11277173913043478" />
+        <entry key="app/src/main/res/layout/activity_act_userlist_referallist.xml" value="0.10552536231884058" />
+        <entry key="app/src/main/res/layout/activity_act_users_referallist.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/activity_banner_create.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_close_id_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deposit_id_details.xml" value="0.1" />
@@ -21,11 +24,13 @@
         <entry key="app/src/main/res/layout/add_bankdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_subadmin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_website.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/allreferalcode_list.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/app_bar_home_basic.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/changepassword_requestclient.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/closeid_rejectdescription.xml" value="0.11820652173913043" />
         <entry key="app/src/main/res/layout/dashbordcountlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/deposit_rejectw.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="app/src/main/res/layout/new_dashbord.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/newwebsite.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nochangepass.xml" value="0.14175724637681159" />
@@ -34,6 +39,7 @@
         <entry key="app/src/main/res/layout/referalcode_create.xml" value="0.1" />
         <entry key="app/src/main/res/layout/refrals_details_dailog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tesingdesign.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/update_referalcode.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/userrequesrreject_dailog.xml" value="0.10461956521739131" />
         <entry key="app/src/main/res/layout/userrequsetaprrove_dailog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/witdrawl_imgupload.xml" value="0.10960144927536232" />

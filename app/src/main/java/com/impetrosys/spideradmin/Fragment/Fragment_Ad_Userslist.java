@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class FragmentAdapter extends FragmentStateAdapter {
-    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+public class Fragment_Ad_Userslist extends FragmentStateAdapter {
+    public Fragment_Ad_Userslist(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
@@ -19,10 +19,10 @@ public class FragmentAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 0 :
-                fragment=new Fragment_depositlist();
+                fragment=new Fragment_Userslist();
                 break;
             case 1:
-                fragment=new Fragment_depositlist_id();
+                fragment=new Fragment_Referaluserlist();
                 break;
 
         }

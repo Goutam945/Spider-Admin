@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/nocode"
-            android:text=" NO Referal Code !"
+            android:text=" No Referal Code !"
             android:gravity="center"
             style="@style/requestuser"
             />
@@ -124,14 +124,14 @@
                     android:orientation="horizontal"
                     tools:ignore="MissingConstraints">
 
-                    <Button
+                  <!--  <Button
                         android:id="@+id/btn_addreward"
                         android:layout_width="140dp"
                         android:layout_height="45dp"
                         android:background="@drawable/buttonblue_shape"
                         android:fontFamily="@font/gtwalsheimpro_regular"
                         android:text="add reward"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white" />-->
 
 
                 </LinearLayout>

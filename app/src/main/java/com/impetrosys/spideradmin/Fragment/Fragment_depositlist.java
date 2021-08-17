@@ -31,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class FirstFragment extends Fragment {
+public class Fragment_depositlist extends Fragment {
     Context context;
     Activity activity;
     SessionParam sessionParam;

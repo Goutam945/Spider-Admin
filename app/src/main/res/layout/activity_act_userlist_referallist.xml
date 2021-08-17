@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/d_black"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:theme="@style/Theme.SpiderAdmin">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/apptheamcolor"
+            app:layout_scrollFlags="scroll|snap|enterAlways"
+            app:popupTheme="@style/Theme.SpiderAdmin"
+            app:theme="@style/Theme.SpiderAdmin"
+            app:titleTextColor="@color/White" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:background="#020615"
+        android:fontFamily="@font/gtwalsheimpro_regular"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tool"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_marginTop="5dp"
+        android:id="@+id/view_pager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/d_black"
+        android:layout_below="@id/tab_layout" />
+
+
+
+</RelativeLayout>

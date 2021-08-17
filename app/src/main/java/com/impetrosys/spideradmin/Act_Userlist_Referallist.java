@@ -13,26 +13,24 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.google.android.material.tabs.TabLayout;
 import com.impetrosys.spideradmin.Fragment.FragmentAdapter;
+import com.impetrosys.spideradmin.Fragment.Fragment_Ad_Userslist;
 
-
-public class Act_paymentdeposit extends AppCompatActivity {
+public class Act_Userlist_Referallist extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
     ViewPager viewPager;
-    FragmentAdapter adapter;
-    FrameLayout container;
+    Fragment_Ad_Userslist adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_paymentdeposit);
+        setContentView(R.layout.activity_act_userlist_referallist);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Payment Deposits List");
+        getSupportActionBar().setTitle("Users List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -42,11 +40,11 @@ public class Act_paymentdeposit extends AppCompatActivity {
         pager2 = findViewById(R.id.view_pager2);
 
         FragmentManager fm = getSupportFragmentManager();
-        adapter = new FragmentAdapter(fm, getLifecycle());
+        adapter = new Fragment_Ad_Userslist(fm,getLifecycle());
         pager2.setAdapter(adapter);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Deposit"));
-        tabLayout.addTab(tabLayout.newTab().setText("Deposit Id"));
+        tabLayout.addTab(tabLayout.newTab().setText("Users"));
+        tabLayout.addTab(tabLayout.newTab().setText("Referal Code"));
 
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#F2A31E"));
         tabLayout.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
@@ -89,7 +87,7 @@ public class Act_paymentdeposit extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent i=new Intent(Act_paymentdeposit.this, Act_Dashbord.class);
+                Intent i=new Intent(Act_Userlist_Referallist.this, Act_Dashbord.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);
@@ -108,5 +106,6 @@ public class Act_paymentdeposit extends AppCompatActivity {
             moveTaskToBack(true);
         }
         return super.onKeyDown(keycode, event);
+
     }
 }

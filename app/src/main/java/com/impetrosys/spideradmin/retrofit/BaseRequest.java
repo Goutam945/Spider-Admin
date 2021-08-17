@@ -606,6 +606,28 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
+    public void callAPIUpdate_Referalcode(final int APINumber, String remainingURL, String referalid,String userid,String code,String reward) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("referalid",referalid);
+        jsonObject1.put("uid",userid);
+        jsonObject1.put("code",code);
+        jsonObject1.put("reward",reward);
+
+        jsonObject.put("func_name","updatereferalcode");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.updateReferalcode(body);
+        call.enqueue(responseCallback);
+
+    }
+
     public void callAPIClientid_NOchangepassword(final int APINumber, String remainingURL, String id,String description,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
@@ -1118,6 +1140,20 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         Call<JsonElement> call = apiInterface_.depositslist(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIgetRefralcodelist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","referalcode");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.Referalcodelist(body);
         call.enqueue(responseCallback);
     }
     public void callAPIgetDeposits_IDlist(final int APINumber, String remainingURL,String userid) throws JSONException {

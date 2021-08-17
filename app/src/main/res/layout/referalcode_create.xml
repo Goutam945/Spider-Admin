@@ -122,7 +122,7 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_edit_text1"
-                    android:text="Create" />
+                    android:text="add" />
 
             </LinearLayout>
 

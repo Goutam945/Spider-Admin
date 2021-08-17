@@ -103,6 +103,8 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> depositslist(@Body RequestBody depositslist);
     @POST("service.php")
+    Call<JsonElement> Referalcodelist(@Body RequestBody Referalcodelist);
+    @POST("service.php")
     Call<JsonElement> depositsidlist(@Body RequestBody depositsidlist);
     @POST("service.php")
     Call<JsonElement> subadminlist(@Body RequestBody subadminlist);
@@ -127,6 +129,8 @@ public interface ApiInterface {
 
     @POST("service.php")
     Call<JsonElement> Clientrequestchangepass(@Body RequestBody Clientrequestchangepass);
+    @POST("service.php")
+    Call<JsonElement> updateReferalcode(@Body RequestBody updateReferalcode);
     @POST("service.php")
     Call<JsonElement> Clientrequestnochangepass(@Body RequestBody Clientrequestnochangepass);
     @POST("service.php")
