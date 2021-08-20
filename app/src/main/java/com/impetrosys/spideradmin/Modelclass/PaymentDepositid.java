@@ -52,6 +52,9 @@ public class PaymentDepositid {
     @SerializedName("created_date")
     @Expose
     private String createdDate;
+    @SerializedName("depositstatus")
+    @Expose
+    private String depositstatus;
 
     public String getId() {
         return id;
@@ -181,5 +184,12 @@ public class PaymentDepositid {
         this.createdDate = createdDate;
     }
 
+    public String getDepositstatus() {
+        return depositstatus;
+    }
+
+    public void setDepositstatus(String depositstatus) {
+        this.depositstatus = depositstatus;
+    }
 }
 

@@ -77,6 +77,7 @@ public class Ad_PaymentdepositID extends RecyclerView.Adapter<Ad_PaymentdepositI
                 intent.putExtra("paymentscreenshot",list.get(position).getPaymentscreenshot());
                 intent.putExtra("paymentmethod",list.get(position).getPaymentmethod());
                 intent.putExtra("created_date",list.get(position).getCreatedDate());
+                intent.putExtra("depositstatus",list.get(position).getDepositstatus());
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

@@ -41,24 +41,36 @@
                 android:text="User ID"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
+
             <TextView
                 android:id="@+id/d_paymentmethod"
+                style="@style/requestuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:layout_below="@id/d_id"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="paymentmethod"
+                android:text="paymentmethod" />
+            <TextView
+                android:id="@+id/d_depositstatus"
                 style="@style/requestuser"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/d_paymentmethod"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="paymentmethod" />
+
             <TextView
                 android:id="@+id/d_coin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_below="@id/d_paymentmethod"
+                android:layout_below="@id/d_depositstatus"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"

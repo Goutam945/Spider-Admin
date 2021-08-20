@@ -73,6 +73,15 @@ public class Ad_Paymentdepositslist extends RecyclerView.Adapter<Ad_Paymentdepos
                 intent.putExtra("coins",list.get(position).getCoins());
                 intent.putExtra("paymentpic",list.get(position).getPaymentscreenshot());
                 intent.putExtra("created_date",list.get(position).getCreatedDate());
+                intent.putExtra("rewardstatus",list.get(position).getRewardstatus());
+                intent.putExtra("depositstatus",list.get(position).getDepositstatus());
+
+                if(list.get(position).getUserrewarddetail()!=null&& list.get(position).getUserrewarddetail().size()!=0){
+                    intent.putExtra("wallet",list.get(position).getUserrewarddetail().get(0).getWallet().toString());
+                    intent.putExtra("reward",list.get(position).getUserrewarddetail().get(0).getReward().toString());
+                    intent.putExtra("total",list.get(position).getUserrewarddetail().get(0).getTotal().toString());
+                }
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
 

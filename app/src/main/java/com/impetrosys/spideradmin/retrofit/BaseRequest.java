@@ -651,12 +651,13 @@ public class BaseRequest<T> extends BaseRequestParser {
 
     }
 
-    public void callAPIapproveDeposits_request(final int APINumber, String remainingURL, String id) throws JSONException {
+    public void callAPIapproveDeposits_request(final int APINumber, String remainingURL, String id,String isreward) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("id",id);
+        jsonObject1.put("isreward",isreward);
         jsonObject1.put("status","1");
         jsonObject.put("func_name","approvedepositrequest");
         jsonObject.put("data",jsonObject1);

@@ -47,9 +47,9 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Act_Deposit_Id_details extends AppCompatActivity {
-    String Username,Userid,Coins,Websitename,Websiteurl,Requestusername,Createddate,Id,Paywallet,Paymentmethod,Paymentscreenshot;
+    String Username,Userid,Coins,Websitename,Websiteurl,Requestusername,Createddate,Id,Paywallet,Paymentmethod,Paymentscreenshot,Depositstatus;
     FrameLayout container;
-    TextView username,userid,coins,websitename,websiteurl,requestusername,paymentmethod,createddate;
+    TextView username,userid,coins,websitename,websiteurl,requestusername,paymentmethod,createddate,depositstatus;
     ImageView imageView;
     ProgressBar progress;
     Button approve,reject;
@@ -82,6 +82,8 @@ public class Act_Deposit_Id_details extends AppCompatActivity {
         username = rowView.findViewById(R.id.d_username);
         userid = rowView.findViewById(R.id.d_id);
         coins = rowView.findViewById(R.id.d_coin);
+        depositstatus = rowView.findViewById(R.id.d_depositstatus);
+
         websitename = rowView.findViewById(R.id.d_websitename);
         websiteurl = rowView.findViewById(R.id.d_websiteurl);
         requestusername = rowView.findViewById(R.id.d_requestusername);
@@ -97,6 +99,7 @@ public class Act_Deposit_Id_details extends AppCompatActivity {
         Username=intent.getStringExtra("username");
         Userid=intent.getStringExtra("userid");
         Coins=intent.getStringExtra("coins");
+        Depositstatus=intent.getStringExtra("depositstatus");
         Websitename=intent.getStringExtra("websitename");
         Websiteurl=intent.getStringExtra("websiteurl");
         Requestusername=intent.getStringExtra("requestusername");
@@ -109,6 +112,7 @@ public class Act_Deposit_Id_details extends AppCompatActivity {
         username.setText("Username : "+Username);
         userid.setText("Userid : "+Userid);
         coins.setText("Coins : "+Coins);
+        depositstatus.setText("Deposits : "+Depositstatus);
         websitename.setText("Websitename : "+Websitename);
         websiteurl.setText("Websiteurl : "+Websiteurl);
         requestusername.setText("Requestusername : "+Requestusername);

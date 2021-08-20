@@ -3,6 +3,8 @@ package com.impetrosys.spideradmin.Modelclass;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Paymentdepositslist {
     @SerializedName("id")
     @Expose
@@ -31,6 +33,15 @@ public class Paymentdepositslist {
     @SerializedName("created_date")
     @Expose
     private String createdDate;
+    @SerializedName("userrewarddetail")
+    @Expose
+    private List<Userrewarddetail> userrewarddetail = null;
+    @SerializedName("rewardstatus")
+    @Expose
+    private String rewardstatus;
+    @SerializedName("depositstatus")
+    @Expose
+    private String depositstatus;
 
     public String getId() {
         return id;
@@ -102,7 +113,69 @@ public class Paymentdepositslist {
 
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
+
     }
 
+    public List<Userrewarddetail> getUserrewarddetail() {
+        return userrewarddetail;
+    }
+
+    public void setUserrewarddetail(List<Userrewarddetail> userrewarddetail) {
+        this.userrewarddetail = userrewarddetail;
+    }
+
+    public String getRewardstatus() {
+        return rewardstatus;
+    }
+
+    public void setRewardstatus(String rewardstatus) {
+        this.rewardstatus = rewardstatus;
+    }
+
+    public String getDepositstatus() {
+        return depositstatus;
+    }
+
+    public void setDepositstatus(String depositstatus) {
+        this.depositstatus = depositstatus;
+    }
+
+    public class Userrewarddetail {
+
+        @SerializedName("wallet")
+        @Expose
+        private Integer wallet;
+        @SerializedName("reward")
+        @Expose
+        private Integer reward;
+        @SerializedName("total")
+        @Expose
+        private Integer total;
+
+        public Integer getWallet() {
+            return wallet;
+        }
+
+        public void setWallet(Integer wallet) {
+            this.wallet = wallet;
+        }
+
+        public Integer getReward() {
+            return reward;
+        }
+
+        public void setReward(Integer reward) {
+            this.reward = reward;
+        }
+
+        public Integer getTotal() {
+            return total;
+        }
+
+        public void setTotal(Integer total) {
+            this.total = total;
+        }
+
+    }
 
 }

@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -188,8 +190,51 @@ public class Fragment_Userslist extends Fragment {
         mDialog.show();
 
     }
+   /* @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // First clear current all the menu items
+        menu.clear();
+
+        // Add the new menu items
+        inflater.inflate(R.menu.search, menu);
+        MenuItem myActionMenuItem = menu.findItem(R.id.mi_search);
+        inputSearch = (SearchView)myActionMenuItem.getActionView();
+        changeSearchViewTextColor(inputSearch);
+
+        inputSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                ad_userlist.getFilter().filter(s);
+                return true;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    private void changeSearchViewTextColor(View view) {
+        if (view != null) {
+            if (view instanceof TextView) {
+                ((TextView) view).setTextColor(Color.WHITE);
+                return;
+            } else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup = (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    changeSearchViewTextColor(viewGroup.getChildAt(i));
 
 
+                }}}}
+*/
     public void Loder() {
         ProgressDialog pd = new ProgressDialog(getActivity() , R.style.MyAlertDialogStyle);
         pd.setMessage("Please wait ...");

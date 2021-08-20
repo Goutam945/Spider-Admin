@@ -41,36 +41,89 @@
                 android:text="User ID"
                 style="@style/requestuser"
               />
+
             <TextView
                 android:id="@+id/d_paymentmethod"
+                style="@style/requestuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
                 android:layout_below="@id/d_id"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="paymentmethod"
+                android:text="paymentmethod" />
+            <TextView
+                android:id="@+id/depositstatus"
                 style="@style/requestuser"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/d_paymentmethod"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="paymentmethod" />
+
             <TextView
                 android:id="@+id/d_coin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_below="@id/d_paymentmethod"
+                android:layout_below="@id/depositstatus"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="coin"
                 style="@style/requestuser"
                 />
+
+            <TextView
+                android:id="@+id/wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/d_coin"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="date"
+                style="@style/requestuser"
+                />
+            <TextView
+                android:id="@+id/reward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/wallet"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="date"
+                style="@style/requestuser"
+                />
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/reward"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="date"
+                style="@style/requestuser"
+                />
+
+
+
+
             <TextView
                 android:id="@+id/d_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_below="@id/d_coin"
+                android:layout_below="@id/total"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"

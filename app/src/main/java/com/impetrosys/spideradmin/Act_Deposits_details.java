@@ -56,9 +56,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Act_Deposits_details extends AppCompatActivity {
-String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
+String username,userid,paymentmethod,coins,Depositstatus,paymentscreenshot,createddate,ID,Rewardstatus, Wallet="0",Reward="0",Total="0";
     FrameLayout container;
-    TextView name,uid,pmethod,coin,dete;
+    TextView name,uid,pmethod,coin,dete,wallet,reward,total,depositstatus;
     ImageView imageView;
     ProgressBar progress;
     Button approve,reject;
@@ -92,11 +92,16 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
         uid = rowView.findViewById(R.id.d_id);
         pmethod = rowView.findViewById(R.id.d_paymentmethod);
         coin = rowView.findViewById(R.id.d_coin);
+        depositstatus = rowView.findViewById(R.id.depositstatus);
         dete = rowView.findViewById(R.id.d_date);
         imageView = rowView.findViewById(R.id.icon);
         progress = rowView.findViewById(R.id.progressBar);
         approve = rowView.findViewById(R.id.btn_accept);
         reject = rowView.findViewById(R.id.btn_reject);
+
+        wallet = rowView.findViewById(R.id.wallet);
+        reward = rowView.findViewById(R.id.reward);
+        total = rowView.findViewById(R.id.total);
 
 
         Intent intent=getIntent();
@@ -104,15 +109,40 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
         userid=intent.getStringExtra("userid");
         paymentmethod=intent.getStringExtra("paymentmethod");
         coins=intent.getStringExtra("coins");
+        Depositstatus=intent.getStringExtra("depositstatus");
         paymentscreenshot=intent.getStringExtra("paymentpic");
         createddate=intent.getStringExtra("created_date");
         ID=intent.getStringExtra("id");
+
+        Rewardstatus=intent.getStringExtra("rewardstatus");
+        Wallet=intent.getStringExtra("wallet");
+        Reward=intent.getStringExtra("reward");
+        Total=intent.getStringExtra("total");
+
 
         name.setText("User : "+username);
         uid.setText("User Id : "+userid);
         pmethod.setText("Paymentmethod : "+paymentmethod);
         coin.setText("Coins : "+coins);
+        depositstatus.setText("Deposits : "+Depositstatus);
         dete.setText("Date : "+createddate);
+
+
+
+        if(Rewardstatus.equalsIgnoreCase("0")){
+            wallet.setVisibility(View.GONE);
+            reward.setVisibility(View.GONE);
+            total.setVisibility(View.GONE);
+
+        }else {
+            wallet.setText("Wallet : "+Wallet);
+            reward.setText("Reward : "+Reward);
+            total.setText("Total : "+Total);
+        }
+
+
+
+
 //        Picasso.get()
 //                .load(paymentscreenshot)
 //                .placeholder(R.mipmap.ic_launcher)
@@ -245,7 +275,7 @@ String username,userid,paymentmethod,coins,paymentscreenshot,createddate,ID;
 
             }
         });
-        baseRequest.callAPIapproveDeposits_request(1, "https://impetrosys.com/spiderapp/",ID);
+        baseRequest.callAPIapproveDeposits_request(1, "https://impetrosys.com/spiderapp/",ID,Rewardstatus);
 
     }
     private void apiRejectrequest() throws JSONException {
