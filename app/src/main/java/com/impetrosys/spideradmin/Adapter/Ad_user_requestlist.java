@@ -107,7 +107,7 @@ public class Ad_user_requestlist extends RecyclerView.Adapter<Ad_user_requestlis
         holder.acceptrequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                aprove.getid(list.get(position).getId());
+                aprove.getid(list.get(position));
             }
         });
         holder.reject.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +190,7 @@ public class Ad_user_requestlist extends RecyclerView.Adapter<Ad_user_requestlis
 //    };
 
     public interface aprove{
-        public void getid(String id);
+        public void getid( UserRequestlist id);
         public void rejetid(String id);
 
     }

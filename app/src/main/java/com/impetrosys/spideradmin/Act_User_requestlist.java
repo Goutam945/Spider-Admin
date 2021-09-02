@@ -103,8 +103,9 @@ public class Act_User_requestlist extends AppCompatActivity {
 
 
                                 ad_userrequest = new Ad_user_requestlist(userrequest1, getApplicationContext(), sessionParam, activity, new Ad_user_requestlist.aprove() {
+
                                     @Override
-                                    public void getid(String id) {
+                                    public void getid(UserRequestlist id) {
                                         Approvrequest(id);
                                     }
 
@@ -149,7 +150,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 //        apiapprovrequest(id);
 //    }
 
-    public void Approvrequest(String id)
+    public void Approvrequest(UserRequestlist id)
     {
         Dialog mDialog = new Dialog(Act_User_requestlist.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
@@ -170,7 +171,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 
                 if (validate()) {
                     try {
-                        apiapprovrequest(id);
+                        apiapprovrequest(id.getId(),id.getStatus());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -236,7 +237,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 
 
 
-    private void apiapprovrequest(String id) throws JSONException {
+    private void apiapprovrequest(String id,String reward) throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -266,7 +267,7 @@ public class Act_User_requestlist extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapproveUser_request(1, "https://impetrosys.com/spiderapp/",id,Username,Userpass,sessionParam.userId);
+        baseRequest.callAPIapproveUser_request(1, "https://impetrosys.com/spiderapp/",id,reward,Username,Userpass,sessionParam.userId);
 
     }
     private void apiRejectrequest(String id) throws JSONException {

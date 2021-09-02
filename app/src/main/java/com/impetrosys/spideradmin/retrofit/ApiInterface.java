@@ -78,6 +78,8 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> banner(@Body RequestBody banner);
     @POST("service.php")
+    Call<JsonElement> offers(@Body RequestBody offers);
+    @POST("service.php")
     Call<JsonElement> Refralcodecreate(@Body RequestBody Refralcodecreate);
     @POST("service.php")
     Call<JsonElement> forgetpass(@Body RequestBody forgetpass);
@@ -92,6 +94,10 @@ public interface ApiInterface {
     Call<JsonElement> closeidlist(@Body RequestBody closeidlist);
     @POST("service.php")
     Call<JsonElement> notificationlist(@Body RequestBody notificationlist);
+    @POST("service.php")
+    Call<JsonElement> bannerlist(@Body RequestBody notificationlist);
+    @POST("service.php")
+    Call<JsonElement> offerlist(@Body RequestBody notificationlist);
     @POST("service.php")
     Call<JsonElement> accountdetaillist(@Body RequestBody accountdetaillist);
     @POST("service.php")
@@ -118,6 +124,10 @@ public interface ApiInterface {
     Call<JsonElement> websitelistdelete(@Body RequestBody websitelistdelete);
     @POST("service.php")
     Call<JsonElement> Subadminlistdelete(@Body RequestBody Subadminlistdelete);
+    @POST("service.php")
+    Call<JsonElement> bannnerdelete(@Body RequestBody Subadminlistdelete);
+    @POST("service.php")
+    Call<JsonElement> offersdelete(@Body RequestBody Subadminlistdelete);
     @POST("service.php")
     Call<JsonElement> Accountdelete(@Body RequestBody Accountdelete);
     @POST("service.php")

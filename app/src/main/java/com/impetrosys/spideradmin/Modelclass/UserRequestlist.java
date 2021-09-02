@@ -28,6 +28,9 @@ public class UserRequestlist {
     @SerializedName("paymentscreenshot")
     @Expose
     private String paymentscreenshot;
+    @SerializedName("rewardstatus")
+    @Expose
+    private String rewardstatus;
 
     public String getId() {
         return id;
@@ -91,5 +94,13 @@ public class UserRequestlist {
 
     public void setPaymentscreenshot(String paymentscreenshot) {
         this.paymentscreenshot = paymentscreenshot;
+    }
+
+    public String getRewardstatus() {
+        return rewardstatus;
+    }
+
+    public void setRewardstatus(String rewardstatus) {
+        this.rewardstatus = rewardstatus;
     }
 }

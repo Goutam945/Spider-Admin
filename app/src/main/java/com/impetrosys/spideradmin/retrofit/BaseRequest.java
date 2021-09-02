@@ -457,6 +457,26 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
+    public void callAPIOffers(final int APINumber, String remainingURL, String title, String code,String price, String image) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("title",title);
+        jsonObject1.put("code",code);
+        jsonObject1.put("price",price);
+        jsonObject1.put("photo",image);
+        jsonObject.put("func_name","createoffer");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.offers(body);
+        call.enqueue(responseCallback);
+
+    }
 
     public void callAPICreate_refralcode(final int APINumber, String remainingURL, String reward,String userid) throws JSONException {
         APINumber_ = APINumber;
@@ -547,6 +567,38 @@ public class BaseRequest<T> extends BaseRequestParser {
         Call<JsonElement> call = apiInterface_.Subadminlistdelete(body);
         call.enqueue(responseCallback);
     }
+    public void callAPIdeletebannser(final int APINumber, String remainingURL, String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("id",id);
+        jsonObject.put("func_name","deletebanner");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.bannnerdelete(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIdeleteoffers(final int APINumber, String remainingURL, String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("id",id);
+        jsonObject.put("func_name","deleteoffer");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.offersdelete(body);
+        call.enqueue(responseCallback);
+    }
     public void callAPIdeleteAccountdetail(final int APINumber, String remainingURL, String id) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
@@ -563,7 +615,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
     }
 
-    public void callAPIapproveUser_request(final int APINumber, String remainingURL, String id,String username,String password,String userid) throws JSONException {
+    public void callAPIapproveUser_request(final int APINumber, String remainingURL, String id,String reward,String username,String password,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -572,6 +624,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("status","1");
         jsonObject1.put("username",username);
         jsonObject1.put("password",password);
+        jsonObject1.put("isreward",reward);
         jsonObject1.put("description","");
         jsonObject1.put("userid",userid);
         jsonObject.put("func_name","approverequestid");
@@ -1065,6 +1118,34 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         Call<JsonElement> call = apiInterface_.notificationlist(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIgetBannerlist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","bannerlist");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.bannerlist(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIgetOfferlist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","offerlist");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.offerlist(body);
         call.enqueue(responseCallback);
     }
     public void callAPIAcoountdetaillist(final int APINumber, String remainingURL,String userid) throws JSONException {

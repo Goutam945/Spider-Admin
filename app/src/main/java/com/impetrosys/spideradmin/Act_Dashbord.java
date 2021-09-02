@@ -66,6 +66,7 @@ public class Act_Dashbord extends AppCompatActivity {
         card8=(CardView) findViewById(R.id.card8);
         card9=(CardView) findViewById(R.id.card9);
         card10=(CardView) findViewById(R.id.card10);
+        card11=(CardView) findViewById(R.id.card11);
         userid=(TextView)findViewById(R.id.user_id);
         username=(TextView)findViewById(R.id.user_name);
         logout=(ImageView)findViewById(R.id.logoutt);
@@ -179,7 +180,7 @@ public class Act_Dashbord extends AppCompatActivity {
         card8.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
-                                         Intent i=new Intent(Act_Dashbord.this, Act_Banner_create.class);
+                                         Intent i=new Intent(Act_Dashbord.this, Act_Bannerlist.class);
                                          startActivity(i);
                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                          startActivity(i);
@@ -210,6 +211,18 @@ public class Act_Dashbord extends AppCompatActivity {
                                          finish();
                                      }
                                  }
+
+        );
+        card11.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent i=new Intent(Act_Dashbord.this, Act_Offerslist.class);
+                                          startActivity(i);
+                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                          startActivity(i);
+                                          finish();
+                                      }
+                                  }
 
         );
 

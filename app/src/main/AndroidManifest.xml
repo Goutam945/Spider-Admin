@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/apptheam">
         <activity
+            android:name=".Act_CreateOffers"
+            android:exported="true" />
+        <activity
+            android:name=".Act_Offerslist"
+            android:exported="true" />
+        <activity
+            android:name=".Act_Bannerlist"
+            android:exported="true" />
+        <activity
             android:name=".Act_Userlist_Referallist"
             android:exported="true" />
         <activity

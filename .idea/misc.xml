@@ -6,7 +6,10 @@
         <entry key="app/src/main/res/drawable/bg.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/accountdetails.xml" value="0.1" />
         <entry key="app/src/main/res/layout/act_home_basic.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_act_bannerlist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_act_create_offers.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_act_create_referal.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_act_offerslist.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_act_paymentdeposit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_act_raiseconcern.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/activity_act_userlist_referallist.xml" value="0.10552536231884058" />
@@ -44,6 +47,7 @@
         <entry key="app/src/main/res/layout/userrequsetaprrove_dailog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/witdrawl_imgupload.xml" value="0.10960144927536232" />
         <entry key="app/src/main/res/layout/withdrawl_reject.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/menu/menu_list.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/menuitem.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.209375" />
       </map>

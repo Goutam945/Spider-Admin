@@ -40,30 +40,31 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class Act_Banner_create extends AppCompatActivity {
-    Context context;
+public class Act_CreateOffers extends AppCompatActivity {
+   Context context;
     Activity activity;
     private BaseRequest baseRequest;
     SessionParam sessionParam;
     private int progressStatus = 0;
-    EditText etname,eturl;
-    ImageView banner_img,btnback;
-    TextView tv_banner;
-    Button createbanner;
-    String name,url;
+    EditText ettitle,etcode,etprice;
+    ImageView offers_img,btnback;
+    TextView tv_offers;
+    Button createoffers;
+    String title,code,price;
     private String Document_img="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_banner_create);
-        etname=findViewById(R.id.name);
-        eturl=findViewById(R.id.url);
-        tv_banner=findViewById(R.id.tv_banner);
-        banner_img=findViewById(R.id.mv_banner);
-        createbanner=findViewById(R.id.btn_banner);
+        setContentView(R.layout.activity_act_create_offers);
+        ettitle=findViewById(R.id.title);
+        etcode=findViewById(R.id.code);
+        etprice=findViewById(R.id.price);
+        tv_offers=findViewById(R.id.tv_offer);
+        offers_img=findViewById(R.id.mv_offer);
+        createoffers=findViewById(R.id.btn_offers);
         btnback=findViewById(R.id.back_btn);
 
-        tv_banner.setOnClickListener(new View.OnClickListener() {
+        tv_offers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 permission();
@@ -71,22 +72,23 @@ public class Act_Banner_create extends AppCompatActivity {
             }
 
         });
-        createbanner.setOnClickListener(new View.OnClickListener() {
+        createoffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = etname.getText().toString();
-                url = eturl.getText().toString();
+                title = ettitle.getText().toString();
+                code = etcode.getText().toString();
+                price = etprice.getText().toString();
                 if(validate()){
 
                     if (Document_img!=null&&!Document_img.isEmpty()){
                         try {
                             Loder();
-                            api_Banner();
+                            api_Offers();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }else {
-                        Toast.makeText(Act_Banner_create.this,"Please upload banner",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Act_CreateOffers.this,"Please upload banner",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -94,11 +96,7 @@ public class Act_Banner_create extends AppCompatActivity {
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Banner_create.this, Dashbord.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
-                Intent i=new Intent(Act_Banner_create.this, Act_Bannerlist.class);
+                Intent i=new Intent(Act_CreateOffers.this, Act_Offerslist.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
                 startActivity(i);
@@ -109,7 +107,7 @@ public class Act_Banner_create extends AppCompatActivity {
 
 
     }
-    private void api_Banner() throws JSONException {
+    private void api_Offers() throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -119,10 +117,10 @@ public class Act_Banner_create extends AppCompatActivity {
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
 
                     Toast.makeText(getApplicationContext(), "Sucessfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Act_Dashbord.class);
+                    Intent i = new Intent(getApplicationContext(), Act_Offerslist.class);
                     startActivity(i);
-                    etname.setText("");
-                    eturl.setText("");
+                    ettitle.setText("");
+                    etcode.setText("");
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -132,7 +130,7 @@ public class Act_Banner_create extends AppCompatActivity {
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(Act_Banner_create.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Act_CreateOffers.this, message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -142,7 +140,7 @@ public class Act_Banner_create extends AppCompatActivity {
             }
         });
 
-        baseRequest.callAPIBanner(1, "https://impetrosys.com/spiderapp/",name, url,Document_img);
+        baseRequest.callAPIOffers(1, "https://impetrosys.com/spiderapp/",title, code,price,Document_img);
 
     }
     private  void permission(){
@@ -164,7 +162,7 @@ public class Act_Banner_create extends AppCompatActivity {
     }
     private void selectImage() {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-        AlertDialog.Builder builder = new AlertDialog.Builder(Act_Banner_create.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Act_CreateOffers.this);
         builder.setTitle("Add Photo!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
@@ -195,7 +193,7 @@ public class Act_Banner_create extends AppCompatActivity {
             if (requestCode == 1) {
 
                 Bitmap srcBmp = (Bitmap) data.getExtras().get("data");
-                banner_img.setImageBitmap(srcBmp);
+                offers_img.setImageBitmap(srcBmp);
                 BitMapToString(srcBmp);
                 Log.w("path.....", srcBmp+"");
 
@@ -210,7 +208,7 @@ public class Act_Banner_create extends AppCompatActivity {
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
                 thumbnail=getResizedBitmap(thumbnail, 400);
                 Log.w("path.....", picturePath+"");
-                banner_img.setImageBitmap(thumbnail);
+                offers_img.setImageBitmap(thumbnail);
                 BitMapToString(thumbnail);
             }
         }
@@ -220,7 +218,7 @@ public class Act_Banner_create extends AppCompatActivity {
         userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
         byte[] b = baos.toByteArray();
         Document_img = Base64.encodeToString(b, Base64.DEFAULT);
-        banner_img.setVisibility(View.VISIBLE);
+        offers_img.setVisibility(View.VISIBLE);
         return Document_img;
     }
 
@@ -241,18 +239,24 @@ public class Act_Banner_create extends AppCompatActivity {
     private boolean validate() {
         boolean valid = true;
 
-        if (name.equals("") || name.equals(null)) {
-            etname.setError("at least 3 characters");
+        if (title.equals("") || title.equals(null)) {
+            ettitle.setError("at least 3 characters");
             valid = false;
         } else {
-            etname.setError(null);
+            ettitle.setError(null);
         }
 
-        if (url.equals("")|| url.equals(null) || !Patterns.WEB_URL.matcher(url).matches()) {
-            eturl.setError("enter a valid url");
+        if (code.equals("")|| code.equals(null) ) {
+            etcode.setError("enter a valid code");
             valid = false;
         } else {
-            eturl.setError(null);
+            etcode.setError(null);
+        }
+        if (price.equals("")|| price.equals(null) ) {
+            etprice.setError("enter a valid price");
+            valid = false;
+        } else {
+            etprice.setError(null);
         }
         return valid;
     }
@@ -298,5 +302,4 @@ public class Act_Banner_create extends AppCompatActivity {
         }
         return super.onKeyDown(keycode, event);
     }
-
 }
