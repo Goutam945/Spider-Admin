@@ -879,7 +879,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPAddwebsite(final int APINumber, String remainingURL, String websitename, String url, String description,JSONArray jsonArray,String Document_img) throws JSONException {
+    public void callAPAddwebsite(final int APINumber, String remainingURL, String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -888,6 +888,10 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("name",websitename);
         jsonObject1.put("url",url);
         jsonObject1.put("description",description);
+        jsonObject1.put("minrefil",minrefil);
+        jsonObject1.put("minwithdraw",minwithdraawl);
+        jsonObject1.put("maxwithdraw",maxwithdrawl);
+        jsonObject1.put("minmaintainbal",mainbal);
         jsonObject1.put("games",jsonArray);
         jsonObject1.put("photo",Document_img);
 
@@ -1039,7 +1043,7 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
 
-    public void callAPIUpdatewebsite(final int APINumber, String remainingURL,String id ,String websitename, String url, String description,JSONArray jsonArray,String Document_img) throws JSONException {
+    public void callAPIUpdatewebsite(final int APINumber, String remainingURL,String id ,String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -1048,6 +1052,10 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("name",websitename);
         jsonObject1.put("url",url);
         jsonObject1.put("description",description);
+        jsonObject1.put("minrefil",minrefil);
+        jsonObject1.put("minwithdraw",minwithdraawl);
+        jsonObject1.put("maxwithdraw",maxwithdrawl);
+        jsonObject1.put("minmaintainbal",mainbal);
         jsonObject1.put("photo",Document_img);
         jsonObject1.put("games",jsonArray);
 

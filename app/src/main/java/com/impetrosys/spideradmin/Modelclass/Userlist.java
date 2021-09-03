@@ -24,6 +24,9 @@ public class Userlist {
     @SerializedName("isrefer")
     @Expose
     private Integer isrefer;
+    @SerializedName("wallet")
+    @Expose
+    private Wallet wallet;
     @SerializedName("referaldetail")
     @Expose
     private List<Referaldetail> referaldetail = null;
@@ -77,6 +80,14 @@ public class Userlist {
 
     public void setIsrefer(Integer isrefer) {
         this.isrefer = isrefer;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     public List<Referaldetail> getReferaldetail() {
@@ -151,6 +162,43 @@ public class Userlist {
 
         public void setUid(String uid) {
             this.uid = uid;
+        }
+
+    }
+    public class Wallet {
+
+        @SerializedName("wallet")
+        @Expose
+        private Integer wallet;
+        @SerializedName("reward")
+        @Expose
+        private Integer reward;
+        @SerializedName("total")
+        @Expose
+        private Integer total;
+
+        public Integer getWallet() {
+            return wallet;
+        }
+
+        public void setWallet(Integer wallet) {
+            this.wallet = wallet;
+        }
+
+        public Integer getReward() {
+            return reward;
+        }
+
+        public void setReward(Integer reward) {
+            this.reward = reward;
+        }
+
+        public Integer getTotal() {
+            return total;
+        }
+
+        public void setTotal(Integer total) {
+            this.total = total;
         }
 
     }

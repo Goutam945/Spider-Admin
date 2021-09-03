@@ -101,6 +101,7 @@
                     android:paddingRight="10dp"
                     style="@style/Edittext" />
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -111,6 +112,7 @@
 
 
                 <EditText
+                    android:visibility="gone"
                     android:id="@+id/editdescription"
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
@@ -124,6 +126,91 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     style="@style/Edittext"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Min Refil"
+                    style="@style/Edittext_title"/>
+
+
+                <EditText
+                    android:id="@+id/minrefill"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Min Refil"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Min Withdrawal"
+                    style="@style/Edittext_title"/>
+
+
+                <EditText
+                    android:id="@+id/minwithdraw"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Min Withdrawal"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Max Withdrawal"
+                    style="@style/Edittext_title"/>
+
+
+                <EditText
+                    android:id="@+id/maxwithdraw"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Max Withdrawal"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Min Maintaining Bal"
+                    style="@style/Edittext_title"/>
+
+
+                <EditText
+                    android:id="@+id/maintainingbal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_textnew"
+                    android:drawablePadding="5dp"
+                    android:hint="Min Maintaining Bal"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    style="@style/Edittext" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

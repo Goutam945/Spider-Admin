@@ -36,6 +36,12 @@ public class Withdrawalsrequest {
     @SerializedName("withdrawstatus")
     @Expose
     private String withdrawstatus;
+    @SerializedName("websitename")
+    @Expose
+    private String websitename;
+    @SerializedName("clientname")
+    @Expose
+    private String clientname;
 
     public String getId() {
         return id;
@@ -116,6 +122,23 @@ public class Withdrawalsrequest {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
+
+    public String getWebsitename() {
+        return websitename;
+    }
+
+    public void setWebsitename(String websitename) {
+        this.websitename = websitename;
+    }
+
+    public String getClientname() {
+        return clientname;
+    }
+
+    public void setClientname(String clientname) {
+        this.clientname = clientname;
+    }
+
     public class Withdrawdetail {
 
         @SerializedName("displayname")

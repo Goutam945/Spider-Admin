@@ -1,6 +1,7 @@
 package com.impetrosys.spideradmin.Adapter;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -68,7 +69,7 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
         return new MyViewHolder(view);    }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
 
@@ -135,14 +136,13 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
 
             }
         }
+        if(list.get(position).getWallet()!=null){
+            holder.wallet.setText("Wallet :  " + list.get(position).getWallet().getWallet().toString());
+            holder.reward.setText("Reward :  " + list.get(position).getWallet().getReward().toString());
+            holder.total.setText("Total :  " + list.get(position).getWallet().getTotal().toString());
 
-       /* for (int k = 0; k < list.get(position).getReferaldetail().size(); k++) {
-            String name = list.get(position).getIsrefer().toString();
-            if (name.equalsIgnoreCase("1")) {
+        }
 
-
-            }
-        }*/
 
 
         holder.dropdwn.setOnClickListener(new View.OnClickListener() {
@@ -200,7 +200,7 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,mobile,id;
+        TextView name,mobile,id,wallet,reward, total;
         ImageView dropdwn,moreoption;
         LinearLayout layout;
         View v1,v2,v3,v4;
@@ -213,6 +213,10 @@ public class Ad_userlist extends RecyclerView.Adapter<Ad_userlist.MyViewHolder> 
             name = itemView.findViewById(R.id.name);
             mobile = itemView.findViewById(R.id.mobile);
             id = itemView.findViewById(R.id.clintid);
+            wallet = itemView.findViewById(R.id.wallet);
+            reward = itemView.findViewById(R.id.reward);
+            total = itemView.findViewById(R.id.total);
+
             dropdwn = itemView.findViewById(R.id.drodow);
             layout=itemView.findViewById(R.id.lay);
 

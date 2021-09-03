@@ -64,7 +64,9 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
         String status=list.get(position).getStatus();
         if(status.equalsIgnoreCase("0")) {
-            holder.username.setText("User : " + list.get(position).getUsername());
+            holder.clientname.setText("User Name : " + list.get(position).getClientname());
+            holder.websitename.setText("Website Name : " + list.get(position).getWebsitename());
+            holder.username.setText("Client Name : " + list.get(position).getUsername());
             holder.userid.setText("UserID : " + list.get(position).getUserid());
             holder.amount.setText("Coins : " + list.get(position).getCoins());
             holder.withdrawstatus.setText("Withdraws : " + list.get(position).getWithdrawstatus());
@@ -152,7 +154,7 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView username,userid,amount,Pmethode,Upiname,Upinumber,Bankname,
+        TextView clientname,websitename,username,userid,amount,Pmethode,Upiname,Upinumber,Bankname,
         Ifc,Branch,Accountnumber,withdrawstatus;
         Button Approve,Reject;
         public MyViewHolder(@NonNull View itemView) {
@@ -160,6 +162,8 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
 
             username = itemView.findViewById(R.id.tv_username);
             userid = itemView.findViewById(R.id.tv_userid);
+            clientname = itemView.findViewById(R.id.tv_clientname);
+            websitename = itemView.findViewById(R.id.tv_websitename);
             amount = itemView.findViewById(R.id.tv_coins);
             Pmethode = itemView.findViewById(R.id.tv_pmethod);
 

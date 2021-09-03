@@ -75,9 +75,9 @@ public class Act_Website_list extends AppCompatActivity {
     ArrayList<Websitelist.Game> gamelist = new ArrayList<>();
 
     private String Document_img="";
-    String websitename,url,description;
+    String websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal;
     Button btn_save;
-     EditText et_name,et_url,et_description;
+     EditText et_name,et_url,et_description,et_minrefill,et_minwithdraw,et_maxwithdraw,et_maintainingbal;
     CheckBox ch, ch1, ch2, ch3,ch4,ch5,ch6;
     EditText cricket,football,tennis,hourse,card,livecasino,politics;
     JSONArray jsonArray=new JSONArray();
@@ -253,6 +253,10 @@ public class Act_Website_list extends AppCompatActivity {
         et_name= mDialog.findViewById(R.id.editname);
         et_url= mDialog.findViewById(R.id.editurl);
         et_description= mDialog.findViewById(R.id.editdescription);
+        et_minrefill= mDialog.findViewById(R.id.minrefill);
+        et_minwithdraw= mDialog.findViewById(R.id.minwithdraw);
+        et_maxwithdraw= mDialog.findViewById(R.id.maxwithdraw);
+        et_maintainingbal= mDialog.findViewById(R.id.maintainingbal);
         btn_save= mDialog.findViewById(R.id.btn_save);
         ch=mDialog.findViewById(R.id.cricket);
         ch1=mDialog.findViewById(R.id.football);
@@ -291,6 +295,11 @@ public class Act_Website_list extends AppCompatActivity {
             et_name.setText(websitelist.getName());
             et_url.setText(websitelist.getUrl());
             et_description.setText(websitelist.getDescription());
+            et_minrefill.setText(websitelist.getMinrefil());
+            et_minwithdraw.setText(websitelist.getMinwithdraw());
+            et_maxwithdraw.setText(websitelist.getMaxwithdraw());
+            et_maintainingbal.setText(websitelist.getMinmaintainbal());
+
             if(websitelist.getPhoto() != null && !websitelist.getPhoto().isEmpty() ) {
             Picasso.get()
                     .load(websitelist.getPhoto())
@@ -358,6 +367,10 @@ public class Act_Website_list extends AppCompatActivity {
                 websitename = et_name.getText().toString();
                 url = et_url.getText().toString();
                 description = et_description.getText().toString();
+                minrefill = et_minrefill.getText().toString();
+                minwithdraw = et_minwithdraw.getText().toString();
+                maxwithdraw = et_maxwithdraw.getText().toString();
+                maintainingbal = et_maintainingbal.getText().toString();
                 //check condition button
                 if(btname.equals("Update")){
                     try {
@@ -547,7 +560,7 @@ public class Act_Website_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPAddwebsite(1, "https://impetrosys.com/spiderapp/",websitename,url,description,jsonArray,Document_img);
+        baseRequest.callAPAddwebsite(1, "https://impetrosys.com/spiderapp/",websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img);
 
     }
     private void apiUpdatewebsite(JSONArray jsonArray ,String id) throws JSONException {
@@ -578,7 +591,7 @@ public class Act_Website_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIUpdatewebsite(1, "https://impetrosys.com/spiderapp/",id,websitename,url,description,jsonArray,Document_img);
+        baseRequest.callAPIUpdatewebsite(1, "https://impetrosys.com/spiderapp/",id,websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img);
 
     }
     public void Checkboxshideshow(){
@@ -672,12 +685,37 @@ public class Act_Website_list extends AppCompatActivity {
         } else {
             et_url.setError(null);
         }
-        if (description.equals("") || description.equals(null)) {
+        /*if (description.equals("") || description.equals(null)) {
             et_description.setError("at least 3 characters");
             valid = false;
         } else {
             et_description.setError(null);
+        }*/
+        if (minrefill.equals("") || minrefill.equals(null)) {
+            et_minrefill.setError("Enter Value");
+            valid = false;
+        } else {
+            et_minrefill.setError(null);
         }
+        if (minwithdraw.equals("") || minwithdraw.equals(null)) {
+            et_minwithdraw.setError("Enter Value");
+            valid = false;
+        } else {
+            et_minwithdraw.setError(null);
+        }
+        if (maxwithdraw.equals("") || maxwithdraw.equals(null)) {
+            et_maxwithdraw.setError("Enter Value");
+            valid = false;
+        } else {
+            et_maxwithdraw.setError(null);
+        }
+        if (maintainingbal.equals("") || maintainingbal.equals(null)) {
+            et_maintainingbal.setError("Enter Value");
+            valid = false;
+        } else {
+            et_maintainingbal.setError(null);
+        }
+
         if(!(ch.isChecked()||ch1.isChecked()||ch2.isChecked()||ch3.isChecked()||ch4.isChecked()||ch5.isChecked()||ch6.isChecked())){
             Toast.makeText(getApplicationContext(), "select check box", Toast.LENGTH_SHORT).show();
             valid = false;

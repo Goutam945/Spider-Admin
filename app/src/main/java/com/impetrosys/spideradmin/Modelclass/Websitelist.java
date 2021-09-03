@@ -18,6 +18,18 @@ public class Websitelist {
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("minrefil")
+    @Expose
+    private String minrefil;
+    @SerializedName("minmaintainbal")
+    @Expose
+    private String minmaintainbal;
+    @SerializedName("minwithdraw")
+    @Expose
+    private String minwithdraw;
+    @SerializedName("maxwithdraw")
+    @Expose
+    private String maxwithdraw;
     @SerializedName("description")
     @Expose
     private String description;
@@ -55,6 +67,38 @@ public class Websitelist {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getMinrefil() {
+        return minrefil;
+    }
+
+    public void setMinrefil(String minrefil) {
+        this.minrefil = minrefil;
+    }
+
+    public String getMinmaintainbal() {
+        return minmaintainbal;
+    }
+
+    public void setMinmaintainbal(String minmaintainbal) {
+        this.minmaintainbal = minmaintainbal;
+    }
+
+    public String getMinwithdraw() {
+        return minwithdraw;
+    }
+
+    public void setMinwithdraw(String minwithdraw) {
+        this.minwithdraw = minwithdraw;
+    }
+
+    public String getMaxwithdraw() {
+        return maxwithdraw;
+    }
+
+    public void setMaxwithdraw(String maxwithdraw) {
+        this.maxwithdraw = maxwithdraw;
     }
 
     public String getDescription() {

@@ -28,9 +28,8 @@
                 android:layout_marginLeft="5dp"
                 style="@style/requestuser"
                />
-
             <TextView
-                android:id="@+id/d_id"
+                android:id="@+id/webstename"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/d_username"
@@ -38,9 +37,35 @@
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="User ID"
+                android:text="webstename"
                 style="@style/requestuser"
-              />
+                />
+            <TextView
+                android:id="@+id/clietname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/webstename"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="clietname"
+                style="@style/requestuser"
+                />
+
+
+            <TextView
+                android:id="@+id/d_id"
+                style="@style/requestuser"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clietname"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="User ID" />
 
             <TextView
                 android:id="@+id/d_paymentmethod"

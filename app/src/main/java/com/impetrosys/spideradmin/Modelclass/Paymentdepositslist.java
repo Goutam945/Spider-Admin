@@ -42,6 +42,14 @@ public class Paymentdepositslist {
     @SerializedName("depositstatus")
     @Expose
     private String depositstatus;
+    @Expose
+    private String withdrawstatus;
+    @SerializedName("websitename")
+    @Expose
+    private String websitename;
+    @SerializedName("clientname")
+    @Expose
+    private String clientname;
 
     public String getId() {
         return id;
@@ -138,6 +146,21 @@ public class Paymentdepositslist {
 
     public void setDepositstatus(String depositstatus) {
         this.depositstatus = depositstatus;
+    }
+    public String getWebsitename() {
+        return websitename;
+    }
+
+    public void setWebsitename(String websitename) {
+        this.websitename = websitename;
+    }
+
+    public String getClientname() {
+        return clientname;
+    }
+
+    public void setClientname(String clientname) {
+        this.clientname = clientname;
     }
 
     public class Userrewarddetail {

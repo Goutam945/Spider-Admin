@@ -91,7 +91,35 @@
         android:visibility="gone"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-
+        <TextView
+            android:id="@+id/wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="wallet"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/reward"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="reward"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="total"
+            style="@style/requestuser"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="5dp"
+            android:background="@color/d_black"/>
 
          <TextView
              android:id="@+id/paymentmethod"

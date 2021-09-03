@@ -56,9 +56,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Act_Deposits_details extends AppCompatActivity {
-String username,userid,paymentmethod,coins,Depositstatus,paymentscreenshot,createddate,ID,Rewardstatus, Wallet="0",Reward="0",Total="0";
+String username,userid,paymentmethod,coins,Depositstatus,paymentscreenshot,createddate,ID,Rewardstatus, Wallet="0",Reward="0",Total="0",Clientname, Websitename;
     FrameLayout container;
-    TextView name,uid,pmethod,coin,dete,wallet,reward,total,depositstatus;
+    TextView name,uid,pmethod,coin,dete,wallet,reward,total,depositstatus,websitename ,clientname;
     ImageView imageView;
     ProgressBar progress;
     Button approve,reject;
@@ -103,6 +103,9 @@ String username,userid,paymentmethod,coins,Depositstatus,paymentscreenshot,creat
         reward = rowView.findViewById(R.id.reward);
         total = rowView.findViewById(R.id.total);
 
+        clientname = rowView.findViewById(R.id.clietname);
+        websitename = rowView.findViewById(R.id.webstename);
+
 
         Intent intent=getIntent();
         username=intent.getStringExtra("username");
@@ -118,15 +121,18 @@ String username,userid,paymentmethod,coins,Depositstatus,paymentscreenshot,creat
         Wallet=intent.getStringExtra("wallet");
         Reward=intent.getStringExtra("reward");
         Total=intent.getStringExtra("total");
+        Clientname=intent.getStringExtra("clientname");
+        Websitename=intent.getStringExtra("websitename");
 
 
-        name.setText("User : "+username);
+        name.setText("Client Name : "+username);
         uid.setText("User Id : "+userid);
         pmethod.setText("Paymentmethod : "+paymentmethod);
         coin.setText("Coins : "+coins);
         depositstatus.setText("Deposits : "+Depositstatus);
         dete.setText("Date : "+createddate);
-
+        clientname.setText("User Name : "+Clientname);
+        websitename.setText("Website Name : "+Websitename);
 
 
         if(Rewardstatus.equalsIgnoreCase("0")){
