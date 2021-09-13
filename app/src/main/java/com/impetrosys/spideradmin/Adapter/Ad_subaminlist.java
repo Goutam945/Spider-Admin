@@ -75,6 +75,7 @@ public class Ad_subaminlist extends RecyclerView.Adapter<Ad_subaminlist.MyViewHo
             @Override
             public void onClick(View v) {
                 delete.edit(list.get(position));
+
             }
         });
 

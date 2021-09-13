@@ -49,8 +49,22 @@
                     android:layout_marginLeft="10dp"
                     style="@style/texttitle" />
                 <TextView
-                    android:id="@+id/re_id"
+                    android:id="@+id/re_password"
                     android:layout_below="@+id/re_name"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/icon"
+                    android:layout_toRightOf="@id/icon"
+                    android:gravity="center_vertical"
+                    android:text="www.com"
+                    android:layout_marginLeft="10dp"
+                    style="@style/textsubtile" />
+
+
+                <TextView
+                    android:id="@+id/re_id"
+                    android:layout_below="@+id/re_password"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"

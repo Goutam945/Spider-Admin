@@ -27,6 +27,9 @@ public class ClientidRequestchangepasslsit {
     @SerializedName("requestdate")
     @Expose
     private String requestdate;
+    @SerializedName("password")
+    @Expose
+    private String password;
 
     public String getId() {
         return id;
@@ -84,5 +87,11 @@ public class ClientidRequestchangepasslsit {
         this.requestdate = requestdate;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

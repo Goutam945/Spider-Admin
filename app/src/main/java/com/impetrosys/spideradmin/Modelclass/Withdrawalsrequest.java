@@ -42,6 +42,12 @@ public class Withdrawalsrequest {
     @SerializedName("clientname")
     @Expose
     private String clientname;
+    @SerializedName("websiteurl")
+    @Expose
+    private String websiteurl;
+    @SerializedName("password")
+    @Expose
+    private String password;
 
     public String getId() {
         return id;
@@ -137,6 +143,22 @@ public class Withdrawalsrequest {
 
     public void setClientname(String clientname) {
         this.clientname = clientname;
+    }
+
+    public String getWebsiteurl() {
+        return websiteurl;
+    }
+
+    public void setWebsiteurl(String websiteurl) {
+        this.websiteurl = websiteurl;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public class Withdrawdetail {

@@ -142,6 +142,49 @@
             android:visibility="gone"
             tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/t7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/gtwalsheimpro_regular"
+            android:text="Holder Name"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/holdername"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/gtwalsheimpro_regular"
+            android:text="Paynet"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/t8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/gtwalsheimpro_regular"
+            android:text="Account type"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/accouttype"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/gtwalsheimpro_regular"
+            android:text="Paynet"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
+
         <Button
             android:id="@+id/btn_send"
             android:layout_width="120dp"

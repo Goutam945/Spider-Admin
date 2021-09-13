@@ -63,12 +63,27 @@
             <Button
                 android:id="@+id/add"
                 android:layout_gravity="center"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="10dp"
                 android:text="Add"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_btn"
                 android:layout_width="70dp"
                 android:layout_height="35dp"/>
+            <ImageView
+                android:id="@+id/enable"
+                android:src="@drawable/ic_baseline_more_vert_24"
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                app:tint="@color/white" />
+           <Switch
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:visibility="gone"
+               android:id="@+id/switch1"
+               android:textOff="OFF"
+               android:textOn="ON"
+               />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

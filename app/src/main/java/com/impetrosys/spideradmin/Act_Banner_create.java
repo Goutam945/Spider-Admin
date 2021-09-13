@@ -62,6 +62,7 @@ public class Act_Banner_create extends AppCompatActivity {
         banner_img=findViewById(R.id.mv_banner);
         createbanner=findViewById(R.id.btn_banner);
         btnback=findViewById(R.id.back_btn);
+        sessionParam=new SessionParam(getApplicationContext());
 
         tv_banner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +143,7 @@ public class Act_Banner_create extends AppCompatActivity {
             }
         });
 
-        baseRequest.callAPIBanner(1, "https://impetrosys.com/spiderapp/",name, url,Document_img);
+        baseRequest.callAPIBanner(1, "https://impetrosys.com/spiderapp/",name, url,Document_img,sessionParam.userId);
 
     }
     private  void permission(){

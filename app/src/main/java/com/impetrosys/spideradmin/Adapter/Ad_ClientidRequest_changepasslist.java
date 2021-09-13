@@ -62,10 +62,14 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        String status=list.get(position).getStatus();
+        if(status.equalsIgnoreCase("0")) {
 
+            holder.name.setText(list.get(position).getUsername());
+            holder.password.setText("Password: " + list.get(position).getPassword());
+            holder.userid.setText("Client Id: " + list.get(position).getLoginusername());
+        }
 
-        holder.name.setText(list.get(position).getUsername());
-        holder.userid.setText("Client Id "+list.get(position).getUserid());
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +85,10 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.edit:
-                                changepass.pass(list.get(position).getRequestid());
+                                changepass.pass(list.get(position).getRequestid(),list.get(position).getUserid());
                                 return true;
                             case R.id.delite:
-                                changepass.nopass(list.get(position).getRequestid());
+                                changepass.nopass(list.get(position).getRequestid(),list.get(position).getUserid());
                                 return false;
 
                             default:
@@ -112,12 +116,13 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,userid;
+        TextView name,userid,password;
         ImageView edit;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.re_name);
+            password = itemView.findViewById(R.id.re_password);
             userid = itemView.findViewById(R.id.re_id);
             edit = itemView.findViewById(R.id.re_edit);
 
@@ -160,10 +165,10 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
     };*/
    public interface Changepass{
        public void pass(
-               String id
+               String id,String uid
        );
        public void nopass(
-               String id
+               String id, String uid
        );
    }
 }

@@ -69,7 +69,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
-        getSupportActionBar().setTitle("Client Id's");
+        getSupportActionBar().setTitle("Change Id Password");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
 
@@ -82,12 +82,12 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
         recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         try {
             Loder();
-            ApiGetCLientidlist();
+            ApiGetCLientidpasswordlist();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-    private void ApiGetCLientidlist () throws JSONException {
+    private void ApiGetCLientidpasswordlist () throws JSONException {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -99,19 +99,25 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
                         JSONArray jsonArray = jsonObject.optJSONArray("changepasswordrequestlist");
                         clientidrequestlsits = baseRequest.getDataList(jsonArray, ClientidRequestchangepasslsit.class);
+                        clientidrequestlsits2.clear();
                         for (int i = 0; i < clientidrequestlsits.size(); i++) {
                             if (clientidrequestlsits != null) {
 
-                                ad_clientidRequestlist = new Ad_ClientidRequest_changepasslist(clientidrequestlsits, getApplicationContext(), sessionParam, activity, new Ad_ClientidRequest_changepasslist.Changepass() {
+                                if( clientidrequestlsits.get(i).getStatus().equalsIgnoreCase("0")){
+                                    clientidrequestlsits2.add(clientidrequestlsits.get(i));
+
+                                }
+
+                                ad_clientidRequestlist = new Ad_ClientidRequest_changepasslist(clientidrequestlsits2, getApplicationContext(), sessionParam, activity, new Ad_ClientidRequest_changepasslist.Changepass() {
                                     @Override
-                                    public void pass(String id) {
-                                        changepass(id);
+                                    public void pass(String id,String uid) {
+                                        changepass(id,uid);
 
                                     }
 
                                     @Override
-                                    public void nopass(String id) {
-                                        NOchangepass(id);
+                                    public void nopass(String id,String uid) {
+                                        NOchangepass(id,uid);
 
                                     }
                                 });
@@ -142,11 +148,11 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetClient_changepasslist(1, remainingUrl2);
+        baseRequest.callAPIgetClient_changepasslist(1, remainingUrl2,sessionParam.userId);
 
     }
 
-    public void changepass(String id)
+    public void changepass(String id,String uid)
     {
         Dialog mDialog = new Dialog(Act_Clientids_requestchangepass.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
@@ -169,7 +175,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
                     return;
                 }else {
                     try {
-                        apichange_passwordclientid(id);
+                        apichange_passwordclientid(id,uid);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -191,7 +197,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
     }
 
-    public void NOchangepass(String id)
+    public void NOchangepass(String id,String uid)
     {
         Dialog mDialog = new Dialog(Act_Clientids_requestchangepass.this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
@@ -211,7 +217,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
                     return;
                 }else {
                     try {
-                        apichange_passwordclientidReject(id);
+                        apichange_passwordclientidReject(id,uid);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -232,7 +238,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
         mDialog.show();
 
     }
-    private void apichange_passwordclientid(String id) throws JSONException {
+    private void apichange_passwordclientid(String id ,String uid) throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -262,11 +268,11 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIClientid_Changepassword(1, "https://impetrosys.com/spiderapp/",id,PasswordChange,sessionParam.userId);
+        baseRequest.callAPIClientid_Changepassword(1, "https://impetrosys.com/spiderapp/",id,PasswordChange,uid);
 
     }
 
-    private void apichange_passwordclientidReject(String id) throws JSONException {
+    private void apichange_passwordclientidReject(String id,String uid) throws JSONException {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -296,7 +302,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIClientid_NOchangepassword(1, "https://impetrosys.com/spiderapp/",id,Description,sessionParam.userId);
+        baseRequest.callAPIClientid_NOchangepassword(1, "https://impetrosys.com/spiderapp/",id,Description,uid);
 
     }
 

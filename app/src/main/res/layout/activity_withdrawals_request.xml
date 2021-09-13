@@ -33,6 +33,24 @@
             style="@style/requestuser"
             />
         <TextView
+            android:id="@+id/tv_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="goutam"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"
+            />
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="goutam"
+            android:paddingLeft="25dp"
+            style="@style/requestuser"
+            />
+        <TextView
             android:id="@+id/tv_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

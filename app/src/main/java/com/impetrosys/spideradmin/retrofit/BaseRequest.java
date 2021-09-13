@@ -438,7 +438,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPIBanner(final int APINumber, String remainingURL, String name_, String url_, String image) throws JSONException {
+    public void callAPIBanner(final int APINumber, String remainingURL, String name_, String url_, String image,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -446,6 +446,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("name",name_);
         jsonObject1.put("url",url_);
         jsonObject1.put("photo",image);
+        jsonObject1.put("userid",userid);
         jsonObject.put("func_name","createbanner");
         jsonObject.put("data",jsonObject1);
 
@@ -605,6 +606,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("id",id);
+        jsonObject1.put("status","0");
         jsonObject.put("func_name","deleteaccount");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
@@ -688,7 +690,6 @@ public class BaseRequest<T> extends BaseRequestParser {
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("requestid",id);
         jsonObject1.put("password","");
-        jsonObject1.put("remarkphoto","");
         jsonObject1.put("description",description);
         jsonObject1.put("uid",userid);
 
@@ -798,12 +799,13 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPIapprovecloseID_request(final int APINumber, String remainingURL, String id) throws JSONException {
+    public void callAPIapprovecloseID_request(final int APINumber, String remainingURL, String id,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("id",id);
+        jsonObject1.put("userid",userid);
         jsonObject1.put("status","1");
         jsonObject.put("func_name","approvecloseid");
         jsonObject.put("data",jsonObject1);
@@ -836,6 +838,40 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         Call<JsonElement> call = apiInterface_.Userrequestreject(body);
+        call.enqueue(responseCallback);
+
+    }
+    public void callAPIactivePayment(final int APINumber, String remainingURL, String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("paymentmethodid",id);
+        jsonObject1.put("status","1");
+        jsonObject.put("func_name","activepaymentmethod");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.Avtivepayment(body);
+        call.enqueue(responseCallback);
+
+    }
+    public void callAPIDeactivePayment(final int APINumber, String remainingURL, String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("paymentmethodid",id);
+        jsonObject1.put("status","0");
+        jsonObject.put("func_name","activepaymentmethod");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.DeAvtivepayment(body);
         call.enqueue(responseCallback);
 
     }
@@ -879,7 +915,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPAddwebsite(final int APINumber, String remainingURL, String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img) throws JSONException {
+    public void callAPAddwebsite(final int APINumber, String remainingURL, String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -894,6 +930,8 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("minmaintainbal",mainbal);
         jsonObject1.put("games",jsonArray);
         jsonObject1.put("photo",Document_img);
+        jsonObject1.put("userid",userid);
+
 
         jsonObject.put("func_name","createwebsite");
         jsonObject.put("data",jsonObject1);
@@ -1015,7 +1053,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPI_BankDetailUpdate(final int APINumber, String remainingURL, String acoutnumber,String bankname ,String ifccode,String branch,String UserId,String uid) throws JSONException {
+    public void callAPI_BankDetailUpdate(final int APINumber, String remainingURL, String acoutnumber,String bankname ,String ifccode,String branch,String UserId,String uid,String accounttype,String holdername) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -1027,8 +1065,8 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("branch",branch);
         jsonObject1.put("uid",UserId);
         jsonObject1.put("id",uid);
-        jsonObject1.put("accountholder","accountholder");
-        jsonObject1.put("accounttype","accounttype");
+        jsonObject1.put("accountholder",holdername);
+        jsonObject1.put("accounttype",accounttype);
         jsonObject.put("func_name","updateaccount");
         jsonObject.put("data",jsonObject1);
 
@@ -1043,7 +1081,7 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
 
-    public void callAPIUpdatewebsite(final int APINumber, String remainingURL,String id ,String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img) throws JSONException {
+    public void callAPIUpdatewebsite(final int APINumber, String remainingURL,String id ,String websitename, String url, String description,String minrefil,String minwithdraawl,String maxwithdrawl,String mainbal,JSONArray jsonArray,String Document_img,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -1058,6 +1096,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("minmaintainbal",mainbal);
         jsonObject1.put("photo",Document_img);
         jsonObject1.put("games",jsonArray);
+        jsonObject1.put("userid",userid);
 
         jsonObject.put("func_name","updatewebsite");
         jsonObject.put("data",jsonObject1);
@@ -1070,11 +1109,12 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPIgetClient_changepasslist(final int APINumber, String remainingURL) throws JSONException {
+    public void callAPIgetClient_changepasslist(final int APINumber, String remainingURL,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("userid",userid);
         jsonObject.put("func_name","changerequestidpasswordlist");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
@@ -1100,11 +1140,12 @@ public class BaseRequest<T> extends BaseRequestParser {
         Call<JsonElement> call = apiInterface_.userlist(body);
         call.enqueue(responseCallback);
     }
-    public void callAPIgetCloseidlist(final int APINumber, String remainingURL) throws JSONException {
+    public void callAPIgetCloseidlist(final int APINumber, String remainingURL,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("userid",userid);
         jsonObject.put("func_name","closeidlist");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
@@ -1128,11 +1169,12 @@ public class BaseRequest<T> extends BaseRequestParser {
         Call<JsonElement> call = apiInterface_.notificationlist(body);
         call.enqueue(responseCallback);
     }
-    public void callAPIgetBannerlist(final int APINumber, String remainingURL) throws JSONException {
+    public void callAPIgetBannerlist(final int APINumber, String remainingURL,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("userid",userid);
         jsonObject.put("func_name","bannerlist");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
@@ -1208,7 +1250,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
         jsonObject1.put("userid",userid);
-        jsonObject.put("func_name","paymentmethodlist");
+        jsonObject.put("func_name","adminpaymentmethodlist");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
         showLoader();
@@ -1308,11 +1350,12 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPIgetwebsitelist(final int APINumber, String remainingURL) throws JSONException {
+    public void callAPIgetwebsitelist(final int APINumber, String remainingURL,String userid) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
         JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("userid",userid);
         jsonObject.put("func_name","websitelist");
         jsonObject.put("data",jsonObject1);
 

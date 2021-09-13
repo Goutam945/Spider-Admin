@@ -417,7 +417,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Client Id"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Change Password Request"
                             style="@style/dashbord"
                             android:layout_marginTop="20dp"/>
 
@@ -499,7 +501,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Close ID"
+                                android:text="Close Id"
                                 style="@style/dashbord"
                                 android:layout_marginTop="20dp"/>
 

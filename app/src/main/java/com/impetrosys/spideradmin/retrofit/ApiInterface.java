@@ -158,6 +158,10 @@ public interface ApiInterface {
     @POST("service.php")
     Call<JsonElement> Userrequestreject(@Body RequestBody Userrequestreject);
     @POST("service.php")
+    Call<JsonElement> Avtivepayment(@Body RequestBody Avtivepayment);
+    @POST("service.php")
+    Call<JsonElement> DeAvtivepayment(@Body RequestBody DeAvtivepayment);
+    @POST("service.php")
     Call<JsonElement> withdrawrequestreject(@Body RequestBody withdrawrequestreject);
     @POST("service.php")
     Call<JsonElement> Closeidreject(@Body RequestBody Closeidreject);

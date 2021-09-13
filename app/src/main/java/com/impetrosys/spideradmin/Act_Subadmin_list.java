@@ -48,6 +48,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Act_Subadmin_list extends AppCompatActivity {
     Context context;
@@ -135,7 +136,9 @@ public class Act_Subadmin_list extends AppCompatActivity {
 
                                     @Override
                                     public void edit(Subadminlist edit) {
+                                        menuid="";
                                         addSubadmin(edit);
+
 
                                     }
                                 });
@@ -170,7 +173,7 @@ public class Act_Subadmin_list extends AppCompatActivity {
 
     }
 
-    private void ApiGetMenuacesslist () throws JSONException {
+    private void ApiGetMenuacesslist (List<String>idmenu) throws JSONException {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -178,7 +181,7 @@ public class Act_Subadmin_list extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
 
-                    if (!jsonObject.getString("message").equals("Failed")) {
+                    if (!jsonObject.getString("message").equals("msg_code")) {
 
                         JSONArray jsonArray = jsonObject.optJSONArray("menulist");
                         useraccesspemissionlist = baseRequest.getDataList(jsonArray, UserAccesspemission.class);
@@ -192,7 +195,7 @@ public class Act_Subadmin_list extends AppCompatActivity {
 
                                 useraccesspemissionlist1.add(model);
 
-                                ad_useraccesspermition = new Ad_UserAccesspermition(useraccesspemissionlist, getApplicationContext(), sessionParam, activity, new Ad_UserAccesspermition.menuid() {
+                                ad_useraccesspermition = new Ad_UserAccesspermition(useraccesspemissionlist,idmenu, getApplicationContext(), sessionParam, activity, new Ad_UserAccesspermition.menuid() {
                                     @Override
                                     public void getid(String id) {
                                         try {
@@ -240,7 +243,8 @@ public class Act_Subadmin_list extends AppCompatActivity {
          }else {
              menuid=id+","+menuid;
          }
-         Toast.makeText(getApplicationContext(), menuid.substring(0,menuid.length()-1), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getApplicationContext(), menuid, Toast.LENGTH_SHORT).show();
+//         .substring(0,menuid.length()-1)
     }
 
 
@@ -299,14 +303,25 @@ public class Act_Subadmin_list extends AppCompatActivity {
         spassword= mDialog.findViewById(R.id.password);
         tvp=mDialog.findViewById(R.id.tv_p);
         btn_save= mDialog.findViewById(R.id.btn_send);
+
+        List<String>Idmenu=new ArrayList<>();
+        if(edit!=null){
+            //convert string to list
+        String[] separated = edit.getMenuAccessId().split(",");
+        Idmenu.clear();
+        for(int i=0;i<separated.length;i++){
+            Idmenu.add(separated[i]);
+        }}
         try {
-            ApiGetMenuacesslist();
+            ApiGetMenuacesslist(Idmenu);//send list dataIdemenu adapter
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         recy = mDialog.findViewById(R.id.rv_list);
         recy.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+
 
         if (edit==null){
             btn_save.setText("Add");
@@ -318,13 +333,12 @@ public class Act_Subadmin_list extends AppCompatActivity {
             spassword.setEnabled(false);
             tvp.setVisibility(View.GONE);
             spassword.setVisibility(View.GONE);
-
-
             btn_save.setText("Update");
 
+
+
+
         }
-
-
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override

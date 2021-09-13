@@ -115,7 +115,7 @@ public class Act_Deposit_Id_details extends AppCompatActivity {
         depositstatus.setText("Deposits : "+Depositstatus);
         websitename.setText("Websitename : "+Websitename);
         websiteurl.setText("Websiteurl : "+Websiteurl);
-        requestusername.setText("Requestusername : "+Requestusername);
+        requestusername.setText("Client : "+Requestusername);
         paymentmethod.setText("Paymentmethod : "+Paymentmethod);
         createddate.setText("Date : "+Createddate);
 

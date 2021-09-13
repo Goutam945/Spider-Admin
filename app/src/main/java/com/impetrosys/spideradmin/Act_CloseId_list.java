@@ -80,6 +80,7 @@ public class Act_CloseId_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home_basic);
+        sessionParam=new SessionParam(getApplicationContext());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
@@ -167,7 +168,7 @@ public class Act_CloseId_list extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetCloseidlist(1, remainingUrl2);
+        baseRequest.callAPIgetCloseidlist(1, remainingUrl2,sessionParam.userId);
 
     }
 
@@ -201,7 +202,7 @@ public class Act_CloseId_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapprovecloseID_request(1, "https://impetrosys.com/spiderapp/",id);
+        baseRequest.callAPIapprovecloseID_request(1, "https://impetrosys.com/spiderapp/",id,sessionParam.userId);
 
     }
     private void apiRejectrequest_Closeid(String id) throws JSONException {

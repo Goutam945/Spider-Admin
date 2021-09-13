@@ -88,6 +88,7 @@ public class Act_Website_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home_basic);
+        sessionParam = new SessionParam(getApplicationContext());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
@@ -196,7 +197,7 @@ public class Act_Website_list extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetwebsitelist(1, remainingUrl2);
+        baseRequest.callAPIgetwebsitelist(1, remainingUrl2,sessionParam.userId);
 
     }
 
@@ -560,7 +561,7 @@ public class Act_Website_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPAddwebsite(1, "https://impetrosys.com/spiderapp/",websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img);
+        baseRequest.callAPAddwebsite(1, "https://impetrosys.com/spiderapp/",websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img,sessionParam.userId);
 
     }
     private void apiUpdatewebsite(JSONArray jsonArray ,String id) throws JSONException {
@@ -591,7 +592,7 @@ public class Act_Website_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIUpdatewebsite(1, "https://impetrosys.com/spiderapp/",id,websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img);
+        baseRequest.callAPIUpdatewebsite(1, "https://impetrosys.com/spiderapp/",id,websitename,url,description,minrefill,minwithdraw,maxwithdraw,maintainingbal,jsonArray,Document_img,sessionParam.userId);
 
     }
     public void Checkboxshideshow(){

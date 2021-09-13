@@ -70,8 +70,8 @@ public class Act_Financialdetail extends AppCompatActivity {
     String Baccount,Bbankname,Bifc,Bholdername,Bactype,Bbankaddress;
     Button save_upi,save_bankdetails;
 
-    String updatenumber,updatename,Updateid,UpdatePaymentId;
-    String updatebankename,updatebankeaccount,updateifc,updatebrach;
+    String updatenumber,updatename,Updateid,UpdatePaymentId,Accounttype,Holdername;
+    String updatebankename,updatebankeaccount,updateifc,updatebrach,accountype,holdername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,9 +127,9 @@ public class Act_Financialdetail extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
 
-                    if (!jsonObject.getString("message").equals("Failed")) {
+                    if (!jsonObject.getString("message").equals("msg_code")) {
 
-                        JSONArray jsonArray = jsonObject.optJSONArray("pymentmethodlist");
+                        JSONArray jsonArray = jsonObject.optJSONArray("adminpaymentmethodlist");
                         financialdetails = baseRequest.getDataList(jsonArray, Financialdetails.class);
                         for (int i = 0; i < financialdetails.size(); i++) {
                             if (financialdetails != null) {
@@ -146,13 +146,30 @@ public class Act_Financialdetail extends AppCompatActivity {
                                     }
 
                                     @Override
-                                    public void delete(String id) {
+                                    public void delete(String id,String disableid) {
                                         try {
+                                            apiDectiveMethode(disableid);
                                             apideleteAccount(id);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
 
+                                    }
+                                    @Override
+                                    public void enable(String id) {
+                                        try {
+                                            apiActiveMethode(id);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    @Override
+                                    public void disable(String id) {
+                                        try {
+                                            apiDectiveMethode(id);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
 
                                 });
@@ -194,7 +211,7 @@ public class Act_Financialdetail extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
 
-                    if (!jsonObject.getString("message").equals("Failed")) {
+                    if (!jsonObject.getString("message").equals("msg_code")) {
 
                         JSONArray jsonArray = jsonObject.optJSONArray("accountlist");
                         accountdetails = baseRequest.getDataList(jsonArray,AccountDetails .class);
@@ -249,31 +266,16 @@ public class Act_Financialdetail extends AppCompatActivity {
     }
 
     private void UpdateUpi(JSONObject edit){
-//        try {
-//            updatename= edit.getString("Upiname");
-//            updatenumber=edit.getString("Upinumber");
-//            Updateid=edit.getString("id");
-//            UpdatePaymentId=edit.getString("Paymentid");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            apiUpdateUPI();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
         try {
             if("4".contains(edit.getString("Paymentid"))){
                 updatebankename=edit.getString("bankname");
                 updatebankeaccount=edit.getString("bankaccount");
                 updateifc=edit.getString("bankifc");
                 updatebrach=edit.getString("bankbranch");
+                holdername=edit.getString("holdername");
+                accountype=edit.getString("accountype");
                 Updateid=edit.getString("id");
                 apiUpdate_Bankdetails();
-
-
-
             }else {
                 updatename= edit.getString("Upiname");
                 updatenumber=edit.getString("Upinumber");
@@ -466,7 +468,7 @@ public class Act_Financialdetail extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPI_BankDetailUpdate(1, "https://impetrosys.com/spiderapp/",updatebankeaccount,updatebankename,updateifc,updatebrach,sessionParam.userId,Updateid);
+        baseRequest.callAPI_BankDetailUpdate(1, "https://impetrosys.com/spiderapp/",updatebankeaccount,updatebankename,updateifc,updatebrach,sessionParam.userId,Updateid,accountype,holdername);
 
     }
     private void apiAdd_Bankdetails() throws JSONException {
@@ -530,6 +532,73 @@ public class Act_Financialdetail extends AppCompatActivity {
             }
         });
         baseRequest.callAPIdeleteAccountdetail(1, "https://impetrosys.com/spiderapp/",id);
+
+    }
+
+    private void apiActiveMethode(String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    ad_financialdetail.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Enable", Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        baseRequest.callAPIactivePayment(1, "https://impetrosys.com/spiderapp/",id);
+
+    }
+    private void apiDectiveMethode(String id) throws JSONException {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    ad_financialdetail.notifyDataSetChanged();
+                    Intent i = new Intent(getApplicationContext(), Act_Financialdetail.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Disable", Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(Act_Financialdetail.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        baseRequest.callAPIDeactivePayment(1, "https://impetrosys.com/spiderapp/",id);
 
     }
 

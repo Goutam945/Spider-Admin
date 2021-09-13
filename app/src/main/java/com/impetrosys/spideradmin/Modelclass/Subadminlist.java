@@ -18,12 +18,12 @@ public class Subadminlist {
     @SerializedName("role")
     @Expose
     private String role;
-//    @SerializedName("menu_access_id")
-//    @Expose
-//    private Object menuAccessId;
-//    @SerializedName("menu_access")
-//    @Expose
-//    private List<Object> menuAccess = null;
+    @SerializedName("menu_access_id")
+    @Expose
+    private String menuAccessId;
+    @SerializedName("menu_access")
+    @Expose
+    private String menuAccess;
     @SerializedName("created_date")
     @Expose
     private String createdDate;
@@ -60,21 +60,21 @@ public class Subadminlist {
         this.role = role;
     }
 
-//    public Object getMenuAccessId() {
-//        return menuAccessId;
-//    }
-//
-//    public void setMenuAccessId(Object menuAccessId) {
-//        this.menuAccessId = menuAccessId;
-//    }
+    public String getMenuAccessId() {
+        return menuAccessId;
+    }
 
-//    public List<Object> getMenuAccess() {
-//        return menuAccess;
-//    }
-//
-//    public void setMenuAccess(List<Object> menuAccess) {
-//        this.menuAccess = menuAccess;
-//    }
+    public void setMenuAccessId(String menuAccessId) {
+        this.menuAccessId = menuAccessId;
+    }
+
+    public String getMenuAccess() {
+        return menuAccess;
+    }
+
+    public void setMenuAccess(String menuAccess) {
+        this.menuAccess = menuAccess;
+    }
 
     public String getCreatedDate() {
         return createdDate;
@@ -83,4 +83,5 @@ public class Subadminlist {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
+
 }

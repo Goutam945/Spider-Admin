@@ -15,16 +15,18 @@
         <entry key="app/src/main/res/layout/activity_act_userlist_referallist.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/activity_act_users_referallist.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/activity_banner_create.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_clientids_requestlist.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_close_id_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deposit_id_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deposits_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_financialdetail.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_paymentdeposits_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_puch_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_subadmin_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_user_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_user_requestlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_withdrawals_request.xml" value="0.10144927536231885" />
-        <entry key="app/src/main/res/layout/add_bankdetails.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/add_bankdetails.xml" value="0.18" />
         <entry key="app/src/main/res/layout/add_subadmin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_website.xml" value="0.1" />
         <entry key="app/src/main/res/layout/allreferalcode_list.xml" value="0.10552536231884058" />
@@ -34,6 +36,7 @@
         <entry key="app/src/main/res/layout/dashbordcountlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/deposit_rejectw.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/list_sp.xml" value="0.1" />
         <entry key="app/src/main/res/layout/new_dashbord.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/newwebsite.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nochangepass.xml" value="0.14175724637681159" />

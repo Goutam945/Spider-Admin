@@ -13,6 +13,9 @@ public class Financialdetails {
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("status")
+    @Expose
+    private String status;
 
     public String getId() {
         return id;
@@ -38,4 +41,11 @@ public class Financialdetails {
         this.photo = photo;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

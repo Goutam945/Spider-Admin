@@ -30,7 +30,12 @@ public class Acountdeatil1 {
     private String number;
     @Expose
     private String id;
-    @SerializedName("uid")
+    @SerializedName("accountholder")
+    @Expose
+    private String accountholder;
+    @SerializedName("accounttype")
+    @Expose
+    private String accounttype;
 
 
     public String getAccountno() {
@@ -105,5 +110,21 @@ public class Acountdeatil1 {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAccountholder() {
+        return accountholder;
+    }
+
+    public void setAccountholder(String accountholder) {
+        this.accountholder = accountholder;
+    }
+
+    public String getAccounttype() {
+        return accounttype;
+    }
+
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
     }
 }

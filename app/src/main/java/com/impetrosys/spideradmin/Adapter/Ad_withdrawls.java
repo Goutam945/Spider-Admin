@@ -66,11 +66,13 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
         if(status.equalsIgnoreCase("0")) {
             holder.clientname.setText("User Name : " + list.get(position).getClientname());
             holder.websitename.setText("Website Name : " + list.get(position).getWebsitename());
-            holder.username.setText("Client Name : " + list.get(position).getUsername());
+            holder.username.setText("Client Id : " + list.get(position).getUsername());
             holder.userid.setText("UserID : " + list.get(position).getUserid());
             holder.amount.setText("Coins : " + list.get(position).getCoins());
             holder.withdrawstatus.setText("Withdraws : " + list.get(position).getWithdrawstatus());
 
+            holder.url.setText("Website : " + list.get(position).getWebsiteurl());
+            holder.password.setText("Password : " + list.get(position).getPassword());
             if(list.get(position).getPaymentmethod()!=null){
                 holder.Pmethode.setText("Payment : " + list.get(position).getPaymentmethod());
             }else {
@@ -155,7 +157,7 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView clientname,websitename,username,userid,amount,Pmethode,Upiname,Upinumber,Bankname,
-        Ifc,Branch,Accountnumber,withdrawstatus;
+        Ifc,Branch,Accountnumber,withdrawstatus,url,password;
         Button Approve,Reject;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -166,6 +168,8 @@ public class Ad_withdrawls extends RecyclerView.Adapter<Ad_withdrawls.MyViewHold
             websitename = itemView.findViewById(R.id.tv_websitename);
             amount = itemView.findViewById(R.id.tv_coins);
             Pmethode = itemView.findViewById(R.id.tv_pmethod);
+            url = itemView.findViewById(R.id.tv_url);
+            password = itemView.findViewById(R.id.tv_password);
 
             Upiname = itemView.findViewById(R.id.tv_upiname);
             Upinumber = itemView.findViewById(R.id.tv_upinuber);

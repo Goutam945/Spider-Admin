@@ -55,6 +55,7 @@ public class Act_Bannerlist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_home_basic);
+        sessionParam=new SessionParam(getApplicationContext());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor((Color.parseColor("#FFFFFF")));
@@ -127,7 +128,7 @@ public class Act_Bannerlist extends AppCompatActivity {
             }
         });
         String remainingUrl2 = "https://impetrosys.com/spiderapp/";
-        baseRequest.callAPIgetBannerlist(1, remainingUrl2);
+        baseRequest.callAPIgetBannerlist(1, remainingUrl2,sessionParam.userId);
 
     }
 

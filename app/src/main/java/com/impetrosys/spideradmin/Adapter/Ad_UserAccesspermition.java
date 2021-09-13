@@ -16,6 +16,7 @@ import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ad_UserAccesspermition extends RecyclerView.Adapter<Ad_UserAccesspermition.MyViewHolder> {
     ArrayList<UserAccesspemission> list;
@@ -23,14 +24,16 @@ public class Ad_UserAccesspermition extends RecyclerView.Adapter<Ad_UserAccesspe
     Activity activity;
     SessionParam sessionParam;
     Ad_UserAccesspermition.menuid menuid;
+    List<String> idmenu;
 
 
-    public Ad_UserAccesspermition(ArrayList<UserAccesspemission> list, Context context, SessionParam sessionParam, Activity activity, Ad_UserAccesspermition.menuid menuid) {
+    public Ad_UserAccesspermition(ArrayList<UserAccesspemission> list, List<String> idmenu, Context context, SessionParam sessionParam, Activity activity, Ad_UserAccesspermition.menuid menuid) {
         this.list = list;
         this.context = context;
         this.activity = activity;
         this.sessionParam =sessionParam;
         this.menuid=menuid;
+        this.idmenu=idmenu;
 
 
     }
@@ -48,14 +51,17 @@ public class Ad_UserAccesspermition extends RecyclerView.Adapter<Ad_UserAccesspe
         holder.checkBox1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (holder.checkBox1.isChecked()) {
-//                    menuid.getid(list.get(i).getId());
-//                }
                 menuid.getid(list.get(i).getId());
             }
         });
 
-
+//checkbox ceck loopp
+        for(int j=0;j<idmenu.size();j++){
+            if(Integer.parseInt(list.get(i).getId())==Integer.parseInt(idmenu.get(j))){
+                holder.checkBox1.setChecked(true);
+                menuid.getid(list.get(i).getId());
+            }
+        }
 
     }
 

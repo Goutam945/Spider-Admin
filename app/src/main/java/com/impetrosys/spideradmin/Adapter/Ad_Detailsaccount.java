@@ -78,15 +78,22 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
             holder.Paccount.setText(list.get(position).getAccountno());
             holder.Pifc.setText(list.get(position).getIfsc());
             holder.Pbranch.setText(list.get(position).getBranch());
+            holder.accountype.setText(list.get(position).getAccounttype());
+            holder.holdername.setText(list.get(position).getAccountholder());
 
             holder.Pbankname.setVisibility(View.VISIBLE);
             holder.Paccount.setVisibility(View.VISIBLE);
             holder.Pifc.setVisibility(View.VISIBLE);
             holder.Pbranch.setVisibility(View.VISIBLE);
+            holder.holdername.setVisibility(View.VISIBLE);
+            holder.accountype.setVisibility(View.VISIBLE);
+
             holder.t1.setVisibility(View.VISIBLE);
             holder.t2.setVisibility(View.VISIBLE);
             holder.t3.setVisibility(View.VISIBLE);
             holder.t4.setVisibility(View.VISIBLE);
+            holder.t7.setVisibility(View.VISIBLE);
+            holder.t8.setVisibility(View.VISIBLE);
 
 
             holder.Pmobile.setVisibility(View.GONE);
@@ -109,6 +116,8 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
                 holder.Paccount.setEnabled(true);
                 holder.Pifc.setEnabled(true);
                 holder.Pbranch.setEnabled(true);
+                holder.accountype.setEnabled(true);
+                holder.holdername.setEnabled(true);
                 holder.save.setVisibility(View.VISIBLE);
 
             }
@@ -127,6 +136,8 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
                     jsonObject.put("bankaccount",holder.Paccount.getText());
                     jsonObject.put("bankifc",holder.Pifc.getText());
                     jsonObject.put("bankbranch",holder.Pbranch.getText());
+                    jsonObject.put("holdername",holder.holdername.getText());
+                    jsonObject.put("accountype",holder.accountype.getText());
 
 
 
@@ -157,10 +168,10 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        EditText Pname,Pmobile,Pbankname,Paccount,Pifc,Pbranch;
+        EditText Pname,Pmobile,Pbankname,Paccount,Pifc,Pbranch,holdername,accountype;
         ImageView imgedit,imgdelete;
         Button save;
-        TextView t1,t2,t3,t4,t5,t6;
+        TextView t1,t2,t3,t4,t5,t6,t7,t8;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -169,11 +180,16 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
             Pname = itemView.findViewById(R.id.dname);
             t5 = itemView.findViewById(R.id.t5);
             t6 = itemView.findViewById(R.id.t6);
+            t7 = itemView.findViewById(R.id.t7);
+            t8 = itemView.findViewById(R.id.t8);
 
            Pbankname = itemView.findViewById(R.id.dbankname);
            Paccount = itemView.findViewById(R.id.accountno);
             Pifc = itemView.findViewById(R.id.ifc);
             Pbranch = itemView.findViewById(R.id.branch);
+            holdername = itemView.findViewById(R.id.holdername);
+            accountype = itemView.findViewById(R.id.accouttype);
+
             imgedit = itemView.findViewById(R.id.img_edit);
             imgdelete = itemView.findViewById(R.id.img_delete);
             t1 = itemView.findViewById(R.id.t1);
@@ -190,6 +206,8 @@ public class Ad_Detailsaccount extends RecyclerView.Adapter<Ad_Detailsaccount.My
             Paccount.setEnabled(false);
             Pifc.setEnabled(false);
             Pbranch.setEnabled(false);
+            accountype.setEnabled(false);
+            holdername.setEnabled(false);
 
 
         }
