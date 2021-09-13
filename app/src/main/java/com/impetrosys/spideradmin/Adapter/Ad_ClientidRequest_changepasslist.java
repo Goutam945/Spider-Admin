@@ -65,7 +65,8 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
         String status=list.get(position).getStatus();
         if(status.equalsIgnoreCase("0")) {
 
-            holder.name.setText(list.get(position).getUsername());
+            holder.name.setText("User:  "+list.get(position).getUsername());
+            holder.website.setText("Website:  "+list.get(position).getWebsitename());
             holder.password.setText("Password: " + list.get(position).getPassword());
             holder.userid.setText("Client Id: " + list.get(position).getLoginusername());
         }
@@ -116,7 +117,7 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,userid,password;
+        TextView name,userid,password,website;
         ImageView edit;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -125,11 +126,12 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
             password = itemView.findViewById(R.id.re_password);
             userid = itemView.findViewById(R.id.re_id);
             edit = itemView.findViewById(R.id.re_edit);
+            website = itemView.findViewById(R.id.re_website);
 
         }
     }
 
-  /*  public Filter getFilter() {
+    public Filter getFilter() {
         return filter;
     }
     Filter filter=new Filter() {
@@ -162,7 +164,7 @@ public class Ad_ClientidRequest_changepasslist extends RecyclerView.Adapter<Ad_C
             notifyDataSetChanged();
 
         }
-    };*/
+    };
    public interface Changepass{
        public void pass(
                String id,String uid

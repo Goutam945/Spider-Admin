@@ -275,22 +275,17 @@ public class Ad_financialdetail extends RecyclerView.Adapter<Ad_financialdetail.
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
                 context = compoundButton.getContext();
                 if (bChecked) {
-                    Toast.makeText(context, "Checked", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(context, "Checked", Toast.LENGTH_LONG).show();
                     add.enable(list.get(position).getId());
 
                 } else {
-                    Toast.makeText(context, "Unchecked", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Unchecked", Toast.LENGTH_LONG).show();
                     add.disable(list.get(position).getId());
                 }
 
 
             }
-
-
         });
-
-
-
 
 
     }

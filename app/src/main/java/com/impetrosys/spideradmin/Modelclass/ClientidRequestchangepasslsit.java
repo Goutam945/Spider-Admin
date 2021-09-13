@@ -18,6 +18,18 @@ public class ClientidRequestchangepasslsit {
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("websitename")
+    @Expose
+    private String websitename;
+    @SerializedName("websiteurl")
+    @Expose
+    private String websiteurl;
+    @SerializedName("websitephoto")
+    @Expose
+    private String websitephoto;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("loginusername")
     @Expose
     private String loginusername;
@@ -27,9 +39,6 @@ public class ClientidRequestchangepasslsit {
     @SerializedName("requestdate")
     @Expose
     private String requestdate;
-    @SerializedName("password")
-    @Expose
-    private String password;
 
     public String getId() {
         return id;
@@ -63,6 +72,38 @@ public class ClientidRequestchangepasslsit {
         this.username = username;
     }
 
+    public String getWebsitename() {
+        return websitename;
+    }
+
+    public void setWebsitename(String websitename) {
+        this.websitename = websitename;
+    }
+
+    public String getWebsiteurl() {
+        return websiteurl;
+    }
+
+    public void setWebsiteurl(String websiteurl) {
+        this.websiteurl = websiteurl;
+    }
+
+    public String getWebsitephoto() {
+        return websitephoto;
+    }
+
+    public void setWebsitephoto(String websitephoto) {
+        this.websitephoto = websitephoto;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getLoginusername() {
         return loginusername;
     }
@@ -85,13 +126,5 @@ public class ClientidRequestchangepasslsit {
 
     public void setRequestdate(String requestdate) {
         this.requestdate = requestdate;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

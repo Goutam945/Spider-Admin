@@ -306,7 +306,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
 
@@ -342,7 +342,7 @@ public class Act_Clientids_requestchangepass extends AppCompatActivity {
 
 
                 }}}}
-*/
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
