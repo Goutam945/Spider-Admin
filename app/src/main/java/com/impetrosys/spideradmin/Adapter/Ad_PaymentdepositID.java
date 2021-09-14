@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.impetrosys.spideradmin.Act_Deposit_Id_details;
 import com.impetrosys.spideradmin.Modelclass.PaymentDepositid;
+import com.impetrosys.spideradmin.Modelclass.Paymentdepositslist;
 import com.impetrosys.spideradmin.R;
 import com.impetrosys.spideradmin.UtilClasses.SessionParam;
 import com.impetrosys.spideradmin.retrofit.BaseRequest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Ad_PaymentdepositID extends RecyclerView.Adapter<Ad_PaymentdepositID.MyViewHolder> {
@@ -108,6 +111,40 @@ public class Ad_PaymentdepositID extends RecyclerView.Adapter<Ad_PaymentdepositI
 
         }
     }
+    public Filter getFilter() {
+        return filter;
+    }
+    Filter filter=new Filter() {
+        //run on background thread
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            List<PaymentDepositid> filterList = new ArrayList<>();
+            if (charSequence.toString() == null) {
+                filterList.addAll(list);
+            } else {
+                String serachStr = charSequence.toString().toUpperCase();
+                for (PaymentDepositid servicesS : Alllist) {
+                    if (servicesS.getUsername().toUpperCase().contains(serachStr)) {
+                        filterList.add(servicesS);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            list.clear();
+            list.addAll((List<PaymentDepositid>)results.values);
+
+            notifyDataSetChanged();
+
+        }
+    };
 
 
 }

@@ -190,7 +190,7 @@ public class Fragment_Userslist extends Fragment {
         mDialog.show();
 
     }
-   /* @Override
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -234,7 +234,6 @@ public class Fragment_Userslist extends Fragment {
 
 
                 }}}}
-*/
     public void Loder() {
         ProgressDialog pd = new ProgressDialog(getActivity() , R.style.MyAlertDialogStyle);
         pd.setMessage("Please wait ...");
@@ -266,5 +265,7 @@ public class Fragment_Userslist extends Fragment {
         }).start();
 //lowder end
     }
+
+
 
 }

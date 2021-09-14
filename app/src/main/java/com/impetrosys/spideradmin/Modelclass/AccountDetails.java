@@ -65,7 +65,7 @@ public class AccountDetails {
         @SerializedName("Bank Transfer")
         @Expose
         private List<Acountdeatil1> bankTransfer = null;
-        @SerializedName("Phone Pay")
+        @SerializedName("Phone Pe")
         @Expose
         private List<Acountdeatil1> phonePay = null;
         @SerializedName("Google Pay")

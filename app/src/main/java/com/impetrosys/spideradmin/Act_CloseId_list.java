@@ -1,6 +1,7 @@
 package com.impetrosys.spideradmin;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -23,12 +24,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -66,12 +69,14 @@ public class Act_CloseId_list extends AppCompatActivity {
     FrameLayout container;
     private BaseRequest baseRequest;
     private int progressStatus = 0;
-    Button btn_reject;
-    TextView reject_textimge;
-    ImageView rejct_img;
+    Button btn_reject,btnapprove;
+    TextView reject_textimge,approve_textimge;
+    ImageView rejct_img,approveimg;
     EditText reject_description;
-    String Rejct_dis;
+    EditText amount;
+    String Rejct_dis,Approveacmount;
     private String upload_img="";
+    private String approveupload_img="";
     androidx.appcompat.widget.SearchView inputSearch;
     Ad_Closeidlist ad_closeidlist;
     ArrayList<CloseIdlist> closeIdlists = new ArrayList<>();
@@ -127,11 +132,12 @@ public class Act_CloseId_list extends AppCompatActivity {
                                 ad_closeidlist = new Ad_Closeidlist(closeIdlists2, getApplicationContext(), sessionParam, activity, new Ad_Closeidlist.aprove() {
                                     @Override
                                     public void getid(String id) {
-                                        try {
+                                       /* try {
                                             apiapprovrequest_Closeid(id);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                        }
+                                        }*/
+                                        approvecloseid_request(id);
 
                                     }
 
@@ -202,7 +208,7 @@ public class Act_CloseId_list extends AppCompatActivity {
 
             }
         });
-        baseRequest.callAPIapprovecloseID_request(1, "https://impetrosys.com/spiderapp/",id,sessionParam.userId);
+        baseRequest.callAPIapprovecloseID_request(1, "https://impetrosys.com/spiderapp/",id,sessionParam.userId,approveupload_img,Approveacmount);
 
     }
     private void apiRejectrequest_Closeid(String id) throws JSONException {
@@ -238,6 +244,93 @@ public class Act_CloseId_list extends AppCompatActivity {
         baseRequest.callAPIReject_closeID(1, "https://impetrosys.com/spiderapp/",id,upload_img,Rejct_dis);
 
     }
+
+
+    public void approvecloseid_request(String id)
+    {
+        Dialog mDialog = new Dialog(Act_CloseId_list.this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);  //without extar space of title
+        mDialog.setContentView(R.layout.closeidapproval);
+        mDialog.setCanceledOnTouchOutside(false);
+        ImageView iv_cancel_dialog;
+        iv_cancel_dialog=mDialog.findViewById(R.id.iv_cancel_dialog);
+        amount=mDialog.findViewById(R.id.amount);
+        approve_textimge=mDialog.findViewById(R.id.tv_img);
+        approveimg=mDialog.findViewById(R.id.iv_image);
+        btnapprove= mDialog.findViewById(R.id.btn_approve);
+
+        ArrayList<String> arrPerm = new ArrayList<>();
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.CAMERA);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            arrPerm.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if(!arrPerm.isEmpty()) {
+            String[] permissions = new String[arrPerm.size()];
+            permissions = arrPerm.toArray(permissions);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        }
+
+        approve_textimge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage1();
+            }
+
+        });
+
+        btnapprove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*if (amount.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    Approveacmount=amount.getText().toString();
+                    try {
+                        Loder();
+                        apiapprovrequest_Closeid(id);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }*/
+
+                if(validate()){
+                    Approveacmount=amount.getText().toString();
+                    if (approveupload_img!=null&&!approveupload_img.isEmpty()){
+                        try {
+                            Loder();
+                            apiapprovrequest_Closeid(id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        Toast.makeText(Act_CloseId_list.this,"Please upload image",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        iv_cancel_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.cancel();
+
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+
+
+
     public void Reject_request(String id)
     {
         Dialog mDialog = new Dialog(Act_CloseId_list.this);
@@ -284,6 +377,7 @@ public class Act_CloseId_list extends AppCompatActivity {
                 }else {
                     Rejct_dis=reject_description.getText().toString();
                     try {
+                        Loder();
                         apiRejectrequest_Closeid(id);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -332,6 +426,38 @@ public class Act_CloseId_list extends AppCompatActivity {
         });
         builder.show();
     }
+
+    private void selectImage1() {
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(Act_CloseId_list.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Take Photo"))
+                {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivityForResult(intent, 3);
+                    // activityResultLauncher.launch(intent);
+
+
+                }
+                else if (options[item].equals("Choose from Gallery"))
+                {
+                    Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 4);
+                    //activityResultLauncher.launch(intent);
+                }
+                else if (options[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -357,6 +483,27 @@ public class Act_CloseId_list extends AppCompatActivity {
                 rejct_img.setImageBitmap(thumbnail);
                 BitMapToString(thumbnail);
             }
+            if (requestCode == 3) {
+
+                Bitmap srcBmp = (Bitmap) data.getExtras().get("data");
+                approveimg.setImageBitmap(srcBmp);
+                BitMapToString1(srcBmp);
+                Log.w("path.....", srcBmp+"");
+
+            } else if (requestCode == 4) {
+                Uri selectedImage = data.getData();
+                String[] filePath = { MediaStore.Images.Media.DATA };
+                Cursor c = getContentResolver().query(selectedImage,filePath, null, null, null);
+                c.moveToFirst();
+                int columnIndex = c.getColumnIndex(filePath[0]);
+                String picturePath = c.getString(columnIndex);
+                c.close();
+                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                thumbnail=getResizedBitmap(thumbnail, 400);
+                Log.w("path.....", picturePath+"");
+                approveimg.setImageBitmap(thumbnail);
+                BitMapToString1(thumbnail);
+            }
         }
     }
     public String BitMapToString(Bitmap userImage1) {
@@ -366,6 +513,14 @@ public class Act_CloseId_list extends AppCompatActivity {
         upload_img = Base64.encodeToString(b, Base64.DEFAULT);
         rejct_img.setVisibility(View.VISIBLE);
         return upload_img;
+    }
+    public String BitMapToString1(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        byte[] b = baos.toByteArray();
+        approveupload_img = Base64.encodeToString(b, Base64.DEFAULT);
+        approveimg.setVisibility(View.VISIBLE);
+        return approveupload_img;
     }
 
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
@@ -382,6 +537,8 @@ public class Act_CloseId_list extends AppCompatActivity {
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
@@ -419,7 +576,15 @@ public class Act_CloseId_list extends AppCompatActivity {
 
                 }}}}
 
+    private boolean validate() {
+        boolean valid = true;
 
+        if (amount.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
+        }
+
+        return valid;
+    }
 
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -434,6 +599,7 @@ public class Act_CloseId_list extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void Loder() {
         ProgressDialog pd = new ProgressDialog(this , R.style.MyAlertDialogStyle);
         pd.setMessage("Please wait ...");
@@ -465,7 +631,7 @@ public class Act_CloseId_list extends AppCompatActivity {
         }).start();
 //lowder end
     }
-    @Override
+    /*@Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
@@ -475,5 +641,25 @@ public class Act_CloseId_list extends AppCompatActivity {
             moveTaskToBack(true);
         }
         return super.onKeyDown(keycode, event);
+    }*/
+    int doubleBackToExitPressed = 1;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressed == 2) {
+            finishAffinity();
+            System.exit(0);
+        }
+        else {
+            doubleBackToExitPressed++;
+            Toast.makeText(this, "Please press Back again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressed=1;
+            }
+        }, 2000);
     }
 }

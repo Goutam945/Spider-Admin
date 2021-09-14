@@ -33,6 +33,7 @@
         <entry key="app/src/main/res/layout/app_bar_home_basic.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/changepassword_requestclient.xml" value="0.10733695652173914" />
         <entry key="app/src/main/res/layout/closeid_rejectdescription.xml" value="0.11820652173913043" />
+        <entry key="app/src/main/res/layout/closeidapproval.xml" value="0.15443840579710144" />
         <entry key="app/src/main/res/layout/dashbordcountlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/deposit_rejectw.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1" />

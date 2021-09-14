@@ -799,7 +799,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
-    public void callAPIapprovecloseID_request(final int APINumber, String remainingURL, String id,String userid) throws JSONException {
+    public void callAPIapprovecloseID_request(final int APINumber, String remainingURL, String id,String userid,String photo,String coin) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         JSONObject jsonObject= new JSONObject();
@@ -807,6 +807,10 @@ public class BaseRequest<T> extends BaseRequestParser {
         jsonObject1.put("id",id);
         jsonObject1.put("userid",userid);
         jsonObject1.put("status","1");
+        jsonObject1.put("remarkphoto",photo);
+        jsonObject1.put("coins",coin);
+        jsonObject1.put("description","description");
+
         jsonObject.put("func_name","approvecloseid");
         jsonObject.put("data",jsonObject1);
         RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
