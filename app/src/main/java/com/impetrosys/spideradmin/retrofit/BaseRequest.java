@@ -458,6 +458,82 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
 
     }
+    public void callAPIWalltevalue(final int APINumber, String remainingURL, String mindeposit, String maxdeposit, String minwithdral,String maxwithral) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("min",mindeposit);
+        jsonObject1.put("max",maxdeposit);
+        jsonObject1.put("minwithdraw",minwithdral);
+        jsonObject1.put("maxwithdraw",maxwithral);
+        jsonObject.put("func_name","createminmax");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.wallte(body);
+        call.enqueue(responseCallback);
+
+    }
+    public void callAPINoticeadd(final int APINumber, String remainingURL, String notice, String support) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("notice",notice);
+        jsonObject1.put("supportno",support);
+       // jsonObject1.put("userid",userid);
+        jsonObject.put("func_name","createnotice");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.noticeadd(body);
+        call.enqueue(responseCallback);
+
+    }
+    public void callAPINoticeupdate(final int APINumber, String remainingURL, String notice, String support,String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("id",id);
+        jsonObject1.put("notice",notice);
+        jsonObject1.put("supportno",support);
+        // jsonObject1.put("userid",userid);
+        jsonObject.put("func_name","updatenotice");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.noticeupdate(body);
+        call.enqueue(responseCallback);
+
+    }
+    public void callAPINoticedelete(final int APINumber, String remainingURL,String id) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject1.put("id",id);
+        jsonObject.put("func_name","deletenotice");
+        jsonObject.put("data",jsonObject1);
+
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.deletenotice(body);
+        call.enqueue(responseCallback);
+
+    }
     public void callAPIOffers(final int APINumber, String remainingURL, String title, String code,String price, String image) throws JSONException {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
@@ -1171,6 +1247,20 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         Call<JsonElement> call = apiInterface_.notificationlist(body);
+        call.enqueue(responseCallback);
+    }
+    public void callAPIgetNoticelist(final int APINumber, String remainingURL) throws JSONException {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        JSONObject jsonObject= new JSONObject();
+        JSONObject jsonObject1= new JSONObject();
+        jsonObject.put("func_name","noticelist");
+        jsonObject.put("data",jsonObject1);
+        RequestBody body  = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
+        showLoader();
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.noticelist(body);
         call.enqueue(responseCallback);
     }
     public void callAPIgetBannerlist(final int APINumber, String remainingURL,String userid) throws JSONException {

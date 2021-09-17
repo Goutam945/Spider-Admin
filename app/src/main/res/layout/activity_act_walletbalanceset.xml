@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/white" />
+        <ImageView
+            android:id="@+id/ivLogLogo"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/spiderlogo5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="Min Deposits"
+            style="@style/Edittext_title" />
+
+
+        <EditText
+            android:id="@+id/mindeposits"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_textnew"
+            android:drawablePadding="5dp"
+            android:hint="Enter Min Deposits"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            style="@style/Edittext"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="Max Deposits"
+            style="@style/Edittext_title"
+            />
+
+
+        <EditText
+            android:id="@+id/maxdeposits"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_textnew"
+            android:drawablePadding="5dp"
+            android:hint=" Enter Min Deposits"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            style="@style/Edittext" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="Min Withdraw"
+            style="@style/Edittext_title"
+            />
+
+
+        <EditText
+            android:id="@+id/minwithdraw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_textnew"
+            android:drawablePadding="5dp"
+            android:hint=" Enter Min Withdraw"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            style="@style/Edittext" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="Max Withdraw"
+            style="@style/Edittext_title"
+            />
+
+
+        <EditText
+            android:id="@+id/maxwithdraw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_textnew"
+            android:drawablePadding="5dp"
+            android:hint=" Enter Max Withdraw"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            style="@style/Edittext" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_btn"
+            android:text="Add"
+            android:layout_marginBottom="25dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gtwalsheimpro_regular"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

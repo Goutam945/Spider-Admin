@@ -55,19 +55,19 @@
                 android:layout_gravity="left"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="3dp"
-                android:text="Description"
+                android:text="Notice"
                 style="@style/Edittext_title"
                 />
 
 
             <EditText
-                android:id="@+id/editudescription"
+                android:id="@+id/editnotice"
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="130dp"
                 android:background="@drawable/edit_textnew"
                 android:drawablePadding="5dp"
-                android:hint="Description"
+                android:hint="Enter Notice"
                 android:gravity="start"
                 android:paddingTop="10dp"
                 android:textAlignment="textStart"
@@ -77,30 +77,30 @@
                 style="@style/Edittext"
                 />
 
-            <ImageView
-                android:id="@+id/iv_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="10dp"
-                android:paddingTop="15dp"
-                android:visibility="gone"
-                android:adjustViewBounds="true"
-                android:paddingBottom="15dp"
-                android:src="@drawable/spiderlogo5"
-                android:background="@drawable/edit_textnew"/>
             <TextView
-                android:id="@+id/tv_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_textnew"
-                style="@style/Edittext"
-                android:text="Upload image"/>
+                android:layout_gravity="left"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="Support Number"
+                style="@style/Edittext_title" />
 
+
+            <EditText
+                android:id="@+id/editsupport"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_textnew"
+                android:drawablePadding="5dp"
+                android:hint="Enter Number"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                style="@style/Edittext" />
 
             <Button
-                android:id="@+id/btn_reject"
+                android:id="@+id/btn_add"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
@@ -113,7 +113,7 @@
                 android:layout_weight="1"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_edit_text1"
-                android:text="reject" />
+                android:text="Add" />
         </LinearLayout>
     </ScrollView>
 

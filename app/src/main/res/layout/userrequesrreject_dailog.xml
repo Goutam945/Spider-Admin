@@ -72,7 +72,7 @@
                 android:gravity="start"
                 android:paddingTop="10dp"
                 android:textAlignment="textStart"
-                android:inputType="textEmailAddress"
+                android:inputType="textMultiLine|textCapSentences"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 style="@style/Edittext"

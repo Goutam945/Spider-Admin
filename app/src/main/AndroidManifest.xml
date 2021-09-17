@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/apptheam">
         <activity
+            android:name=".Act_Walletbalanceset"
+            android:exported="true" />
+        <activity
+            android:name=".Act_Notice"
+            android:exported="true" />
+        <activity
             android:name=".Act_CreateOffers"
             android:exported="true" />
         <activity

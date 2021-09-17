@@ -9,17 +9,22 @@
         <entry key="app/src/main/res/layout/activity_act_bannerlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_act_create_offers.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_act_create_referal.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_act_notice.xml" value="0.13405797101449277" />
         <entry key="app/src/main/res/layout/activity_act_offerslist.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_act_paymentdeposit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_act_raiseconcern.xml" value="0.11277173913043478" />
         <entry key="app/src/main/res/layout/activity_act_userlist_referallist.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/activity_act_users_referallist.xml" value="0.10552536231884058" />
+        <entry key="app/src/main/res/layout/activity_act_walletbalanceset.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_banner_create.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_clientids_requestlist.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_close_id_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dashbord.xml" value="0.10190217391304347" />
         <entry key="app/src/main/res/layout/activity_deposit_id_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deposits_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_financialdetail.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_login_screen.xml" value="0.10190217391304347" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10190217391304347" />
         <entry key="app/src/main/res/layout/activity_paymentdeposits_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_puch_notification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_subadmin_list.xml" value="0.1" />
@@ -27,7 +32,9 @@
         <entry key="app/src/main/res/layout/activity_user_requestlist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_withdrawals_request.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/add_bankdetails.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/add_notice.xml" value="0.13405797101449277" />
         <entry key="app/src/main/res/layout/add_subadmin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/add_upi.xml" value="0.10190217391304347" />
         <entry key="app/src/main/res/layout/add_website.xml" value="0.1" />
         <entry key="app/src/main/res/layout/allreferalcode_list.xml" value="0.10552536231884058" />
         <entry key="app/src/main/res/layout/app_bar_home_basic.xml" value="0.10144927536231885" />

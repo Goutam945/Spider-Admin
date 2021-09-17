@@ -42,7 +42,7 @@ public class Act_Dashbord extends AppCompatActivity {
     SessionParam sessionParam;
     private BaseRequest baseRequest;
     Activity activity;
-    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11;
+    CardView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12,card13;
     TextView userid,username;
     ImageView logout,notification;
     Context context;
@@ -69,6 +69,8 @@ public class Act_Dashbord extends AppCompatActivity {
         card9=(CardView) findViewById(R.id.card9);
         card10=(CardView) findViewById(R.id.card10);
         card11=(CardView) findViewById(R.id.card11);
+        card12=(CardView) findViewById(R.id.card12);
+        card13=(CardView) findViewById(R.id.card13);
         userid=(TextView)findViewById(R.id.user_id);
         username=(TextView)findViewById(R.id.user_name);
         logout=(ImageView)findViewById(R.id.logoutt);
@@ -219,6 +221,30 @@ public class Act_Dashbord extends AppCompatActivity {
                                       @Override
                                       public void onClick(View v) {
                                           Intent i=new Intent(Act_Dashbord.this, Act_Offerslist.class);
+                                          startActivity(i);
+                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                          startActivity(i);
+                                          finish();
+                                      }
+                                  }
+
+        );
+        card12.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent i=new Intent(Act_Dashbord.this, Act_Notice.class);
+                                          startActivity(i);
+                                          overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                          startActivity(i);
+                                          finish();
+                                      }
+                                  }
+
+        );
+        card13.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent i=new Intent(Act_Dashbord.this, Act_Walletbalanceset.class);
                                           startActivity(i);
                                           overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                                           startActivity(i);
